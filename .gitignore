@@ -1,0 +1,24 @@
+# --- AMBIENTE VIRTUALE ---
+venv/
+.venv/
+
+# --- PYTHON CACHE E FILE COMPILATI DI PYTHON ---
+__pycache__/
+*.py[cod]# È un modo contratto per dire a Git di ignorare tutti i file con estensione .pyc, .pyo o .pyd.
+*$py.class
+
+# --- CHIAVI DI ACCESSO E VARIABILI D'AMBIENTE ---
+env/
+.env
+.streamlit/
+
+# --- CONFIGURAZIONE DELL'EDITOR ---
+.vscode/
+.idea/
+
+# --- FILE DI SISTEMA --- 
+.DS_Store
+Thumbs.db
+
+# --- CARTELLA SPECIFICA DEL PROGETTO ---
+project_managment/

@@ -1,0 +1,3437 @@
+{
+  "categories": [
+    {
+      "id": "basi",
+      "name": "Basi",
+      "description": "Fondamentali del linguaggio Python"
+    },
+    {
+      "id": "strutture_dati",
+      "name": "Strutture dati",
+      "description": "Liste, dizionari, Set e tuple"
+    },
+    {
+      "id": "oop",
+      "name": "OOP",
+      "description": "Classi, oggetti ed ereditarietà"
+    },
+    {
+      "id": "funzioni_avanzate",
+      "name": "Funzioni avanzate",
+      "description": "Lambda, decoratori e generatori"
+    },
+    {
+      "id": "moduli_errori",
+      "name": "Moduli e gestione errori",
+      "description": "Import, eccezioni e moduli standard"
+    }
+  ],
+  "questions": [
+    {
+      "id": "basi_001",
+      "category_id": "basi",
+      "text": "Qual è il tipo restituito da `type(3.14)`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "<class 'float'>",
+          "is_correct": true
+        },
+        {
+          "text": "<class 'int'>",
+          "is_correct": false
+        },
+        {
+          "text": "<class 'double'>",
+          "is_correct": false
+        },
+        {
+          "text": "<class 'number'>",
+          "is_correct": false
+        }
+      ],
+      "explanation": "In Python i numeri decimali sono di tipo `float`. Non esiste il tipo `double` o `number` come in altri linguaggi.",
+      "code_example": "x = 3.14\nprint(type(x))  # <class 'float'>\n\ny = 3\nprint(type(y))  # <class 'int'>\n\nz = 3 + 0j\nprint(type(z))  # <class 'complex'>"
+    },
+    {
+      "id": "basi_002",
+      "category_id": "basi",
+      "text": "Cosa stampa il seguente codice?\n```python\nx = 10\ny = 3\nprint(x // y)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "3.33",
+          "is_correct": false
+        },
+        {
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "1",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`//` è l'operatore di divisione intera (floor division): divide e arrotonda verso il basso all'intero più vicino.",
+      "code_example": "print(10 // 3)   # 3\nprint(10 // 3.0) # 3.0\nprint(-10 // 3)  # -4\nprint(10 % 3)    # 1"
+    },
+    {
+      "id": "basi_003",
+      "category_id": "basi",
+      "text": "Quale delle seguenti è una variabile con nome NON valido in Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "_nome",
+          "is_correct": false
+        },
+        {
+          "text": "nome2",
+          "is_correct": false
+        },
+        {
+          "text": "nome_completo",
+          "is_correct": false
+        },
+        {
+          "text": "2nome",
+          "is_correct": true
+        }
+      ],
+      "explanation": "I nomi di variabile in Python non possono iniziare con un numero.",
+      "code_example": "_nome = 'ok'\nnome2 = 'ok'\n# 2nome = 'errore'"
+    },
+    {
+      "id": "basi_004",
+      "category_id": "basi",
+      "text": "Cosa restituisce `bool(0)` in Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "True",
+          "is_correct": false
+        },
+        {
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "text": "False",
+          "is_correct": true
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "In Python, `0`, `0.0`, `''`, `[]`, `{}`, `()` e `None` sono tutti considerati 'falsy'.",
+      "code_example": "print(bool(0))    # False\nprint(bool(''))   # False\nprint(bool(1))    # True"
+    },
+    {
+      "id": "basi_005",
+      "category_id": "basi",
+      "text": "Cosa stampa questo codice?\n```python\nprint(2 ** 3 ** 2)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "512",
+          "is_correct": true
+        },
+        {
+          "text": "64",
+          "is_correct": false
+        },
+        {
+          "text": "36",
+          "is_correct": false
+        },
+        {
+          "text": "8",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore `**` è associativo a destra: `2 ** 3 ** 2` = `2 ** (3**2)` = `2**9` = `512`.",
+      "code_example": "print(2 ** 3 ** 2)   # 512\nprint((2 ** 3) ** 2) # 64"
+    },
+    {
+      "id": "basi_006",
+      "category_id": "basi",
+      "text": "Qual è la differenza tra `==` e `is` in Python?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "`==` confronta i valori, `is` confronta l'identità (stesso oggetto in memoria)",
+          "is_correct": true
+        },
+        {
+          "text": "`==` e `is` sono identici",
+          "is_correct": false
+        },
+        {
+          "text": "`is` confronta i valori, `==` confronta l'identità",
+          "is_correct": false
+        },
+        {
+          "text": "`is` funziona solo con stringhe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`==` verifica se due variabili hanno lo stesso valore. `is` verifica se puntano allo stesso oggetto in memoria.",
+      "code_example": "a = [1,2,3]\nb = [1,2,3]\nprint(a == b) # True\nprint(a is b) # False"
+    },
+    {
+      "id": "basi_007",
+      "category_id": "basi",
+      "text": "Cosa produce `'Python' * 2`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "'PythonPython'",
+          "is_correct": true
+        },
+        {
+          "text": "Errore di tipo",
+          "is_correct": false
+        },
+        {
+          "text": "'Python2'",
+          "is_correct": false
+        },
+        {
+          "text": "14",
+          "is_correct": false
+        }
+      ],
+      "explanation": "In Python l'operatore `*` applicato a una stringa e un intero esegue la ripetizione.",
+      "code_example": "print('Python' * 2)  # PythonPython\nprint([1,2] * 3)     # [1,2,1,2,1,2]"
+    },
+    {
+      "id": "basi_008",
+      "category_id": "basi",
+      "text": "Come si verifica se una variabile è di tipo `int` O `float`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "isinstance(x, (int, float))",
+          "is_correct": true
+        },
+        {
+          "text": "type(x) == int or float",
+          "is_correct": false
+        },
+        {
+          "text": "x.type() in [int, float]",
+          "is_correct": false
+        },
+        {
+          "text": "type(x) is numeric",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`isinstance()` accetta una tupla di tipi. `type(x) == int or float` è un errore logico comune.",
+      "code_example": "x = 3.14\nprint(isinstance(x, (int, float)))  # True"
+    },
+    {
+      "id": "basi_009",
+      "category_id": "basi",
+      "text": "Cosa stampa `print(0.1 + 0.2 == 0.3)` in Python?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "True",
+          "is_correct": false
+        },
+        {
+          "text": "False",
+          "is_correct": true
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Per problemi di arrotondamento con numeri in virgola mobile, 0.1 + 0.2 dà 0.30000000000000004, quindi non è uguale a 0.3.",
+      "code_example": "print(0.1 + 0.2)  # 0.30000000000000004\nprint(0.1 + 0.2 == 0.3)  # False\nfrom decimal import Decimal\nprint(Decimal('0.1') + Decimal('0.2') == Decimal('0.3'))  # True"
+    },
+    {
+      "id": "basi_010",
+      "category_id": "basi",
+      "text": "Qual è l'output di `print(3 * 'ciao')`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "'ciaociaociao'",
+          "is_correct": true
+        },
+        {
+          "text": "'ciao3'",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "'ccciii aaaiiiooo'",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore * con stringhe e interi ripete la stringa n volte.",
+      "code_example": "print(3 * 'ciao')  # ciao ciao ciao"
+    },
+    {
+      "id": "basi_011",
+      "category_id": "basi",
+      "text": "Cosa restituisce `len('\\n\\t\\r')`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "text": "0",
+          "is_correct": false
+        },
+        {
+          "text": "1",
+          "is_correct": false
+        }
+      ],
+      "explanation": "I caratteri di escape come \\n, \\t, \\r contano come un singolo carattere ciascuno.",
+      "code_example": "s = '\\n\\t\\r'\nprint(len(s))  # 3\nprint(repr(s))  # '\\n\\t\\r'"
+    },
+    {
+      "id": "basi_012",
+      "category_id": "basi",
+      "text": "Quale operatore viene usato per l'elevamento a potenza?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "^",
+          "is_correct": false
+        },
+        {
+          "text": "**",
+          "is_correct": true
+        },
+        {
+          "text": "pow()",
+          "is_correct": false
+        },
+        {
+          "text": "entrambi ** e pow()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore `**` è per l'elevamento a potenza. `^` è XOR bitwise. `pow()` è una funzione built-in che fa la stessa cosa.",
+      "code_example": "print(2 ** 3)   # 8\nprint(pow(2, 3))  # 8"
+    },
+    {
+      "id": "basi_013",
+      "category_id": "basi",
+      "text": "Cosa stampa questo codice?\n```python\na = [1, 2, 3]\nb = a\na.append(4)\nprint(b)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3, 4]",
+          "is_correct": true
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le liste sono oggetti mutabili. b = a fa sì che b punti allo stesso oggetto di a, quindi modificando a si modifica anche b.",
+      "code_example": "a = [1,2,3]\nb = a\nprint(a is b)  # True\nb.append(4)\nprint(a)  # [1,2,3,4]"
+    },
+    {
+      "id": "basi_014",
+      "category_id": "basi",
+      "text": "Qual è il modo corretto per creare una stringa multilinea?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "stringa = \"\"\"testo su più righe\"\"\"",
+          "is_correct": true
+        },
+        {
+          "text": "stringa = 'testo su più righe'",
+          "is_correct": false
+        },
+        {
+          "text": "stringa = 'testo\\ su\\ più\\ righe'",
+          "is_correct": false
+        },
+        {
+          "text": "stringa = multi('testo su più righe')",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le triple virgolette (singole o doppie) permettono di creare stringhe multilinea.",
+      "code_example": "testo = \"\"\"Riga 1\nRiga 2\nRiga 3\"\"\"\nprint(testo)"
+    },
+    {
+      "id": "basi_015",
+      "category_id": "basi",
+      "text": "Cosa fa l'operatore `:=` (walrus operator) in Python 3.8+?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Assegna e restituisce il valore in una singola espressione",
+          "is_correct": true
+        },
+        {
+          "text": "Confronta due valori",
+          "is_correct": false
+        },
+        {
+          "text": "Esegue una divisione",
+          "is_correct": false
+        },
+        {
+          "text": "È un operatore deprecato",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il walrus operator permette di assegnare un valore a una variabile all'interno di un'espressione.",
+      "code_example": "if (n := len([1,2,3])) > 2:\n    print(f'Lista lunga {n}')  # Lista lunga 3"
+    },
+    {
+      "id": "funzioni_avanzate_001",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa restituisce `list(map(lambda x: x*2, [1, 2, 3]))`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[2, 4, 6]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "text": "[(1,2), (2,4), (3,6)]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`map(funzione, iterabile)` applica la funzione a ogni elemento.",
+      "code_example": "print(list(map(lambda x: x*2, [1,2,3])))  # [2,4,6]"
+    },
+    {
+      "id": "funzioni_avanzate_002",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa fa un generatore in Python e come si crea?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Una funzione con `yield` che produce valori uno alla volta, senza caricare tutto in memoria",
+          "is_correct": true
+        },
+        {
+          "text": "Una classe speciale che genera numeri casuali",
+          "is_correct": false
+        },
+        {
+          "text": "Un decoratore che memorizza i risultati di una funzione",
+          "is_correct": false
+        },
+        {
+          "text": "Una funzione che restituisce sempre una lista",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Un generatore usa `yield`. Ad ogni `next()` riprende dall'ultima yield.",
+      "code_example": "def pari(n):\n    i=0\n    while i<=n:\n        yield i\n        i+=2\nfor p in pari(6): print(p)"
+    },
+    {
+      "id": "funzioni_avanzate_003",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa fa questo decoratore?\n```python\ndef mio_decoratore(func):\n    def wrapper(*args, **kwargs):\n        print('Prima')\n        risultato = func(*args, **kwargs)\n        print('Dopo')\n        return risultato\n    return wrapper\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Aggiunge stampe 'Prima' e 'Dopo' attorno all'esecuzione della funzione decorata",
+          "is_correct": true
+        },
+        {
+          "text": "Sostituisce la funzione con una nuova funzione che non fa nulla",
+          "is_correct": false
+        },
+        {
+          "text": "Esegue la funzione due volte",
+          "is_correct": false
+        },
+        {
+          "text": "Converte la funzione in un metodo di classe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Un decoratore riceve una funzione e ne restituisce una nuova (wrapper) con comportamento aggiuntivo.",
+      "code_example": "@mio_decoratore\ndef saluta(): print('Ciao')\nsaluta()  # Prima / Ciao / Dopo"
+    },
+    {
+      "id": "funzioni_avanzate_004",
+      "category_id": "funzioni_avanzate",
+      "text": "Qual è la differenza tra `*args` e `**kwargs`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "`*args` è per interi, `**kwargs` è per stringhe",
+          "is_correct": false
+        },
+        {
+          "text": "`**kwargs` raccoglie argomenti posizionali, `*args` quelli nominati",
+          "is_correct": false
+        },
+        {
+          "text": "Sono identici, solo convenzioni di nome diverse",
+          "is_correct": false
+        },
+        {
+          "text": "`*args` raccoglie argomenti posizionali in una tupla, `**kwargs` raccoglie argomenti nominati in un dizionario",
+          "is_correct": true
+        }
+      ],
+      "explanation": "`*args` cattura argomenti posizionali extra in una tupla. `**kwargs` cattura keyword args in un dizionario.",
+      "code_example": "def f(*args, **kwargs):\n    print(args)   # tupla\n    print(kwargs) # dizionario\nf(1,2,nome='A')"
+    },
+    {
+      "id": "funzioni_avanzate_005",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa stampa questo codice?\n```python\nf = lambda x, y=10: x + y\nprint(f(5))\nprint(f(5, 20))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "15 e 25",
+          "is_correct": true
+        },
+        {
+          "text": "5 e 25",
+          "is_correct": false
+        },
+        {
+          "text": "Errore di sintassi",
+          "is_correct": false
+        },
+        {
+          "text": "15 e 15",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le lambda supportano argomenti con valore di default come le funzioni normali.",
+      "code_example": "f = lambda x, y=10: x+y\nprint(f(5))     # 15\nprint(f(5,20))  # 25"
+    },
+    {
+      "id": "funzioni_avanzate_006",
+      "category_id": "funzioni_avanzate",
+      "text": "Cos'è una closure in Python?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Una funzione senza parametri",
+          "is_correct": false
+        },
+        {
+          "text": "Una funzione interna che ricorda le variabili dello scope della funzione esterna, anche dopo che quest'ultima ha terminato",
+          "is_correct": true
+        },
+        {
+          "text": "Un modo per chiudere/terminare una funzione",
+          "is_correct": false
+        },
+        {
+          "text": "Un decoratore che blocca la modifica di una funzione",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Una closure cattura variabili dallo scope circostante e le ricorda anche dopo che la funzione esterna ha terminato.",
+      "code_example": "def moltiplica(n):\n    def inner(x): return x*n\n    return inner\ndoppio = moltiplica(2)\nprint(doppio(5))  # 10"
+    },
+    {
+      "id": "funzioni_avanzate_007",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa stampa questo codice?\n```python\ndef genera():\n    for i in range(3):\n        yield i\n\ng = genera()\nprint(next(g))\nprint(next(g))\nprint(list(g))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "0\n1\n[2]",
+          "is_correct": true
+        },
+        {
+          "text": "0\n1\n[0,1,2]",
+          "is_correct": false
+        },
+        {
+          "text": "[0,1,2]\n0\n1",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il generatore produce valori uno alla volta. Dopo due next(), rimane solo l'ultimo valore che viene raccolto da list().",
+      "code_example": "def contatore(n):\n    for i in range(n):\n        yield i\nc = contatore(3)\nprint(next(c))  # 0\nprint(next(c))  # 1\nprint(list(c))  # [2]"
+    },
+    {
+      "id": "funzioni_avanzate_008",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa fa `functools.lru_cache`?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Memorizza in cache i risultati di una funzione per ottimizzare chiamate ripetute",
+          "is_correct": true
+        },
+        {
+          "text": "Crea una funzione che viene eseguita una sola volta",
+          "is_correct": false
+        },
+        {
+          "text": "Limita il numero di chiamate a una funzione",
+          "is_correct": false
+        },
+        {
+          "text": "Rende una funzione asincrona",
+          "is_correct": false
+        }
+      ],
+      "explanation": "lru_cache è un decoratore che memorizza i risultati delle chiamate precedenti, evitando ricalcoli.",
+      "code_example": "from functools import lru_cache\n@lru_cache(maxsize=128)\ndef fibonacci(n):\n    if n < 2: return n\n    return fibonacci(n-1) + fibonacci(n-2)\nprint(fibonacci(100))  # calcolato velocemente"
+    },
+    {
+      "id": "funzioni_avanzate_009",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa stampa questo codice?\n```python\nnumeri = [1, 2, 3, 4, 5]\nrisultato = list(filter(lambda x: x % 2, numeri))\nprint(risultato)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 3, 5]",
+          "is_correct": true
+        },
+        {
+          "text": "[2, 4]",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "[]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "filter() mantiene gli elementi per cui la funzione restituisce True. x % 2 è True per i numeri dispari (1 % 2 = 1, che è truthy).",
+      "code_example": "numeri = [1,2,3,4,5]\npari = list(filter(lambda x: x % 2 == 0, numeri))\ndispari = list(filter(lambda x: x % 2, numeri))\nprint(pari, dispari)  # [2,4] [1,3,5]"
+    },
+    {
+      "id": "funzioni_avanzate_010",
+      "category_id": "funzioni_avanzate",
+      "text": "Qual è la differenza tra `map` e `filter`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "map trasforma ogni elemento, filter seleziona elementi in base a una condizione",
+          "is_correct": true
+        },
+        {
+          "text": "map seleziona, filter trasforma",
+          "is_correct": false
+        },
+        {
+          "text": "Sono identici",
+          "is_correct": false
+        },
+        {
+          "text": "map funziona solo con liste, filter con qualsiasi iterabile",
+          "is_correct": false
+        }
+      ],
+      "explanation": "map applica una funzione a ogni elemento, filter mantiene solo quelli che soddisfano una condizione.",
+      "code_example": "numeri = [1,2,3,4]\nprint(list(map(lambda x: x*2, numeri)))   # [2,4,6,8]\nprint(list(filter(lambda x: x>2, numeri))) # [3,4]"
+    },
+    {
+      "id": "funzioni_avanzate_011",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa restituisce `functools.reduce(lambda x, y: x * y, [1, 2, 3, 4])`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "24",
+          "is_correct": true
+        },
+        {
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "text": "1*2*3*4",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "reduce applica cumulativamente la funzione, riducendo la lista a un singolo valore.",
+      "code_example": "from functools import reduce\nprint(reduce(lambda x,y: x*y, [1,2,3,4]))  # 24\nprint(reduce(lambda x,y: x+y, [1,2,3,4]))  # 10"
+    },
+    {
+      "id": "funzioni_avanzate_012",
+      "category_id": "funzioni_avanzate",
+      "text": "Cosa stampa questo codice?\n```python\ndef contatore():\n    x = 0\n    while True:\n        yield x\n        x += 1\n\nc = contatore()\nprint([next(c) for _ in range(3)])\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[0, 1, 2]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "[0, 0, 0]",
+          "is_correct": false
+        },
+        {
+          "text": "Loop infinito",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il generatore produce valori incrementali. next() prende il valore successivo, la list comprehension si ferma dopo 3 iterazioni.",
+      "code_example": "def infinite():\n    i = 0\n    while True:\n        yield i\n        i += 1\ninf = infinite()\nprint([next(inf) for _ in range(5)])  # [0,1,2,3,4]"
+    },
+    {
+      "id": "funzioni_avanzate_013",
+      "category_id": "funzioni_avanzate",
+      "text": "Qual è la differenza tra una closure e una funzione normale?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Una closure 'ricorda' le variabili dello scope esterno anche dopo che la funzione esterna ha terminato",
+          "is_correct": true
+        },
+        {
+          "text": "Una closure è più veloce",
+          "is_correct": false
+        },
+        {
+          "text": "Non c'è differenza",
+          "is_correct": false
+        },
+        {
+          "text": "Le closure possono essere usate solo come decoratori",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le closure catturano e mantengono il contesto lessicale in cui sono state definite.",
+      "code_example": "def moltiplicatore(n):\n    def inner(x):\n        return x * n  # n viene 'ricordato'\n    return inner\ndoppio = moltiplicatore(2)\ntriplo = moltiplicatore(3)\nprint(doppio(5))  # 10\nprint(triplo(5))  # 15"
+    },
+    {
+      "id": "moduli_errori_001",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa il blocco `finally` in un try/except?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Viene eseguito sempre, che ci sia un'eccezione o meno",
+          "is_correct": true
+        },
+        {
+          "text": "Viene eseguito solo se NON c'è un'eccezione",
+          "is_correct": false
+        },
+        {
+          "text": "Viene eseguito solo se c'è un'eccezione non gestita",
+          "is_correct": false
+        },
+        {
+          "text": "Interrompe la propagazione dell'eccezione",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`finally` viene sempre eseguito: dopo try, dopo except, o anche con eccezioni non gestite.",
+      "code_example": "try:\n    x = 1/0\nexcept ZeroDivisionError:\n    print('errore')\nfinally:\n    print('sempre')  # stampato sempre"
+    },
+    {
+      "id": "moduli_errori_002",
+      "category_id": "moduli_errori",
+      "text": "Qual è la differenza tra `import math` e `from math import sqrt`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Il primo importa il modulo intero (accesso con math.sqrt), il secondo importa solo sqrt nel namespace locale",
+          "is_correct": true
+        },
+        {
+          "text": "Sono identici",
+          "is_correct": false
+        },
+        {
+          "text": "`from math import sqrt` è più lento",
+          "is_correct": false
+        },
+        {
+          "text": "`import math` importa solo le funzioni di base",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Con `import math` usi `math.sqrt()`. Con `from math import sqrt` usi `sqrt()` direttamente.",
+      "code_example": "import math\nprint(math.sqrt(16))  # 4.0\nfrom math import sqrt\nprint(sqrt(16))       # 4.0"
+    },
+    {
+      "id": "moduli_errori_003",
+      "category_id": "moduli_errori",
+      "text": "Come si crea un'eccezione personalizzata in Python?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Definendo una funzione con il prefisso Error",
+          "is_correct": false
+        },
+        {
+          "text": "Creando una classe che eredita da Exception (o una sua sottoclasse)",
+          "is_correct": true
+        },
+        {
+          "text": "Usando la funzione `create_exception()`",
+          "is_correct": false
+        },
+        {
+          "text": "Modificando il dizionario `sys.exceptions`",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le eccezioni personalizzate si creano come classi che ereditano da `Exception`.",
+      "code_example": "class MioErrore(Exception):\n    pass\nraise MioErrore('messaggio')"
+    },
+    {
+      "id": "moduli_errori_004",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa `with open('file.txt', 'r') as f:`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Apre il file in modalità sola lettura e non lo chiude mai",
+          "is_correct": false
+        },
+        {
+          "text": "Apre il file e lo chiude automaticamente al termine del blocco, anche in caso di errore",
+          "is_correct": true
+        },
+        {
+          "text": "Crea il file se non esiste",
+          "is_correct": false
+        },
+        {
+          "text": "Legge tutto il contenuto del file in `f`",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il `with` statement garantisce che `f.close()` venga chiamato automaticamente all'uscita dal blocco.",
+      "code_example": "with open('file.txt','r') as f:\n    contenuto = f.read()\n# file chiuso automaticamente"
+    },
+    {
+      "id": "moduli_errori_005",
+      "category_id": "moduli_errori",
+      "text": "Cosa stampa questo codice?\n```python\ntry:\n    x = int('abc')\nexcept ValueError:\n    print('A')\nexcept Exception:\n    print('B')\nelse:\n    print('C')\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "A e C",
+          "is_correct": false
+        },
+        {
+          "text": "A",
+          "is_correct": true
+        },
+        {
+          "text": "B",
+          "is_correct": false
+        },
+        {
+          "text": "C",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`int('abc')` solleva `ValueError`. Il primo except compatibile stampa 'A'. `else` si esegue solo senza eccezioni.",
+      "code_example": "try:\n    int('abc')\nexcept ValueError:\n    print('A')  # catturato qui"
+    },
+    {
+      "id": "moduli_errori_006",
+      "category_id": "moduli_errori",
+      "text": "A cosa serve il modulo `os` in Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Creare interfacce grafiche",
+          "is_correct": false
+        },
+        {
+          "text": "Fare richieste HTTP",
+          "is_correct": false
+        },
+        {
+          "text": "Interagire con il sistema operativo: file system, variabili d'ambiente, path, processi",
+          "is_correct": true
+        },
+        {
+          "text": "Gestire operazioni matematiche avanzate",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il modulo `os` è la porta verso il sistema operativo.",
+      "code_example": "import os\nprint(os.getcwd())\nos.makedirs('cartella', exist_ok=True)"
+    },
+    {
+      "id": "moduli_errori_007",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa `json.dumps({'chiave': [1, 2, 3]})`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Salva il dizionario in un file JSON",
+          "is_correct": false
+        },
+        {
+          "text": "Converte il dizionario Python in una stringa JSON",
+          "is_correct": true
+        },
+        {
+          "text": "Carica JSON da una stringa",
+          "is_correct": false
+        },
+        {
+          "text": "Stampa il dizionario formattato",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`json.dumps()` converte un oggetto Python in una stringa JSON.",
+      "code_example": "import json\ndati = {'nome':'Alice'}\nstringa = json.dumps(dati)\nprint(type(stringa))  # <class 'str'>"
+    },
+    {
+      "id": "moduli_errori_008",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa il modulo `pathlib`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Fornisce un approccio orientato agli oggetti per manipolare percorsi di file",
+          "is_correct": true
+        },
+        {
+          "text": "Gestisce i path nelle importazioni",
+          "is_correct": false
+        },
+        {
+          "text": "Crea percorsi virtuali",
+          "is_correct": false
+        },
+        {
+          "text": "Ottimizza il percorso di esecuzione",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pathlib offre classi per lavorare con percorsi di file in modo cross-platform e intuitivo.",
+      "code_example": "from pathlib import Path\np = Path('/home/user/documenti')\nprint(p / 'file.txt')  # /home/user/documenti/file.txt\nprint(p.exists())\nprint(p.glob('*.py'))"
+    },
+    {
+      "id": "moduli_errori_009",
+      "category_id": "moduli_errori",
+      "text": "Cosa stampa questo codice?\n```python\ntry:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('A')\nexcept:\n    print('B')\nfinally:\n    print('C')\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "A\nC",
+          "is_correct": true
+        },
+        {
+          "text": "A",
+          "is_correct": false
+        },
+        {
+          "text": "B\nC",
+          "is_correct": false
+        },
+        {
+          "text": "C",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'eccezione ZeroDivisionError viene catturata dal primo except. finally viene sempre eseguito.",
+      "code_example": "try:\n    1/0\nexcept ValueError:\n    print('valore')\nexcept ZeroDivisionError:\n    print('divisione')\nfinally:\n    print('fine')\n# divisione\n# fine"
+    },
+    {
+      "id": "moduli_errori_010",
+      "category_id": "moduli_errori",
+      "text": "Come si lancia manualmente un'eccezione in Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "raise Exception('messaggio')",
+          "is_correct": true
+        },
+        {
+          "text": "throw Exception('messaggio')",
+          "is_correct": false
+        },
+        {
+          "text": "except Exception('messaggio')",
+          "is_correct": false
+        },
+        {
+          "text": "error Exception('messaggio')",
+          "is_correct": false
+        }
+      ],
+      "explanation": "La parola chiave `raise` viene usata per sollevare eccezioni esplicitamente.",
+      "code_example": "def dividi(a, b):\n    if b == 0:\n        raise ValueError('Divisione per zero non permessa')\n    return a / b"
+    },
+    {
+      "id": "moduli_errori_011",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa il modulo `datetime`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Fornisce classi per manipolare date, orari e intervalli temporali",
+          "is_correct": true
+        },
+        {
+          "text": "Misura il tempo di esecuzione del codice",
+          "is_correct": false
+        },
+        {
+          "text": "Crea timer e cronometri",
+          "is_correct": false
+        },
+        {
+          "text": "Gestisce i fusi orari",
+          "is_correct": false
+        }
+      ],
+      "explanation": "datetime offre classi come date, time, datetime, timedelta per lavorare con date e orari.",
+      "code_example": "from datetime import datetime, timedelta\noggi = datetime.now()\ndomani = oggi + timedelta(days=1)\nprint(oggi.strftime('%d/%m/%Y'))"
+    },
+    {
+      "id": "moduli_errori_012",
+      "category_id": "moduli_errori",
+      "text": "Cosa stampa questo codice?\n```python\nimport math\nprint(dir(math)[:3])\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "I primi 3 nomi definiti nel modulo math",
+          "is_correct": true
+        },
+        {
+          "text": "Un errore",
+          "is_correct": false
+        },
+        {
+          "text": "I metodi matematici principali",
+          "is_correct": false
+        },
+        {
+          "text": "La documentazione del modulo",
+          "is_correct": false
+        }
+      ],
+      "explanation": "dir() restituisce una lista di tutti gli attributi e metodi di un oggetto/modulo.",
+      "code_example": "import math\nprint([name for name in dir(math) if not name.startswith('_')])  # nomi pubblici"
+    },
+    {
+      "id": "moduli_errori_013",
+      "category_id": "moduli_errori",
+      "text": "Qual è lo scopo del modulo `logging`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Fornisce un sistema flessibile per registrare messaggi di log con diversi livelli di gravità",
+          "is_correct": true
+        },
+        {
+          "text": "Registra automaticamente tutte le eccezioni",
+          "is_correct": false
+        },
+        {
+          "text": "Crea file di log binari",
+          "is_correct": false
+        },
+        {
+          "text": "Gestisce i log del sistema operativo",
+          "is_correct": false
+        }
+      ],
+      "explanation": "logging permette di registrare messaggi con livelli (DEBUG, INFO, WARNING, ERROR, CRITICAL) e output configurabili.",
+      "code_example": "import logging\nlogging.basicConfig(level=logging.INFO)\nlogging.info('Applicazione avviata')\nlogging.warning('Attenzione: memoria bassa')\nlogging.error('Errore durante l'operazione')"
+    },
+    {
+      "id": "moduli_errori_014",
+      "category_id": "moduli_errori",
+      "text": "Cosa fa `sys.argv`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Lista degli argomenti passati da riga di comando",
+          "is_correct": true
+        },
+        {
+          "text": "Variabili d'ambiente del sistema",
+          "is_correct": false
+        },
+        {
+          "text": "Argomenti di una funzione",
+          "is_correct": false
+        },
+        {
+          "text": "Parametri di configurazione di Python",
+          "is_correct": false
+        }
+      ],
+      "explanation": "sys.argv è una lista che contiene il nome dello script e gli argomenti passati al momento dell'esecuzione.",
+      "code_example": "# run: python script.py arg1 arg2\nimport sys\nprint(sys.argv)  # ['script.py', 'arg1', 'arg2']"
+    },
+    {
+      "id": "moduli_errori_015",
+      "category_id": "moduli_errori",
+      "text": "Cosa stampa questo codice?\n```python\ntry:\n    print(1)\n    raise Exception('errore')\n    print(2)\nexcept:\n    print(3)\nfinally:\n    print(4)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "1\n3\n4",
+          "is_correct": true
+        },
+        {
+          "text": "1\n2\n3\n4",
+          "is_correct": false
+        },
+        {
+          "text": "1\n3",
+          "is_correct": false
+        },
+        {
+          "text": "1\n4",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Dopo print(1) viene sollevata l'eccezione. print(2) non viene eseguito. except cattura l'eccezione e stampa 3, finally viene sempre eseguito e stampa 4.",
+      "code_example": "try:\n    print('inizio')\n    raise RuntimeError('errore')\n    print('non eseguito')\nexcept:\n    print('catturato')\nfinally:\n    print('sempre')\n# inizio\n# catturato\n# sempre"
+    },
+    {
+      "id": "oop_001",
+      "category_id": "oop",
+      "text": "Quale metodo viene chiamato automaticamente alla creazione di un oggetto?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "__new__",
+          "is_correct": false
+        },
+        {
+          "text": "__create__",
+          "is_correct": false
+        },
+        {
+          "text": "__init__",
+          "is_correct": true
+        },
+        {
+          "text": "__start__",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`__init__` è il costruttore che viene eseguito automaticamente ad ogni istanziazione.",
+      "code_example": "class Persona:\n    def __init__(self, nome):\n        self.nome = nome\np = Persona('Alice')"
+    },
+    {
+      "id": "oop_002",
+      "category_id": "oop",
+      "text": "Cosa rappresenta `self` nei metodi di una classe Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "La classe stessa",
+          "is_correct": false
+        },
+        {
+          "text": "L'istanza corrente della classe su cui il metodo viene chiamato",
+          "is_correct": true
+        },
+        {
+          "text": "Una parola chiave riservata di Python",
+          "is_correct": false
+        },
+        {
+          "text": "Il modulo corrente",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`self` è una convenzione (non una parola chiave) che rappresenta l'istanza su cui viene chiamato il metodo.",
+      "code_example": "class C:\n    def __init__(self):\n        self.valore = 0\n    def incrementa(self):\n        self.valore += 1"
+    },
+    {
+      "id": "oop_003",
+      "category_id": "oop",
+      "text": "Cosa si intende per ereditarietà in OOP?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Una classe figlia può riutilizzare e specializzare attributi e metodi di una classe padre",
+          "is_correct": true
+        },
+        {
+          "text": "Copiare il codice di una classe in un'altra",
+          "is_correct": false
+        },
+        {
+          "text": "Creare un'istanza di una classe dentro un'altra",
+          "is_correct": false
+        },
+        {
+          "text": "Importare una classe da un modulo esterno",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'ereditarietà permette a una classe figlia di ereditare attributi e metodi della classe padre.",
+      "code_example": "class Animale:\n    def parla(self): return 'suono'\nclass Cane(Animale):\n    def parla(self): return 'Bau!'"
+    },
+    {
+      "id": "oop_004",
+      "category_id": "oop",
+      "text": "Cosa fa il decoratore `@property`?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Permette di accedere a un metodo come se fosse un attributo, senza parentesi",
+          "is_correct": true
+        },
+        {
+          "text": "Rende un metodo privato",
+          "is_correct": false
+        },
+        {
+          "text": "Converte un metodo in un metodo statico",
+          "is_correct": false
+        },
+        {
+          "text": "Crea automaticamente __init__",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`@property` trasforma un metodo in un getter che si usa come attributo.",
+      "code_example": "class C:\n    @property\n    def area(self):\n        return 3.14 * self._r**2\nc = C()\nprint(c.area)  # senza parentesi!"
+    },
+    {
+      "id": "oop_005",
+      "category_id": "oop",
+      "text": "Qual è la differenza tra `@classmethod` e `@staticmethod`?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "`staticmethod` riceve la classe, `classmethod` non riceve nulla",
+          "is_correct": false
+        },
+        {
+          "text": "Sono equivalenti, solo nomi diversi",
+          "is_correct": false
+        },
+        {
+          "text": "`classmethod` riceve la classe come primo argomento, `staticmethod` non riceve né classe né istanza",
+          "is_correct": true
+        },
+        {
+          "text": "`classmethod` funziona solo nelle classi figlie",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`@classmethod` riceve `cls`. `@staticmethod` non riceve né `self` né `cls`.",
+      "code_example": "class A:\n    @classmethod\n    def da_stringa(cls, s): return cls()\n    @staticmethod\n    def utility(x): return x*2"
+    },
+    {
+      "id": "oop_006",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass A:\n    x = 10\nclass B(A):\n    pass\nB.x = 20\nprint(A.x, B.x)\n```",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "10 20",
+          "is_correct": true
+        },
+        {
+          "text": "20 20",
+          "is_correct": false
+        },
+        {
+          "text": "10 10",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Assegnare `B.x = 20` crea un attributo su B senza modificare A.x.",
+      "code_example": "class A:\n    x = 10\nclass B(A): pass\nB.x = 20\nprint(A.x, B.x)  # 10 20"
+    },
+    {
+      "id": "oop_007",
+      "category_id": "oop",
+      "text": "Qual è l'output di questo codice?\n```python\nclass Padre:\n    def metodo(self):\n        return 'Padre'\n\nclass Figlio(Padre):\n    def metodo(self):\n        return super().metodo() + ' e Figlio'\n\nprint(Figlio().metodo())\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "'Padre e Figlio'",
+          "is_correct": true
+        },
+        {
+          "text": "'Figlio'",
+          "is_correct": false
+        },
+        {
+          "text": "'Padre'",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "super() permette di chiamare il metodo della classe padre e estenderne il comportamento.",
+      "code_example": "class Animale:\n    def verso(self): return 'suono'\nclass Cane(Animale):\n    def verso(self): return super().verso() + ': Bau!'\nprint(Cane().verso())  # suono: Bau!"
+    },
+    {
+      "id": "oop_008",
+      "category_id": "oop",
+      "text": "Cosa sono i metodi dunder (double underscore) in Python?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Metodi speciali con __nome__ che definiscono il comportamento degli oggetti",
+          "is_correct": true
+        },
+        {
+          "text": "Metodi privati che non possono essere chiamati dall'esterno",
+          "is_correct": false
+        },
+        {
+          "text": "Metodi obsoleti da non usare",
+          "is_correct": false
+        },
+        {
+          "text": "Metodi che devono essere implementati in ogni classe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "I metodi dunder (magic methods) come __init__, __str__, __add__ permettono di definire il comportamento degli oggetti con operatori e funzioni built-in.",
+      "code_example": "class Punto:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __add__(self, altro):\n        return Punto(self.x + altro.x, self.y + altro.y)\n    def __repr__(self):\n        return f'Punto({self.x},{self.y})'\nprint(Punto(1,2) + Punto(3,4))  # Punto(4,6)"
+    },
+    {
+      "id": "oop_009",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass A:\n    pass\n\nobj = A()\nobj.x = 10\nprint(hasattr(obj, 'x'))\nprint(hasattr(obj, 'y'))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "True\nFalse",
+          "is_correct": true
+        },
+        {
+          "text": "False\nFalse",
+          "is_correct": false
+        },
+        {
+          "text": "True\nTrue",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "In Python gli attributi possono essere aggiunti dinamicamente. hasattr() verifica l'esistenza di un attributo.",
+      "code_example": "class Vuoto: pass\nv = Vuoto()\nv.nuovo = 5\nprint(hasattr(v, 'nuovo'))  # True\nprint(hasattr(v, 'altro'))  # False"
+    },
+    {
+      "id": "oop_010",
+      "category_id": "oop",
+      "text": "Cosa fa il metodo `__slots__` in una classe?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Limita gli attributi che possono essere creati e riduce l'uso di memoria",
+          "is_correct": true
+        },
+        {
+          "text": "Crea automaticamente getter e setter",
+          "is_correct": false
+        },
+        {
+          "text": "Rende tutti gli attributi privati",
+          "is_correct": false
+        },
+        {
+          "text": "Definisce gli attributi di classe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "__slots__ definisce un insieme fisso di attributi, impedisce l'aggiunta dinamica e riduce il consumo di memoria.",
+      "code_example": "class Punto:\n    __slots__ = ['x', 'y']\n    def __init__(self, x, y):\n        self.x, self.y = x, y\np = Punto(1,2)\n# p.z = 3  # AttributeError!"
+    },
+    {
+      "id": "oop_011",
+      "category_id": "oop",
+      "text": "Cosa rappresenta il concetto di 'polimorfismo' in OOP?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "La capacità di oggetti di classi diverse di rispondere allo stesso messaggio in modo appropriato",
+          "is_correct": true
+        },
+        {
+          "text": "Avere più costruttori in una classe",
+          "is_correct": false
+        },
+        {
+          "text": "Nascondere i dettagli implementativi",
+          "is_correct": false
+        },
+        {
+          "text": "Creare molteplici istanze di una classe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il polimorfismo permette di usare oggetti di classi diverse attraverso un'interfaccia comune.",
+      "code_example": "class Gatto:\n    def parla(self): return 'Miao'\nclass Cane:\n    def parla(self): return 'Bau'\ndef fai_parlare(animale):\n    print(animale.parla())\nfai_parlare(Gatto())  # Miao\nfai_parlare(Cane())   # Bau"
+    },
+    {
+      "id": "oop_012",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass A:\n    x = 5\n    \n    def __init__(self):\n        self.x = 10\n\nobj = A()\nprint(obj.x)\nprint(A.x)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "10\n5",
+          "is_correct": true
+        },
+        {
+          "text": "5\n10",
+          "is_correct": false
+        },
+        {
+          "text": "10\n10",
+          "is_correct": false
+        },
+        {
+          "text": "5\n5",
+          "is_correct": false
+        }
+      ],
+      "explanation": "A.x è un attributo di classe. obj.x è un attributo di istanza che sovrascrive quello di classe per l'istanza.",
+      "code_example": "class C:\n    attr = 'classe'\n    def __init__(self):\n        self.attr = 'istanza'\nprint(C.attr)        # classe\nprint(C().attr)      # istanza"
+    },
+    {
+      "id": "oop_013",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass A:\n    def __init__(self):\n        self._x = 10\n    \n    @property\n    def x(self):\n        return self._x\n    \n    @x.setter\n    def x(self, valore):\n        if valore > 0:\n            self._x = valore\n        else:\n            raise ValueError('Deve essere positivo')\n\nobj = A()\nobj.x = 20\nprint(obj.x)\nobj.x = -5\n```",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "20\nValueError: Deve essere positivo",
+          "is_correct": true
+        },
+        {
+          "text": "20\n-5",
+          "is_correct": false
+        },
+        {
+          "text": "10\nErrore",
+          "is_correct": false
+        },
+        {
+          "text": "20\nNone",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il decoratore @property crea un getter e @x.setter crea un setter con validazione. Il primo assegnamento (20) funziona, il secondo (-5) solleva l'eccezione definita nel setter.",
+      "code_example": "class Temperatura:\n    def __init__(self):\n        self._celsius = 0\n    \n    @property\n    def celsius(self):\n        return self._celsius\n    \n    @celsius.setter\n    def celsius(self, valore):\n        if valore < -273.15:\n            raise ValueError('Sotto lo zero assoluto!')\n        self._celsius = valore\n    \n    @property\n    def fahrenheit(self):\n        return (self._celsius * 9/5) + 32\n\nt = Temperatura()\nt.celsius = 25\nprint(t.fahrenheit)  # 77.0"
+    },
+    {
+      "id": "oop_014",
+      "category_id": "oop",
+      "text": "Cosa sono i metodi astratti (abstract methods) in Python?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Metodi dichiarati ma non implementati in una classe base, che obbligano le classi figlie a implementarli",
+          "is_correct": true
+        },
+        {
+          "text": "Metodi che non possono essere chiamati dall'esterno della classe",
+          "is_correct": false
+        },
+        {
+          "text": "Metodi che vengono eseguiti automaticamente all'avvio del programma",
+          "is_correct": false
+        },
+        {
+          "text": "Metodi che restituiscono sempre None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "I metodi astratti vengono definiti con il modulo ABC (Abstract Base Classes). Le classi che li contengono non possono essere istanziate finché non vengono implementati nelle classi figlie.",
+      "code_example": "from abc import ABC, abstractmethod\n\nclass Forma(ABC):\n    @abstractmethod\n    def area(self):\n        pass\n    \n    @abstractmethod\n    def perimetro(self):\n        pass\n\nclass Rettangolo(Forma):\n    def __init__(self, base, altezza):\n        self.base = base\n        self.altezza = altezza\n    \n    def area(self):\n        return self.base * self.altezza\n    \n    def perimetro(self):\n        return 2 * (self.base + self.altezza)\n\n# forma = Forma()  # TypeError!\nrett = Rettangolo(5, 3)\nprint(rett.area())  # 15"
+    },
+    {
+      "id": "oop_015",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass Padre:\n    def __init__(self):\n        print('Padre init')\n    \n    def metodo(self):\n        print('Padre metodo')\n\nclass Figlio(Padre):\n    def __init__(self):\n        print('Figlio init')\n        super().__init__()\n    \n    def metodo(self):\n        print('Figlio metodo')\n        super().metodo()\n\nf = Figlio()\nf.metodo()\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Figlio init\nPadre init\nFiglio metodo\nPadre metodo",
+          "is_correct": true
+        },
+        {
+          "text": "Padre init\nFiglio init\nPadre metodo\nFiglio metodo",
+          "is_correct": false
+        },
+        {
+          "text": "Figlio init\nFiglio metodo",
+          "is_correct": false
+        },
+        {
+          "text": "Padre init\nPadre metodo",
+          "is_correct": false
+        }
+      ],
+      "explanation": "super() chiama i metodi della classe padre. L'ordine di esecuzione segue le chiamate esplicite nel codice.",
+      "code_example": "class Animale:\n    def __init__(self):\n        print('Nasce un animale')\n    \n    def verso(self):\n        print('L'animale fa un verso')\n\nclass Cane(Animale):\n    def __init__(self):\n        print('Nasce un cane')\n        super().__init__()\n    \n    def verso(self):\n        print('Il cane abbaia')\n        super().verso()\n\nc = Cane()\n# Nasce un cane\n# Nasce un animale\nc.verso()\n# Il cane abbaia\n# L'animale fa un verso"
+    },
+    {
+      "id": "oop_016",
+      "category_id": "oop",
+      "text": "Cosa fa il metodo `__call__` in una classe?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Permette di chiamare un'istanza come se fosse una funzione",
+          "is_correct": true
+        },
+        {
+          "text": "Chiama automaticamente il costruttore",
+          "is_correct": false
+        },
+        {
+          "text": "Viene chiamato quando si usa l'operatore () su un metodo",
+          "is_correct": false
+        },
+        {
+          "text": "Definisce il comportamento della funzione __init__",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Il metodo `__call__` rende un oggetto callable, permettendo di usare l'istanza come una funzione.",
+      "code_example": "class Moltiplicatore:\n    def __init__(self, fattore):\n        self.fattore = fattore\n    \n    def __call__(self, x):\n        return x * self.fattore\n\ndoppio = Moltiplicatore(2)\ntriplo = Moltiplicatore(3)\nprint(doppio(5))  # 10\nprint(triplo(5))  # 15\nprint(callable(doppio))  # True"
+    },
+    {
+      "id": "oop_017",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass A:\n    def __init__(self):\n        self.__privato = 10\n    \n    def get_privato(self):\n        return self.__privato\n\nclass B(A):\n    def mostra(self):\n        try:\n            print(self.__privato)\n        except AttributeError:\n            print('Non accessibile')\n        print(self.get_privato())\n\nb = B()\nb.mostra()\n```",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Non accessibile\n10",
+          "is_correct": true
+        },
+        {
+          "text": "10\n10",
+          "is_correct": false
+        },
+        {
+          "text": "Non accessibile\nNon accessibile",
+          "is_correct": false
+        },
+        {
+          "text": "AttributeError",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Gli attributi con doppio underscore (`__privato`) subiscono name mangling: diventano `_A__privato`. Non sono direttamente accessibili dalle classi figlie, ma possono essere accessibili tramite metodi getter pubblici.",
+      "code_example": "class Segreto:\n    def __init__(self):\n        self.__segreto = 'confidenziale'\n    \n    def rivela(self):\n        return self.__segreto\n\ns = Segreto()\n# print(s.__segreto)  # AttributeError!\nprint(s._Segreto__segreto)  # 'confidenziale' (name mangling)\nprint(s.rivela())  # 'confidenziale'"
+    },
+    {
+      "id": "oop_018",
+      "category_id": "oop",
+      "text": "Qual è l'ordine di risoluzione dei metodi (MRO) in Python?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "L'ordine in cui Python cerca i metodi nelle classi base, seguendo l'algoritmo C3 linearization",
+          "is_correct": true
+        },
+        {
+          "text": "Sempre dalla classe più recente alla più antica",
+          "is_correct": false
+        },
+        {
+          "text": "Sempre dalla classe più antica alla più recente",
+          "is_correct": false
+        },
+        {
+          "text": "Un ordine casuale determinato dall'interprete",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'MRO (Method Resolution Order) definisce l'ordine in cui Python cerca i metodi nelle classi base, specialmente importante con ereditarietà multipla. Si può visualizzare con `ClassName.__mro__`.",
+      "code_example": "class A: pass\nclass B(A): pass\nclass C(A): pass\nclass D(B, C): pass\n\nprint(D.__mro__)\n# (<class '__main__.D'>, <class '__main__.B'>, \n#  <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)\n\n# Con ereditarietà multipla:\nclass X: pass\nclass Y: pass\nclass Z(X, Y): pass\nprint(Z.__mro__)  # Z, X, Y, object"
+    },
+    {
+      "id": "oop_019",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass Contatore:\n    contatore_globale = 0\n    \n    def __init__(self):\n        Contatore.contatore_globale += 1\n        self.contatore_istanza = 0\n    \n    def incrementa(self):\n        self.contatore_istanza += 1\n        Contatore.contatore_globale += 1\n\nc1 = Contatore()\nc2 = Contatore()\nc1.incrementa()\nc2.incrementa()\nc2.incrementa()\n\nprint(c1.contatore_istanza)\nprint(c2.contatore_istanza)\nprint(Contatore.contatore_globale)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "1\n2\n5",
+          "is_correct": true
+        },
+        {
+          "text": "1\n2\n3",
+          "is_correct": false
+        },
+        {
+          "text": "2\n3\n5",
+          "is_correct": false
+        },
+        {
+          "text": "1\n1\n4",
+          "is_correct": false
+        }
+      ],
+      "explanation": "contatore_globale è un attributo di classe condiviso tra tutte le istanze. contatore_istanza è un attributo di istanza separato per ogni oggetto. Ogni istanziazione incrementa il contatore globale (2 volte) più gli incrementi espliciti (3 volte), totale 5.",
+      "code_example": "class Statistiche:\n    totale_istanze = 0\n    \n    def __init__(self):\n        Statistiche.totale_istanze += 1\n        self.azioni = 0\n    \n    def agisci(self):\n        self.azioni += 1\n        Statistiche.totale_istanze += 1\n\ns1 = Statistiche()  # totale = 1\ns2 = Statistiche()  # totale = 2\ns1.agisci()        # totale = 3\ns2.agisci()        # totale = 4\ns2.agisci()        # totale = 5\nprint(Statistiche.totale_istanze)  # 5"
+    },
+    {
+      "id": "oop_020",
+      "category_id": "oop",
+      "text": "Cosa fa il metodo `__repr__` rispetto a `__str__`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "__repr__ è per rappresentazioni non ambigue e di debugging, __str__ per output leggibile dall'utente",
+          "is_correct": true
+        },
+        {
+          "text": "Sono identici",
+          "is_correct": false
+        },
+        {
+          "text": "__str__ è per debugging, __repr__ per l'utente",
+          "is_correct": false
+        },
+        {
+          "text": "__repr__ viene usato solo per i numeri",
+          "is_correct": false
+        }
+      ],
+      "explanation": "__repr__ dovrebbe restituire una stringa che idealmente permetta di ricreare l'oggetto, mentre __str__ fornisce una rappresentazione leggibile. print() usa __str__, mentre nell'interprete interattivo viene mostrato __repr__.",
+      "code_example": "class Persona:\n    def __init__(self, nome, eta):\n        self.nome = nome\n        self.eta = eta\n    \n    def __repr__(self):\n        return f\"Persona('{self.nome}', {self.eta})\"\n    \n    def __str__(self):\n        return f\"{self.nome} ({self.eta} anni)\"\n\np = Persona('Alice', 30)\nprint(repr(p))  # Persona('Alice', 30)\nprint(str(p))   # Alice (30 anni)\nprint(p)        # Alice (30 anni) - usa __str__"
+    },
+    {
+      "id": "oop_021",
+      "category_id": "oop",
+      "text": "Cosa stampa questo codice?\n```python\nclass Mixin1:\n    def metodo(self):\n        return 'Mixin1'\n\nclass Mixin2:\n    def metodo(self):\n        return 'Mixin2'\n\nclass Base:\n    def metodo(self):\n        return 'Base'\n\nclass Derivata(Mixin1, Mixin2, Base):\n    pass\n\nd = Derivata()\nprint(d.metodo())\nprint(Derivata.__mro__)\n```",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Mixin1\n(Derivata, Mixin1, Mixin2, Base, object)",
+          "is_correct": true
+        },
+        {
+          "text": "Base\n(Derivata, Base, Mixin1, Mixin2, object)",
+          "is_correct": false
+        },
+        {
+          "text": "Mixin2\n(Derivata, Mixin2, Mixin1, Base, object)",
+          "is_correct": false
+        },
+        {
+          "text": "Errore di ereditarietà multipla",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Nell'ereditarietà multipla, la ricerca dei metodi segue l'ordine di dichiarazione. Mixin1 viene prima di Mixin2 e Base, quindi il suo metodo viene trovato per primo. L'MRO mostra l'ordine completo di risoluzione.",
+      "code_example": "class LoggerMixin:\n    def log(self, msg):\n        print(f'LOG: {msg}')\n\nclass JSONMixin:\n    def to_json(self):\n        return '{\"status\": \"ok\"}'\n\nclass Utente(LoggerMixin, JSONMixin):\n    pass\n\nu = Utente()\nu.log('Test')  # LOG: Test\nprint(u.to_json())  # {\"status\": \"ok\"}\nprint(Utente.__mro__)  # Utente, LoggerMixin, JSONMixin, object"
+    },
+    {
+      "id": "oop_022",
+      "category_id": "oop",
+      "text": "Qual è lo scopo del metodo `__new__`?",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "Crea e restituisce una nuova istanza prima che __init__ venga chiamato",
+          "is_correct": true
+        },
+        {
+          "text": "Inizializza gli attributi di classe",
+          "is_correct": false
+        },
+        {
+          "text": "Distrugge l'oggetto quando non è più utilizzato",
+          "is_correct": false
+        },
+        {
+          "text": "Crea un nuovo namespace per la classe",
+          "is_correct": false
+        }
+      ],
+      "explanation": "__new__ è un metodo statico che controlla la creazione dell'istanza. Viene chiamato prima di __init__ ed è responsabile di restituire l'istanza. È usato principalmente per implementare pattern come il singleton o per sottoclassare tipi immutabili.",
+      "code_example": "class Singleton:\n    _istanza = None\n    \n    def __new__(cls):\n        if cls._istanza is None:\n            print('Creazione nuova istanza')\n            cls._istanza = super().__new__(cls)\n        return cls._istanza\n    \n    def __init__(self):\n        print('Inizializzazione')\n\ns1 = Singleton()\n# Creazione nuova istanza\n# Inizializzazione\ns2 = Singleton()\n# Inizializzazione\nprint(s1 is s2)  # True\n\n# Con tipi immutabili:\nclass MioInt(int):\n    def __new__(cls, valore):\n        if valore < 0:\n            valore = 0\n        return super().__new__(cls, valore)\n\nn = MioInt(-5)\nprint(n)  # 0"
+    },
+    {
+      "id": "strutture_dati_001",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 4, 5]\nprint(lista[1:4])\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[2, 3, 4]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 4]",
+          "is_correct": false
+        },
+        {
+          "text": "[2, 3, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Lo slicing `[start:stop]` include `start` ma esclude `stop`.",
+      "code_example": "lista = [1,2,3,4,5]\nprint(lista[1:4])  # [2,3,4]\nprint(lista[::-1]) # [5,4,3,2,1]"
+    },
+    {
+      "id": "strutture_dati_002",
+      "category_id": "strutture_dati",
+      "text": "Qual è la differenza tra `lista.append(x)` e `lista.extend(x)`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "`extend` aggiunge x come singolo elemento, `append` aggiunge tutti gli elementi",
+          "is_correct": false
+        },
+        {
+          "text": "Sono identici",
+          "is_correct": false
+        },
+        {
+          "text": "`append` aggiunge x come singolo elemento, `extend` aggiunge tutti gli elementi di x",
+          "is_correct": true
+        },
+        {
+          "text": "`append` funziona solo con interi",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`append()` aggiunge l'argomento come un unico elemento. `extend()` itera e aggiunge ogni elemento uno per uno.",
+      "code_example": "lista = [1,2,3]\nlista.append([4,5])\nprint(lista)  # [1,2,3,[4,5]]\nlista2 = [1,2,3]\nlista2.extend([4,5])\nprint(lista2) # [1,2,3,4,5]"
+    },
+    {
+      "id": "strutture_dati_003",
+      "category_id": "strutture_dati",
+      "text": "Cosa restituisce `{1, 2, 3} & {2, 3, 4}`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{1, 2, 3, 4}",
+          "is_correct": false
+        },
+        {
+          "text": "{1, 4}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "{2, 3}",
+          "is_correct": true
+        }
+      ],
+      "explanation": "L'operatore `&` su insiemi esegue l'intersezione: elementi presenti in entrambi.",
+      "code_example": "a={1,2,3}\nb={2,3,4}\nprint(a & b) # {2,3}\nprint(a | b) # {1,2,3,4}"
+    },
+    {
+      "id": "strutture_dati_004",
+      "category_id": "strutture_dati",
+      "text": "Come si accede al valore 'Roma' in questo dizionario?\n```python\ndati = {'città': {'nome': 'Roma', 'pop': 2800000}}\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "dati['città']['nome']",
+          "is_correct": true
+        },
+        {
+          "text": "dati['città.nome']",
+          "is_correct": false
+        },
+        {
+          "text": "dati.città.nome",
+          "is_correct": false
+        },
+        {
+          "text": "dati[0][0]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Per accedere ai valori in un dizionario annidato si usa il concatenamento di chiavi con `[]`.",
+      "code_example": "dati = {'città': {'nome': 'Roma'}}\nprint(dati['città']['nome'])  # Roma"
+    },
+    {
+      "id": "strutture_dati_005",
+      "category_id": "strutture_dati",
+      "text": "Quale struttura dati Python è immutabile e hashable?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "list",
+          "is_correct": false
+        },
+        {
+          "text": "tuple",
+          "is_correct": true
+        },
+        {
+          "text": "dict",
+          "is_correct": false
+        },
+        {
+          "text": "set",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le tuple sono immutabili e hashable, quindi possono essere usate come chiavi di dizionario.",
+      "code_example": "coordinate = {}\ncoordinate[(41.9, 12.5)] = 'Roma'"
+    },
+    {
+      "id": "strutture_dati_006",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = {'a': 1, 'b': 2}\nd['c'] = d.get('c', 0) + 1\nprint(d)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{'a': 1, 'b': 2, 'c': 0}",
+          "is_correct": false
+        },
+        {
+          "text": "KeyError",
+          "is_correct": false
+        },
+        {
+          "text": "{'a': 1, 'b': 2, 'c': 1}",
+          "is_correct": true
+        },
+        {
+          "text": "{'a': 1, 'b': 2}",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`dict.get(chiave, default)` restituisce il valore se esiste, altrimenti il default.",
+      "code_example": "d = {'a':1}\nd['b'] = d.get('b', 0) + 1\nprint(d)  # {'a':1, 'b':1}"
+    },
+    {
+      "id": "strutture_dati_007",
+      "category_id": "strutture_dati",
+      "text": "Cosa produce `list(zip([1,2,3], ['a','b','c']))`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[[1, 'a'], [2, 'b'], [3, 'c']]",
+          "is_correct": false
+        },
+        {
+          "text": "{1: 'a', 2: 'b', 3: 'c'}",
+          "is_correct": false
+        },
+        {
+          "text": "[(1, 'a'), (2, 'b'), (3, 'c')]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 'a', 2, 'b', 3, 'c']",
+          "is_correct": false
+        }
+      ],
+      "explanation": "`zip()` combina più iterabili elemento per elemento producendo tuple.",
+      "code_example": "nomi=['Alice','Bob']\nvoti=[8,7]\nprint(dict(zip(nomi,voti)))  # {'Alice':8,'Bob':7}"
+    },
+    {
+      "id": "strutture_dati_008",
+      "category_id": "strutture_dati",
+      "text": "Quale list comprehension genera i quadrati dei numeri pari da 1 a 10?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[x**2 if x % 2 == 0 for x in range(1,11)]",
+          "is_correct": false
+        },
+        {
+          "text": "[x**2 for x in range(2,11,2)]",
+          "is_correct": false
+        },
+        {
+          "text": "[(x**2) for x in range(1,11) if (x % 2)]",
+          "is_correct": false
+        },
+        {
+          "text": "[x**2 for x in range(1,11) if x % 2 == 0]",
+          "is_correct": true
+        }
+      ],
+      "explanation": "La struttura è `[espressione for elemento in iterabile if condizione]`.",
+      "code_example": "risultato = [x**2 for x in range(1,11) if x%2==0]\nprint(risultato)  # [4,16,36,64,100]"
+    },
+    {
+      "id": "strutture_dati_009",
+      "category_id": "strutture_dati",
+      "text": "Cosa restituisce `[1, 2, 3].pop(0)`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "1",
+          "is_correct": true
+        },
+        {
+          "text": "[2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pop(index) rimuove e restituisce l'elemento all'indice specificato. pop(0) rimuove il primo elemento.",
+      "code_example": "lista = [1,2,3]\nvalore = lista.pop(0)\nprint(valore)  # 1\nprint(lista)   # [2,3]"
+    },
+    {
+      "id": "strutture_dati_010",
+      "category_id": "strutture_dati",
+      "text": "Qual è l'output di `print({1, 2, 3} - {2, 3, 4})`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{1, 4}",
+          "is_correct": false
+        },
+        {
+          "text": "{1}",
+          "is_correct": true
+        },
+        {
+          "text": "{2, 3}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore `-` su insiemi esegue la differenza: elementi presenti nel primo ma non nel secondo.",
+      "code_example": "a = {1,2,3}\nb = {2,3,4}\nprint(a - b)  # {1}\nprint(b - a)  # {4}"
+    },
+    {
+      "id": "strutture_dati_011",
+      "category_id": "strutture_dati",
+      "text": "Come si crea una lista con 5 elementi, tutti uguali a 0?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[0] * 5",
+          "is_correct": true
+        },
+        {
+          "text": "[0 for _ in range(5)]",
+          "is_correct": false
+        },
+        {
+          "text": "list(0, 5)",
+          "is_correct": false
+        },
+        {
+          "text": "entrambe le prime due opzioni sono corrette",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Entrambi i metodi funzionano: [0]*5 è più conciso, la list comprehension è più esplicita.",
+      "code_example": "lista1 = [0] * 5\nlista2 = [0 for _ in range(5)]\nprint(lista1)  # [0,0,0,0,0]\nprint(lista2)  # [0,0,0,0,0]"
+    },
+    {
+      "id": "strutture_dati_012",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = {'a': 1, 'b': 2}\ndel d['a']\nprint(d.get('a', 'non trovato'))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "None",
+          "is_correct": false
+        },
+        {
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "text": "'non trovato'",
+          "is_correct": true
+        },
+        {
+          "text": "KeyError",
+          "is_correct": false
+        }
+      ],
+      "explanation": "del rimuove la chiave. get() restituisce il default se la chiave non esiste, senza sollevare eccezioni.",
+      "code_example": "d = {'a':1, 'b':2}\ndel d['a']\nprint(d.get('a', 'manca'))  # manca"
+    },
+    {
+      "id": "strutture_dati_013",
+      "category_id": "strutture_dati",
+      "text": "Quale struttura dati è più efficiente per verificare l'appartenenza ('in')?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "list",
+          "is_correct": false
+        },
+        {
+          "text": "tuple",
+          "is_correct": false
+        },
+        {
+          "text": "set/dict",
+          "is_correct": true
+        },
+        {
+          "text": "tutte uguali",
+          "is_correct": false
+        }
+      ],
+      "explanation": "set e dict usano tabelle hash, dando operazioni di lookup O(1) in media, mentre list e tuple sono O(n).",
+      "code_example": "import timeit\nprint(timeit.timeit('5 in s', setup='s=set(range(1000))'))  # veloce\nprint(timeit.timeit('5 in l', setup='l=list(range(1000))'))  # lento"
+    },
+    {
+      "id": "strutture_dati_014",
+      "category_id": "strutture_dati",
+      "text": "Cosa produce `list(enumerate(['a','b','c'], start=1))`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[(1,'a'), (2,'b'), (3,'c')]",
+          "is_correct": true
+        },
+        {
+          "text": "[(0,'a'), (1,'b'), (2,'c')]",
+          "is_correct": false
+        },
+        {
+          "text": "[('a',1), ('b',2), ('c',3)]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "enumerate() restituisce coppie (indice, valore). start specifica l'indice iniziale.",
+      "code_example": "for i, let in enumerate(['a','b','c'], 1):\n    print(f'{i}: {let}')  # 1: a, 2: b, 3: c"
+    },
+    {
+      "id": "strutture_dati_015",
+      "category_id": "strutture_dati",
+      "text": "Cosa fa `collections.Counter('abracadabra')`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Conta le occorrenze di ogni carattere in una stringa",
+          "is_correct": true
+        },
+        {
+          "text": "Ordina alfabeticamente la stringa",
+          "is_correct": false
+        },
+        {
+          "text": "Rimuove i duplicati dalla stringa",
+          "is_correct": false
+        },
+        {
+          "text": "Inverte la stringa",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Counter è un dizionario specializzato per contare oggetti hashable.",
+      "code_example": "from collections import Counter\nc = Counter('abracadabra')\nprint(c)  # Counter({'a':5, 'b':2, 'r':2, 'c':1, 'd':1})"
+    },
+    {
+      "id": "strutture_dati_016",
+      "category_id": "strutture_dati",
+      "text": "Cosa fa `frozenset([1,2,3])`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Crea un set immutabile",
+          "is_correct": true
+        },
+        {
+          "text": "Crea un set congelato che non può essere modificato",
+          "is_correct": false
+        },
+        {
+          "text": "Crea un set con elementi unici",
+          "is_correct": false
+        },
+        {
+          "text": "Entrambe le prime due opzioni sono corrette",
+          "is_correct": false
+        }
+      ],
+      "explanation": "frozenset crea un set immutabile, hashable, che può essere usato come chiave di dizionario o elemento di un set.",
+      "code_example": "s = frozenset([1,2,3])\n# s.add(4)  # AttributeError!\ndiz = {s: 'valore'}  # può essere chiave"
+    },
+    {
+      "id": "strutture_dati_017",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\ns = {1, 2, 3}\ns.add(2)\ns.add(4)\nprint(s)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "{1, 2, 3, 4}",
+          "is_correct": true
+        },
+        {
+          "text": "{1, 2, 3, 2, 4}",
+          "is_correct": false
+        },
+        {
+          "text": "{1, 3, 4}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "I set non possono contenere duplicati. add(2) non ha effetto perché 2 è già presente.",
+      "code_example": "s = {1,2,3}\ns.add(2)\ns.add(4)\nprint(s)  # {1,2,3,4}"
+    },
+    {
+      "id": "strutture_dati_018",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo rimuove un elemento da un set e solleva un'eccezione se non esiste?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "remove()",
+          "is_correct": true
+        },
+        {
+          "text": "discard()",
+          "is_correct": false
+        },
+        {
+          "text": "pop()",
+          "is_correct": false
+        },
+        {
+          "text": "delete()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "remove() solleva KeyError se l'elemento non esiste. discard() non solleva eccezioni. pop() rimuove un elemento arbitrario.",
+      "code_example": "s = {1,2,3}\ns.remove(2)  # funziona\n# s.remove(5)  # KeyError!\ns.discard(5)  # nessun errore"
+    },
+    {
+      "id": "strutture_dati_019",
+      "category_id": "strutture_dati",
+      "text": "Cosa restituisce `{1, 2, 3}.issubset({1, 2, 3, 4})`?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "True",
+          "is_correct": true
+        },
+        {
+          "text": "False",
+          "is_correct": false
+        },
+        {
+          "text": "{1, 2, 3}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "issubset() verifica se tutti gli elementi del set sono contenuti in un altro set.",
+      "code_example": "a = {1,2,3}\nb = {1,2,3,4}\nc = {1,2,5}\nprint(a.issubset(b))  # True\nprint(c.issubset(b))  # False\nprint(a <= b)  # True (operatore alternativo)"
+    },
+    {
+      "id": "strutture_dati_020",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 2, 3, 3, 3]\nunici = set(lista)\nprint(len(unici))\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "3",
+          "is_correct": true
+        },
+        {
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "text": "2",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Convertire una lista in set rimuove automaticamente i duplicati. I valori unici sono 1, 2, 3.",
+      "code_example": "lista = [1,2,2,3,3,3]\nunici = set(lista)\nprint(unici)  # {1,2,3}\nprint(len(unici))  # 3"
+    },
+    {
+      "id": "strutture_dati_021",
+      "category_id": "strutture_dati",
+      "text": "Quale operazione esegue `symmetric_difference` su due set?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Elementi presenti in un set o nell'altro, ma non in entrambi",
+          "is_correct": true
+        },
+        {
+          "text": "Elementi presenti in entrambi i set",
+          "is_correct": false
+        },
+        {
+          "text": "Tutti gli elementi di entrambi i set",
+          "is_correct": false
+        },
+        {
+          "text": "Elementi presenti solo nel primo set",
+          "is_correct": false
+        }
+      ],
+      "explanation": "La differenza simmetrica restituisce gli elementi che sono in uno dei due set ma non in entrambi.",
+      "code_example": "a = {1,2,3,4}\nb = {3,4,5,6}\nprint(a ^ b)  # {1,2,5,6}\nprint(a.symmetric_difference(b))  # {1,2,5,6}"
+    },
+    {
+      "id": "strutture_dati_022",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\ns = {1, 2, 3}\ns.update([3, 4, 5])\nprint(s)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{1, 2, 3, 4, 5}",
+          "is_correct": true
+        },
+        {
+          "text": "{1, 2, 3}",
+          "is_correct": false
+        },
+        {
+          "text": "{3, 4, 5}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "update() aggiunge tutti gli elementi dall'iterabile al set, ignorando i duplicati.",
+      "code_example": "s = {1,2,3}\ns.update([3,4,5])\nprint(s)  # {1,2,3,4,5}\ns.update({6,7})\nprint(s)  # {1,2,3,4,5,6,7}"
+    },
+    {
+      "id": "strutture_dati_023",
+      "category_id": "strutture_dati",
+      "text": "Un set può contenere una lista come elemento?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "No, perché le liste non sono hashable",
+          "is_correct": true
+        },
+        {
+          "text": "Sì, i set possono contenere qualsiasi tipo",
+          "is_correct": false
+        },
+        {
+          "text": "Sì, ma solo liste vuote",
+          "is_correct": false
+        },
+        {
+          "text": "No, perché le liste sono mutabili",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Gli elementi di un set devono essere hashable (immutabili). Le liste sono mutabili e non hashable, quindi non possono essere elementi di un set.",
+      "code_example": "s = {1, 2, 3}\n# s.add([4,5])  # TypeError!\ns.add((4,5))  # Le tuple sono hashable\nprint(s)  # {1,2,3,(4,5)}"
+    },
+    {
+      "id": "strutture_dati_024",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\ns1 = {1, 2, 3}\ns2 = {3, 4, 5}\nprint(s1 | s2)\nprint(s1 & s2)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "{1, 2, 3, 4, 5}\n{3}",
+          "is_correct": true
+        },
+        {
+          "text": "{3}\n{1, 2, 3, 4, 5}",
+          "is_correct": false
+        },
+        {
+          "text": "{1, 2, 3, 4, 5}\n{1, 2, 4, 5}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "| è l'unione (elementi in entrambi), & è l'intersezione (elementi comuni).",
+      "code_example": "a = {1,2,3}\nb = {3,4,5}\nprint(a | b)  # {1,2,3,4,5}\nprint(a & b)  # {3}"
+    },
+    {
+      "id": "strutture_dati_025",
+      "category_id": "strutture_dati",
+      "text": "Come si crea un set vuoto in Python?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "set()",
+          "is_correct": true
+        },
+        {
+          "text": "{}",
+          "is_correct": false
+        },
+        {
+          "text": "[]",
+          "is_correct": false
+        },
+        {
+          "text": "empty_set()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "{} crea un dizionario vuoto, non un set. Per creare un set vuoto si usa set().",
+      "code_example": "s_vuoto = set()\nd_vuoto = {}\nprint(type(s_vuoto))  # <class 'set'>\nprint(type(d_vuoto))  # <class 'dict'>"
+    },
+    {
+      "id": "strutture_dati_026",
+      "category_id": "strutture_dati",
+      "text": "Cosa restituisce `{1, 2, 3}.pop()`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Un elemento arbitrario rimosso dal set",
+          "is_correct": true
+        },
+        {
+          "text": "L'elemento più piccolo",
+          "is_correct": false
+        },
+        {
+          "text": "L'elemento più grande",
+          "is_correct": false
+        },
+        {
+          "text": "Errore perché i set non sono ordinati",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pop() rimuove e restituisce un elemento arbitrario dal set. Solleva KeyError se il set è vuoto.",
+      "code_example": "s = {1,2,3}\nprint(s.pop())  # 1 o 2 o 3 (non deterministico)\nprint(s)  # rimanenti 2 elementi"
+    },
+    {
+      "id": "strutture_dati_027",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo dei dizionari restituisce una vista dinamica delle chiavi?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "keys()",
+          "is_correct": true
+        },
+        {
+          "text": "items()",
+          "is_correct": false
+        },
+        {
+          "text": "values()",
+          "is_correct": false
+        },
+        {
+          "text": "get()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "keys() restituisce una vista sulle chiavi del dizionario. È dinamica: se il dizionario cambia, la vista riflette i cambiamenti.",
+      "code_example": "d = {'a':1, 'b':2}\nviste = d.keys()\nprint(viste)  # dict_keys(['a','b'])\nd['c'] = 3\nprint(viste)  # dict_keys(['a','b','c'])"
+    },
+    {
+      "id": "strutture_dati_028",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = {}\nd['a'] = 1\nd['b'] = d.get('c', 0) + 1\nprint(d)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{'a': 1, 'b': 1}",
+          "is_correct": true
+        },
+        {
+          "text": "{'a': 1, 'b': 0}",
+          "is_correct": false
+        },
+        {
+          "text": "{'a': 1, 'c': 0, 'b': 1}",
+          "is_correct": false
+        },
+        {
+          "text": "KeyError",
+          "is_correct": false
+        }
+      ],
+      "explanation": "get('c', 0) restituisce 0 perché 'c' non esiste, quindi b = 0 + 1 = 1.",
+      "code_example": "d = {'a':1}\nd['b'] = d.get('b', 0) + 1  # incrementa o inizializza\nprint(d)  # {'a':1, 'b':1}"
+    },
+    {
+      "id": "strutture_dati_029",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo rimuove l'ultimo elemento inserito in un dizionario (Python 3.7+)?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "popitem()",
+          "is_correct": true
+        },
+        {
+          "text": "pop()",
+          "is_correct": false
+        },
+        {
+          "text": "clear()",
+          "is_correct": false
+        },
+        {
+          "text": "del",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Da Python 3.7, i dizionari mantengono l'ordine di inserimento. popitem() rimuove e restituisce l'ultima coppia chiave-valore inserita (LIFO).",
+      "code_example": "d = {'a':1, 'b':2, 'c':3}\ncoppia = d.popitem()\nprint(coppia)  # ('c', 3)\nprint(d)  # {'a':1, 'b':2}"
+    },
+    {
+      "id": "strutture_dati_030",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = {1: 'uno', 2: 'due', 3: 'tre'}\nprint(list(d.items())[0])\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "(1, 'uno')",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 'uno']",
+          "is_correct": false
+        },
+        {
+          "text": "1: 'uno'",
+          "is_correct": false
+        },
+        {
+          "text": "1",
+          "is_correct": false
+        }
+      ],
+      "explanation": "items() restituisce una vista di tuple (chiave, valore). Convertendo in lista e prendendo il primo elemento si ottiene la prima coppia.",
+      "code_example": "d = {'a':1, 'b':2}\nfor k, v in d.items():\n    print(k, v)  # a 1, b 2"
+    },
+    {
+      "id": "strutture_dati_031",
+      "category_id": "strutture_dati",
+      "text": "Come si uniscono due dizionari in Python 3.9+?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "d3 = d1 | d2",
+          "is_correct": true
+        },
+        {
+          "text": "d3 = d1 + d2",
+          "is_correct": false
+        },
+        {
+          "text": "d3 = d1.update(d2)",
+          "is_correct": false
+        },
+        {
+          "text": "d3 = merge(d1, d2)",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Da Python 3.9, l'operatore | unisce due dizionari. In caso di chiavi duplicate, prevale il secondo dizionario.",
+      "code_example": "d1 = {'a':1, 'b':2}\nd2 = {'c':3, 'd':4}\nd3 = d1 | d2\nprint(d3)  # {'a':1, 'b':2, 'c':3, 'd':4}\n# Alternative per versioni precedenti:\nd4 = {**d1, **d2}"
+    },
+    {
+      "id": "strutture_dati_032",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = dict.fromkeys(['a', 'b', 'c'], 0)\nprint(d)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "{'a': 0, 'b': 0, 'c': 0}",
+          "is_correct": true
+        },
+        {
+          "text": "['a', 'b', 'c']",
+          "is_correct": false
+        },
+        {
+          "text": "{0: 'a', 0: 'b', 0: 'c'}",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "fromkeys() crea un nuovo dizionario con le chiavi dall'iterabile e tutti i valori impostati al valore specificato.",
+      "code_example": "chiavi = ['x', 'y', 'z']\nd = dict.fromkeys(chiavi, 0)\nprint(d)  # {'x':0, 'y':0, 'z':0}\n# Attenzione: il valore viene condiviso!\nd2 = dict.fromkeys(chiavi, [])\nd2['x'].append(1)\nprint(d2)  # {'x':[1], 'y':[1], 'z':[1]}"
+    },
+    {
+      "id": "strutture_dati_033",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo restituisce il valore per una chiave o un default senza sollevare eccezioni?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "get()",
+          "is_correct": true
+        },
+        {
+          "text": "pop()",
+          "is_correct": false
+        },
+        {
+          "text": "setdefault()",
+          "is_correct": false
+        },
+        {
+          "text": "value()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "get() restituisce il valore se la chiave esiste, altrimenti restituisce il default (None se non specificato).",
+      "code_example": "d = {'a':1, 'b':2}\nprint(d.get('a'))     # 1\nprint(d.get('c'))     # None\nprint(d.get('c', 0))  # 0"
+    },
+    {
+      "id": "strutture_dati_034",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nd = {'a': 1, 'b': 2, 'c': 3}\ndel d['b']\nprint(d.pop('a', 'non trovato'))\nprint(d.pop('z', 'non trovato'))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "1\nnon trovato",
+          "is_correct": true
+        },
+        {
+          "text": "1\nKeyError",
+          "is_correct": false
+        },
+        {
+          "text": "non trovato\nnon trovato",
+          "is_correct": false
+        },
+        {
+          "text": "1\nNone",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pop() rimuove e restituisce il valore. Se il default è specificato, non solleva eccezione se la chiave non esiste.",
+      "code_example": "d = {'a':1, 'b':2}\nval = d.pop('a')  # 1, d ora è {'b':2}\nval2 = d.pop('z', 'manca')  # 'manca'"
+    },
+    {
+      "id": "strutture_dati_035",
+      "category_id": "strutture_dati",
+      "text": "Quali tipi possono essere usati come chiavi in un dizionario?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Solo tipi immutabili e hashable",
+          "is_correct": true
+        },
+        {
+          "text": "Qualsiasi tipo Python",
+          "is_correct": false
+        },
+        {
+          "text": "Solo stringhe e numeri",
+          "is_correct": false
+        },
+        {
+          "text": "Solo oggetti di classi personalizzate",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le chiavi devono essere hashable (immutabili e con metodo __hash__). Esempi: int, float, str, tuple, frozenset.",
+      "code_example": "d = {}\nd[1] = 'int'\nd['a'] = 'str'\nd[(1,2)] = 'tuple'\n# d[[1,2]] = 'list'  # TypeError!\nclass MiaClasse:\n    def __init__(self, x): self.x = x\n    def __hash__(self): return hash(self.x)\n    def __eq__(self, altro): return self.x == altro.x\nd[MiaClasse(5)] = 'oggetto'"
+    },
+    {
+      "id": "strutture_dati_036",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t[1])\nprint(t[-1])\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "2\n3",
+          "is_correct": true
+        },
+        {
+          "text": "1\n3",
+          "is_correct": false
+        },
+        {
+          "text": "2\n1",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'indicizzazione nelle tuple funziona come nelle liste: [1] è il secondo elemento, [-1] è l'ultimo.",
+      "code_example": "t = (10,20,30,40)\nprint(t[0])   # 10\nprint(t[2])   # 30\nprint(t[-2])  # 30"
+    },
+    {
+      "id": "strutture_dati_037",
+      "category_id": "strutture_dati",
+      "text": "Qual è la differenza principale tra una tupla e una lista?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "Le tuple sono immutabili, le liste sono mutabili",
+          "is_correct": true
+        },
+        {
+          "text": "Le tuple sono più lente delle liste",
+          "is_correct": false
+        },
+        {
+          "text": "Le liste non possono contenere tuple",
+          "is_correct": false
+        },
+        {
+          "text": "Le tuple usano più memoria",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Le tuple sono immutabili: una volta create non possono essere modificate. Le liste possono essere modificate (aggiunta, rimozione, modifica di elementi).",
+      "code_example": "lista = [1,2,3]\nlista[0] = 10  # OK\nlista.append(4)  # OK\ntupla = (1,2,3)\n# tupla[0] = 10  # TypeError!\n# tupla.append(4)  # AttributeError!"
+    },
+    {
+      "id": "strutture_dati_038",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nt = (1, 2) * 3\nprint(t)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "(1, 2, 1, 2, 1, 2)",
+          "is_correct": true
+        },
+        {
+          "text": "(3, 6)",
+          "is_correct": false
+        },
+        {
+          "text": "(1, 2, 3)",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore * sulle tuple (come sulle liste) ripete il contenuto, non moltiplica gli elementi numericamente.",
+      "code_example": "t1 = (1,2) * 3\nprint(t1)  # (1,2,1,2,1,2)\nt2 = (1,2,3) * 2\nprint(t2)  # (1,2,3,1,2,3)"
+    },
+    {
+      "id": "strutture_dati_039",
+      "category_id": "strutture_dati",
+      "text": "Come si crea una tupla con un solo elemento?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "(5,)",
+          "is_correct": true
+        },
+        {
+          "text": "(5)",
+          "is_correct": false
+        },
+        {
+          "text": "[5]",
+          "is_correct": false
+        },
+        {
+          "text": "tuple(5)",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Per creare una tupla con un solo elemento, è necessaria una virgola finale. (5) è interpretato come intero 5 tra parentesi.",
+      "code_example": "t1 = (5,)\nprint(type(t1))  # <class 'tuple'>\nprint(len(t1))   # 1\nt2 = (5)\nprint(type(t2))  # <class 'int'>"
+    },
+    {
+      "id": "strutture_dati_040",
+      "category_id": "strutture_dati",
+      "text": "Cosa fa l'unpacking di tuple?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "Assegna gli elementi della tupla a variabili separate",
+          "is_correct": true
+        },
+        {
+          "text": "Rimuove gli elementi dalla tupla",
+          "is_correct": false
+        },
+        {
+          "text": "Converte la tupla in lista",
+          "is_correct": false
+        },
+        {
+          "text": "Crea una copia della tupla",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'unpacking permette di assegnare i valori di una tupla (o di qualsiasi iterabile) a più variabili in una sola riga.",
+      "code_example": "coordinate = (10, 20, 30)\nx, y, z = coordinate\nprint(x, y, z)  # 10 20 30\n# Con asterisco per raccogliere più elementi\na, *b = (1,2,3,4)\nprint(a)  # 1\nprint(b)  # [2,3,4]"
+    },
+    {
+      "id": "strutture_dati_041",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\na, b, c = t\nprint(a + b + c)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "6",
+          "is_correct": true
+        },
+        {
+          "text": "(1, 2, 3)",
+          "is_correct": false
+        },
+        {
+          "text": "123",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'unpacking assegna a, b, c = 1, 2, 3. La somma è 1+2+3 = 6.",
+      "code_example": "punto = (4, 5)\nx, y = punto\nprint(f'x={x}, y={y}')  # x=4, y=5"
+    },
+    {
+      "id": "strutture_dati_042",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste rimuove l'ultimo elemento e lo restituisce?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "pop()",
+          "is_correct": true
+        },
+        {
+          "text": "remove()",
+          "is_correct": false
+        },
+        {
+          "text": "del",
+          "is_correct": false
+        },
+        {
+          "text": "append()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pop() senza argomenti rimuove e restituisce l'ultimo elemento della lista.",
+      "code_example": "lista = [1,2,3,4]\nultimo = lista.pop()\nprint(ultimo)  # 4\nprint(lista)   # [1,2,3]"
+    },
+    {
+      "id": "strutture_dati_043",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3]\nlista.append([4, 5])\nprint(len(lista))\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "4",
+          "is_correct": true
+        },
+        {
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "text": "3",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "append() aggiunge [4,5] come un singolo elemento, quindi la lista diventa [1,2,3,[4,5]] di lunghezza 4.",
+      "code_example": "l = [1,2,3]\nl.append([4,5])\nprint(l)       # [1,2,3,[4,5]]\nprint(len(l))  # 4\nl.extend([6,7])\nprint(l)       # [1,2,3,[4,5],6,7]\nprint(len(l))  # 6"
+    },
+    {
+      "id": "strutture_dati_044",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste inverte l'ordine degli elementi?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "reverse()",
+          "is_correct": true
+        },
+        {
+          "text": "reversed()",
+          "is_correct": false
+        },
+        {
+          "text": "sort(reverse=True)",
+          "is_correct": false
+        },
+        {
+          "text": "invert()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "reverse() inverte l'ordine della lista in-place. reversed() restituisce un iteratore invertito.",
+      "code_example": "lista = [1,2,3,4]\nlista.reverse()\nprint(lista)  # [4,3,2,1]\n# Alternativa con slicing:\nlista2 = [1,2,3,4]\ninvertita = lista2[::-1]\nprint(invertita)  # [4,3,2,1]"
+    },
+    {
+      "id": "strutture_dati_045",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [3, 1, 4, 1, 5, 9, 2]\nlista.sort()\nprint(lista)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[1, 1, 2, 3, 4, 5, 9]",
+          "is_correct": true
+        },
+        {
+          "text": "[9, 5, 4, 3, 2, 1, 1]",
+          "is_correct": false
+        },
+        {
+          "text": "[3, 1, 4, 1, 5, 9, 2]",
+          "is_correct": false
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "sort() ordina la lista in-place in ordine crescente. Modifica la lista originale.",
+      "code_example": "numeri = [3,1,4,1,5]\nnumeri.sort()\nprint(numeri)  # [1,1,3,4,5]\nnumeri.sort(reverse=True)\nprint(numeri)  # [5,4,3,1,1]"
+    },
+    {
+      "id": "strutture_dati_046",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste rimuove la prima occorrenza di un valore specifico?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "remove()",
+          "is_correct": true
+        },
+        {
+          "text": "pop()",
+          "is_correct": false
+        },
+        {
+          "text": "del",
+          "is_correct": false
+        },
+        {
+          "text": "discard()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "remove() cerca e rimuove la prima occorrenza del valore specificato. Solleva ValueError se il valore non esiste.",
+      "code_example": "lista = [1,2,3,2,4]\nlista.remove(2)\nprint(lista)  # [1,3,2,4]\n# lista.remove(5)  # ValueError!"
+    },
+    {
+      "id": "strutture_dati_047",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3]\nprint(lista.index(2))\nprint(lista.count(1))\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "1\n1",
+          "is_correct": true
+        },
+        {
+          "text": "2\n1",
+          "is_correct": false
+        },
+        {
+          "text": "1\n2",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "index() restituisce l'indice della prima occorrenza (2 è in posizione 1). count() conta le occorrenze (1 appare una volta).",
+      "code_example": "lista = ['a','b','c','b']\nprint(lista.index('b'))   # 1\nprint(lista.count('b'))   # 2"
+    },
+    {
+      "id": "strutture_dati_048",
+      "category_id": "strutture_dati",
+      "text": "Come si copia una lista in modo che le modifiche non influenzino l'originale?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "lista2 = lista.copy()",
+          "is_correct": true
+        },
+        {
+          "text": "lista2 = lista",
+          "is_correct": false
+        },
+        {
+          "text": "lista2 = copy(lista)",
+          "is_correct": false
+        },
+        {
+          "text": "lista2 = lista[:]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Sia lista.copy() che lista[:] creano una shallow copy. Attenzione: con liste annidate, le sottoliste vengono condivise.",
+      "code_example": "originale = [1,2,[3,4]]\ncopia1 = originale.copy()\ncopia2 = originale[:]\noriginale[0] = 10\noriginale[2][0] = 30\nprint(copia1)  # [1,2,[30,4]] (annidata modificata!)\n# Per deep copy:\nimport copy\ncopia_profonda = copy.deepcopy(originale)"
+    },
+    {
+      "id": "strutture_dati_049",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 4, 5]\nlista[1:3] = [10, 20]\nprint(lista)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 10, 20, 4, 5]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 10, 20, 3, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3, 10, 20, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'assegnazione a slice sostituisce gli elementi dall'indice 1 a 3 (escluso) con la nuova lista. Quindi gli elementi in posizione 1 e 2 (2 e 3) vengono sostituiti.",
+      "code_example": "l = [1,2,3,4,5]\nl[1:4] = [20,30]\nprint(l)  # [1,20,30,5]\nl[2:3] = [100,200,300]\nprint(l)  # [1,20,100,200,300,5]"
+    },
+    {
+      "id": "strutture_dati_050",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste inserisce un elemento in una posizione specifica?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "insert()",
+          "is_correct": true
+        },
+        {
+          "text": "append()",
+          "is_correct": false
+        },
+        {
+          "text": "extend()",
+          "is_correct": false
+        },
+        {
+          "text": "add()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "insert(indice, elemento) inserisce l'elemento nella posizione specificata, spostando gli elementi successivi a destra.",
+      "code_example": "lista = [1,2,3]\nlista.insert(1, 99)\nprint(lista)  # [1,99,2,3]\nlista.insert(0, 0)\nprint(lista)  # [0,1,99,2,3]"
+    },
+    {
+      "id": "strutture_dati_051",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3]\nlista.clear()\nprint(lista)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[]",
+          "is_correct": true
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "clear() rimuove tutti gli elementi dalla lista, lasciandola vuota.",
+      "code_example": "numeri = [1,2,3,4,5]\nnumeri.clear()\nprint(numeri)  # []"
+    },
+    {
+      "id": "strutture_dati_052",
+      "category_id": "strutture_dati",
+      "text": "Qual è la differenza tra `del lista[2]` e `lista.pop(2)`?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "pop() restituisce l'elemento rimosso, del no",
+          "is_correct": true
+        },
+        {
+          "text": "del può rimuovere solo l'ultimo elemento",
+          "is_correct": false
+        },
+        {
+          "text": "pop() è più veloce di del",
+          "is_correct": false
+        },
+        {
+          "text": "Sono identici",
+          "is_correct": false
+        }
+      ],
+      "explanation": "pop() rimuove e restituisce l'elemento. del rimuove senza restituire nulla.",
+      "code_example": "l1 = [1,2,3,4]\nvalore = l1.pop(2)\nprint(valore, l1)  # 3 [1,2,4]\nl2 = [1,2,3,4]\ndel l2[2]\nprint(l2)  # [1,2,4]"
+    },
+    {
+      "id": "strutture_dati_053",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 4]\nprint(lista[-2:])\nprint(lista[:-2])\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[3, 4]\n[1, 2]",
+          "is_correct": true
+        },
+        {
+          "text": "[2, 3]\n[3, 4]",
+          "is_correct": false
+        },
+        {
+          "text": "[3, 4]\n[1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "[-2:] prende gli ultimi 2 elementi. [:-2] prende tutti tranne gli ultimi 2.",
+      "code_example": "l = [1,2,3,4,5]\nprint(l[-3:])   # [3,4,5]\nprint(l[:-3])   # [1,2]\nprint(l[1:-1])  # [2,3,4]"
+    },
+    {
+      "id": "strutture_dati_054",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste restituisce l'indice della prima occorrenza di un valore?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "index()",
+          "is_correct": true
+        },
+        {
+          "text": "find()",
+          "is_correct": false
+        },
+        {
+          "text": "search()",
+          "is_correct": false
+        },
+        {
+          "text": "locate()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "index() cerca il valore e restituisce l'indice. Solleva ValueError se non trovato.",
+      "code_example": "lista = ['a','b','c','b']\nprint(lista.index('b'))   # 1\nprint(lista.index('b', 2))  # 3 (cerca da indice 2)"
+    },
+    {
+      "id": "strutture_dati_055",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 2, 1]\nlista.remove(2)\nprint(lista)\nlista.remove(2)\nprint(lista)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 3, 2, 1]\n[1, 3, 1]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 3, 1]\n[1, 3, 1]",
+          "is_correct": false
+        },
+        {
+          "text": "[1, 2, 3, 2, 1]\n[1, 3, 2, 1]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "remove() rimuove solo la prima occorrenza. Dopo la prima rimozione, la lista è [1,3,2,1]; la seconda remove(2) rimuove il 2 rimasto.",
+      "code_example": "l = [1,2,3,2,4,2]\nl.remove(2)\nprint(l)  # [1,3,2,4,2]\nl.remove(2)\nprint(l)  # [1,3,4,2]"
+    },
+    {
+      "id": "strutture_dati_056",
+      "category_id": "strutture_dati",
+      "text": "Come si ottiene l'ultimo elemento di una lista senza rimuoverlo?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "lista[-1]",
+          "is_correct": true
+        },
+        {
+          "text": "lista.pop()",
+          "is_correct": false
+        },
+        {
+          "text": "lista.last()",
+          "is_correct": false
+        },
+        {
+          "text": "lista[last]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'indicizzazione negativa permette di accedere agli elementi dalla fine: -1 è l'ultimo, -2 il penultimo, ecc.",
+      "code_example": "lista = [10,20,30,40]\nprint(lista[-1])  # 40\nprint(lista[-2])  # 30"
+    },
+    {
+      "id": "strutture_dati_057",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 4, 5]\nlista = lista + [6, 7]\nprint(lista)\nlista += [8, 9]\nprint(lista)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 2, 3, 4, 5, 6, 7]\n[1, 2, 3, 4, 5, 6, 7, 8, 9]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 4, 5, 6, 7]\n[1, 2, 3, 4, 5, 6, 7]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore\nErrore",
+          "is_correct": false
+        },
+        {
+          "text": "[6, 7, 1, 2, 3, 4, 5]\n[8, 9, 6, 7, 1, 2, 3, 4, 5]",
+          "is_correct": false
+        }
+      ],
+      "explanation": "+ crea una nuova lista. += modifica la lista originale (equivalente a extend). Entrambi concatenano le liste.",
+      "code_example": "l1 = [1,2]\nl2 = [3,4]\nl1 = l1 + l2  # nuova lista\nprint(l1)  # [1,2,3,4]\nl1 += [5,6]  # modifica l1\nprint(l1)  # [1,2,3,4,5,6]"
+    },
+    {
+      "id": "strutture_dati_058",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste ordina gli elementi in base a una funzione chiave?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "sort(key=funzione)",
+          "is_correct": true
+        },
+        {
+          "text": "sorted()",
+          "is_correct": false
+        },
+        {
+          "text": "order_by()",
+          "is_correct": false
+        },
+        {
+          "text": "arrange()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "sort() accetta il parametro key per specificare una funzione che calcola il valore di ordinamento per ogni elemento.",
+      "code_example": "parole = ['casa', 'albero', 'sole', 'montagna']\nparole.sort(key=len)\nprint(parole)  # ['sole', 'casa', 'albero', 'montagna']\nstudenti = [('Alice', 25), ('Bob', 20), ('Charlie', 30)]\nstudenti.sort(key=lambda x: x[1])  # ordina per età\nprint(studenti)  # [('Bob',20), ('Alice',25), ('Charlie',30)]"
+    },
+    {
+      "id": "strutture_dati_059",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [[1, 2], [3, 4]]\ncopia = lista[:]\ncopia[0][0] = 99\nprint(lista[0][0])\n```",
+      "difficulty": 3,
+      "answers": [
+        {
+          "text": "99",
+          "is_correct": true
+        },
+        {
+          "text": "1",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        },
+        {
+          "text": "None",
+          "is_correct": false
+        }
+      ],
+      "explanation": "La slicing crea una shallow copy: la lista esterna è copiata, ma le sottoliste sono condivise. Modificare una sottolista in copia modifica anche l'originale.",
+      "code_example": "originale = [[1,2],[3,4]]\nshallow = originale[:]\nshallow[0][0] = 99\nprint(originale[0][0])  # 99 (modificato!)\nshallow[0] = [100,200]\nprint(originale[0])  # [99,2] (non modificato!)\n# Per deep copy:\nimport copy\ndeep = copy.deepcopy(originale)\ndeep[0][0] = 500\nprint(originale[0][0])  # 99 (non modificato)"
+    },
+    {
+      "id": "strutture_dati_060",
+      "category_id": "strutture_dati",
+      "text": "Come si filtra una lista mantenendo solo gli elementi che soddisfano una condizione?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "list comprehension con if",
+          "is_correct": true
+        },
+        {
+          "text": "filter()",
+          "is_correct": false
+        },
+        {
+          "text": "remove_if()",
+          "is_correct": false
+        },
+        {
+          "text": "entrambe list comprehension e filter sono corrette",
+          "is_correct": false
+        }
+      ],
+      "explanation": "Sia la list comprehension con condizione che filter() possono filtrare liste. La list comprehension è generalmente più pythonica e leggibile.",
+      "code_example": "numeri = [1,2,3,4,5,6,7,8,9]\n# List comprehension\npari = [x for x in numeri if x % 2 == 0]\n# filter\npari2 = list(filter(lambda x: x % 2 == 0, numeri))\nprint(pari)  # [2,4,6,8]"
+    },
+    {
+      "id": "strutture_dati_061",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3]\nprint(lista * 2)\nprint(lista)\n```",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "[1, 2, 3, 1, 2, 3]\n[1, 2, 3]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 1, 2, 3]\n[1, 2, 3, 1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "[2, 4, 6]\n[1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "L'operatore * crea una nuova lista con gli elementi ripetuti. Non modifica la lista originale.",
+      "code_example": "l1 = [1,2,3]\nl2 = l1 * 3\nprint(l2)  # [1,2,3,1,2,3,1,2,3]\nprint(l1)  # [1,2,3]"
+    },
+    {
+      "id": "strutture_dati_062",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste restituisce una nuova lista ordinata senza modificare l'originale?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "sorted(lista)",
+          "is_correct": true
+        },
+        {
+          "text": "lista.sort()",
+          "is_correct": false
+        },
+        {
+          "text": "lista.order()",
+          "is_correct": false
+        },
+        {
+          "text": "lista.sorted()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "sorted() è una funzione built-in che restituisce una nuova lista ordinata, lasciando invariata quella originale.",
+      "code_example": "originale = [3,1,4,1,5]\nordinata = sorted(originale)\nprint(ordinata)   # [1,1,3,4,5]\nprint(originale)  # [3,1,4,1,5]\n# Con sort:\noriginale.sort()\nprint(originale)  # [1,1,3,4,5] (modificata)"
+    },
+    {
+      "id": "strutture_dati_063",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3]\nrisultato = lista.append(4)\nprint(risultato)\nprint(lista)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "None\n[1, 2, 3, 4]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 4]\n[1, 2, 3, 4]",
+          "is_correct": false
+        },
+        {
+          "text": "4\n[1, 2, 3]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "append() modifica la lista in-place e restituisce None, non la lista modificata. Questo è un errore comune per i principianti.",
+      "code_example": "l = [1,2,3]\nx = l.append(4)\nprint(x)  # None\nprint(l)  # [1,2,3,4]\n# Per concatenare in modo funzionale:\nl2 = [1,2,3]\nl3 = l2 + [4]\nprint(l3)  # [1,2,3,4]"
+    },
+    {
+      "id": "strutture_dati_064",
+      "category_id": "strutture_dati",
+      "text": "Come si ottiene l'indice del valore massimo in una lista?",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "lista.index(max(lista))",
+          "is_correct": true
+        },
+        {
+          "text": "max(lista).index()",
+          "is_correct": false
+        },
+        {
+          "text": "lista.max_index()",
+          "is_correct": false
+        },
+        {
+          "text": "argmax(lista)",
+          "is_correct": false
+        }
+      ],
+      "explanation": "max() trova il valore massimo, index() trova la sua posizione. Attenzione: con valori duplicati restituisce il primo indice.",
+      "code_example": "numeri = [5,2,8,1,8]\nmax_val = max(numeri)      # 8\nindice = numeri.index(max_val)  # 2\nprint(indice)  # 2\n# Con enumerate per gestire duplicati:\nindice_max = max(range(len(numeri)), key=lambda i: numeri[i])\nprint(indice_max)  # 2 (primo 8)"
+    },
+    {
+      "id": "strutture_dati_065",
+      "category_id": "strutture_dati",
+      "text": "Cosa stampa questo codice?\n```python\nlista = [1, 2, 3, 4, 5]\ndel lista[1:3]\nprint(lista)\n```",
+      "difficulty": 2,
+      "answers": [
+        {
+          "text": "[1, 4, 5]",
+          "is_correct": true
+        },
+        {
+          "text": "[1, 2, 3, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "[2, 3, 4, 5]",
+          "is_correct": false
+        },
+        {
+          "text": "Errore",
+          "is_correct": false
+        }
+      ],
+      "explanation": "del con slice rimuove gli elementi nell'intervallo specificato (indice 1 incluso, 3 escluso), quindi rimuove gli elementi in posizione 1 e 2.",
+      "code_example": "l = [10,20,30,40,50,60]\ndel l[2:5]\nprint(l)  # [10,20,60]\ndel l[:2]\nprint(l)  # [60]"
+    },
+    {
+      "id": "strutture_dati_066",
+      "category_id": "strutture_dati",
+      "text": "Quale metodo delle liste aggiunge tutti gli elementi di un iterabile alla fine della lista?",
+      "difficulty": 1,
+      "answers": [
+        {
+          "text": "extend()",
+          "is_correct": true
+        },
+        {
+          "text": "append()",
+          "is_correct": false
+        },
+        {
+          "text": "add()",
+          "is_correct": false
+        },
+        {
+          "text": "concat()",
+          "is_correct": false
+        }
+      ],
+      "explanation": "extend() aggiunge ogni elemento dell'iterabile alla lista. append() aggiunge l'intero iterabile come un singolo elemento.",
+      "code_example": "l = [1,2,3]\nl.extend([4,5,6])\nprint(l)  # [1,2,3,4,5,6]\nl.extend('abc')\nprint(l)  # [1,2,3,4,5,6,'a','b','c']"
+    }
+  ]
+}

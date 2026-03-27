@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Mario",
+    "score": 7,
+    "max_score": 7,
+    "percentage": 100.0,
+    "correct": 3,
+    "wrong": 0,
+    "category": "funzioni_avanzate",
+    "date": "26/03/2026 20:12"
+  },
+  {
+    "name": "Carlo",
+    "score": 11,
+    "max_score": 11,
+    "percentage": 100.0,
+    "correct": 7,
+    "wrong": 0,
+    "category": "strutture_dati, basi",
+    "date": "26/03/2026 21:05"
+  },
+  {
+    "name": "Domenico",
+    "score": 26,
+    "max_score": 26,
+    "percentage": 100.0,
+    "correct": 15,
+    "wrong": 0,
+    "category": "basi, strutture_dati, oop, funzioni_avanzate, moduli_errori",
+    "date": "26/03/2026 23:25"
+  }
+]
