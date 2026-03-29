@@ -1,0 +1,19 @@
+.block-container {
+    padding-top: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem;
+    padding-left: 0rem;
+    max-width: 100% !important;
+}
+
+[data-testid="stHeader"] {
+    background: transparent;
+}
+
+[data-testid="stMainBlockContainer"] {
+    padding-top: 0rem;
+}
+
+img {
+    display: block;
+}
