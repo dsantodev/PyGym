@@ -328,15 +328,15 @@
           "is_correct": true
         },
         {
-          "text": "pow()",
+          "text": "*",
           "is_correct": false
         },
         {
-          "text": "entrambi ** e pow()",
+          "text": "++",
           "is_correct": false
         }
       ],
-      "explanation": "L'operatore `**` è per l'elevamento a potenza. `^` è XOR bitwise. `pow()` è una funzione built-in che fa la stessa cosa.",
+      "explanation": "L'operatore `**` è per l'elevamento a potenza.  Mentre la funzione built-in che fa la stessa cosa è `pow()`.",
       "code_example": "print(2 ** 3)   # 8\nprint(pow(2, 3))  # 8"
     },
     {
