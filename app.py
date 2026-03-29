@@ -255,7 +255,7 @@ def page_config():
                     label=cat["description"],
                     value=f"{cat['name']}",
                     delta=f"{cat['question_count']}",
-                    border=True,
+                    border=False,
                 )
 
 
