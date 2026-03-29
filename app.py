@@ -24,6 +24,19 @@ QUESTIONS_FILE = DATA_DIR / "questions.json"
 RESULTS_FILE = DATA_DIR / "results.json"
 
 # ---------------------------------------------------------------------------
+# CARICAMENTO CSS PER LA COVER IMG
+# ---------------------------------------------------------------------------
+
+
+def load_css(file_name: str):
+    css_path = BASE_DIR / file_name
+    with open(css_path, "r") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+load_css("styles.css")
+
+# ---------------------------------------------------------------------------
 # INIZIALIZZAZIONE SESSION_STATE
 # ---------------------------------------------------------------------------
 
