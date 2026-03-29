@@ -33,9 +33,6 @@ def load_css(file_name: str):
     with open(css_path, "r") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-
-load_css("styles.css")
-
 # ---------------------------------------------------------------------------
 # INIZIALIZZAZIONE SESSION_STATE
 # ---------------------------------------------------------------------------
@@ -86,6 +83,8 @@ def page_home():
     """
     # Immagine di copertina a tutta larghezza
     if COVER_IMAGE.exists():
+        # per rimuovere padding e margini attorno all'immagine
+        load_css("styles.css")
         st.image(str(COVER_IMAGE), use_container_width=True)
     else:
         # Placeholder testuale se l'immagine non c'è ancora
@@ -138,9 +137,6 @@ def page_config():
         st.markdown("### Configura il quiz")
 
         # --- Multiselect categorie ---
-        # Costruiamo due strutture parallele:
-        #   cat_labels : lista di stringhe visibili nel multiselect
-        #   label_to_id: dizionario label -> category_id (per recuperare l'id dopo)
         cat_labels = [
             f"{c['name']} - ({c['question_count']})" for c in categories]
         label_to_id = {
@@ -249,15 +245,17 @@ def page_config():
         st.info("👈 Seleziona almeno una categoria dalla sidebar per iniziare.")
     else:
         # Mostra un riepilogo delle categorie scelte
-        st.markdown("### Quiz configurato")
-        cols = st.columns(len(selected_ids))
+        st.markdown("## Stai Configurando il Quiz...")
+        st.markdown("### Le singole categorie contengono varie domande:")
+        cols = st.columns(len(selected_ids), gap="xsmall")
         for col, cat_id in zip(cols, selected_ids):
             cat = next(c for c in categories if c["id"] == cat_id)
             with col:
                 st.metric(
-                    label=cat["name"],
-                    value=f"{cat['question_count']} domande",
-                    help=cat["description"],
+                    label=cat["description"],
+                    value=f"{cat['name']}",
+                    delta=f"{cat['question_count']}",
+                    border=True,
                 )
 
 
