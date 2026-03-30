@@ -20,7 +20,7 @@
     "date": "26/03/2026 21:05"
   },
   {
-    "name": "Domenico",
+    "name": "Enrico",
     "score": 26,
     "max_score": 26,
     "percentage": 100.0,
@@ -28,5 +28,25 @@
     "wrong": 0,
     "category": "basi, strutture_dati, oop, funzioni_avanzate, moduli_errori",
     "date": "26/03/2026 23:25"
+  },
+  {
+    "name": "Paolino83",
+    "score": 5,
+    "max_score": 5,
+    "percentage": 100.0,
+    "correct": 4,
+    "wrong": 0,
+    "category": "stringhe",
+    "date": "30/03/2026 15:40"
+  },
+  {
+    "name": "Fabio86",
+    "score": 16,
+    "max_score": 16,
+    "percentage": 100.0,
+    "correct": 10,
+    "wrong": 0,
+    "category": "basi",
+    "date": "30/03/2026 16:17"
   }
 ]
