@@ -41,7 +41,7 @@ def load_css(file_name: str):
 def init_session_state():
     """
     Chiavi e significati:
-    phase           → quale pagina mostrare 
+    phase           → quale pagina mostrare
     engine          → istanza di QuizEngine (caricata una sola volta)
     category_id     → categoria scelta dall'utente nella config
     num_questions   → numero domande scelto nella config
@@ -214,12 +214,9 @@ def page_config():
 
         # --- Bottone avvia ---
         avvia_disabled = len(selected_ids) == 0
-        if st.button(
-            "▶ Avvia Quiz",
-            use_container_width=True,
-            type="primary",
-            disabled=avvia_disabled,
-        ):
+        if st.button("▶ Avvia Quiz", use_container_width=True,
+                     type="primary",
+                     disabled=avvia_disabled):
             st.session_state.category_ids = selected_ids
             st.session_state.num_questions = num_q
 
@@ -245,18 +242,23 @@ def page_config():
         st.info("👈 Seleziona almeno una categoria dalla sidebar per iniziare.")
     else:
         # Mostra un riepilogo delle categorie scelte
-        st.markdown("## Stai Configurando il Quiz...")
-        st.markdown("### Le singole categorie contengono varie domande:")
-        cols = st.columns(len(selected_ids), gap="xsmall")
-        for col, cat_id in zip(cols, selected_ids):
-            cat = next(c for c in categories if c["id"] == cat_id)
-            with col:
-                st.metric(
-                    label=cat["description"],
-                    value=f"{cat['name']}",
-                    delta=f"{cat['question_count']}",
-                    border=False,
-                )
+        st.markdown(
+            "### Stai Configurando il Quiz... Le singole categorie contengono varie domande:")
+        st.markdown("<br>", unsafe_allow_html=True)
+        max_cols_per_row = 4
+        for i in range(0, len(selected_ids), max_cols_per_row):
+            row_ids = selected_ids[i:i + max_cols_per_row]
+            cols = st.columns(len(row_ids), gap="xsmall")
+            for col, cat_id in zip(cols, row_ids):
+                cat = next(c for c in categories if c["id"] == cat_id)
+                with col:
+                    st.metric(
+                        label=cat["description"],
+                        value=f"{cat['name']}",
+                        delta=f"{cat['question_count']}",
+                        border=False,
+                    )
+                    st.markdown("\n---\n")
 
 
 def page_quiz():
@@ -284,8 +286,6 @@ def page_quiz():
 
     difficulty_labels = {1: "🟢 Facile", 2: "🟡 Medio", 3: "🔴 Difficile"}
 
-    # Quando siamo in RERUN B dopo l'ultima domanda, question è None
-    # ma last_answer conserva la domanda appena risposta — la usiamo.
     display_question = question or (
         st.session_state.last_answer.question
         if st.session_state.last_answer else None
@@ -448,15 +448,75 @@ def page_leaderboard():
             reverse=True,
         )
 
-        # Mostra top 10
-        for rank, r in enumerate(records_sorted[:10], start=1):
-            medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, f"#{rank}")
-            st.markdown(
-                f"{medal} **{r['name']}** — "
-                f"{r['score']} pt ({r['percentage']}%)  "
-                f"· {r['category']} · {r['date']}"
+        # KPI sintetici per leggere la classifica a colpo d'occhio
+        total_quiz = len(records_sorted)
+        unique_players = len({r["name"] for r in records_sorted})
+        avg_score = round(sum(r["score"]
+                          for r in records_sorted) / total_quiz, 2)
+        avg_percentage = round(
+            sum(float(r["percentage"]) for r in records_sorted) / total_quiz,
+            1,
+        )
+        best = records_sorted[0]
+
+        kpi1, kpi2, kpi3, kpi4 = st.columns(4)
+        kpi1.metric("👥 Giocatori", unique_players)
+        kpi2.metric("🧩 Quiz completati", total_quiz)
+        kpi3.metric("📈 Media punteggio", avg_score)
+        kpi4.metric("🎯 Media %", f"{avg_percentage}%")
+
+        st.divider()
+
+        st.success(
+            f"Miglior risultato: **{best['name']}** con "
+            f"**{best['score']} pt** ({best['percentage']}%)"
+        )
+
+        table_rows = []
+        for rank, r in enumerate(records_sorted, start=1):
+            medal = {1: "🥇",
+                     2: "🥈",
+                     3: "🥉",
+                     4: "🐍",
+                     5: "🐼",
+                     6: "🐘",
+                     7: "🦎",
+                     8: "🐢",
+                     9: "🐜",
+                     10: "🥚", }.get(rank, "")
+            table_rows.append(
+                {
+                    "Pos": rank,
+                    "Podio": medal,
+                    "Nome": r["name"],
+                    "Punteggio": r["score"],
+                    "Max": r["max_score"],
+                    "%": float(r["percentage"]),
+                    "Corrette": r["correct"],
+                    "Sbagliate": r["wrong"],
+                    "Categorie": r["category"],
+                    "Data": r["date"],
+                }
             )
-            st.divider()
+
+        st.subheader("Classifica completa")
+        st.dataframe(
+            table_rows,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Pos": st.column_config.NumberColumn(width="small"),
+                "Podio": st.column_config.TextColumn(width="small"),
+                "Nome": st.column_config.TextColumn(width="medium"),
+                "Punteggio": st.column_config.NumberColumn(format="%d pt"),
+                "Max": st.column_config.NumberColumn(format="%d pt"),
+                "%": st.column_config.NumberColumn(format="%.1f%%"),
+                "Corrette": st.column_config.NumberColumn(width="small"),
+                "Sbagliate": st.column_config.NumberColumn(width="small"),
+                "Categorie": st.column_config.TextColumn(width="large"),
+                "Data": st.column_config.TextColumn(width="medium"),
+            },
+        )
 
     if st.button("← Torna alla Home"):
         st.session_state.phase = "home"
