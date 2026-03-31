@@ -204,10 +204,12 @@ def page_config():
 
         # --- Info punteggio ---
         st.info(
-            "💡 **Punteggio:**  \n"
-            "✅ Corretta → **+difficoltà** pt  \n"
-            "❌ Sbagliata → **-difficoltà** pt  \n"
-            "_(difficoltà da 1 a 3)_"
+            "💡 **Sistema di punteggio**  \n\n"
+            "• Domanda facile = 1 punto  \n"
+            "• Domanda media = 2 punti  \n"
+            "• Domanda difficile = 3 punti  \n\n"
+            "✅ Se rispondi correttamente, guadagni i punti della domanda  \n"
+            "❌ Se sbagli, non guadagni punti"
         )
 
         st.divider()
@@ -324,14 +326,15 @@ def page_quiz():
         ua = st.session_state.last_answer
 
         if ua.is_correct:
-            st.success(f"✅ Risposta corretta!  **+{ua.points} pt**")
+            st.success(f"✅ Risposta corretta!  Vale **+{ua.points} pt**")
         else:
             correct_text = next(
                 a.text for a in display_question.answers if a.is_correct
             )
             st.error(
+                f"👉 Hai risposto: **{ua.chosen_text}**  \n"
                 f"❌ Risposta sbagliata.  **{ua.points} pt**  \n"
-                f"La risposta corretta era: **{correct_text}**"
+                f"💡 La risposta corretta era: **{correct_text}**"
             )
 
         with st.expander("📖 Spiegazione e esempio di codice"):
