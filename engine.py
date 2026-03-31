@@ -334,19 +334,6 @@ class QuizEngine:
         NON avanza all'indice successivo: serve chiamare next_question()
         esplicitamente quando si vuole procedere.
 
-        Questo è il motivo della separazione:
-          - answer()        → salva la risposta, rimane sulla domanda corrente
-          - next_question() → avanza all'indice successivo
-
-        In Streamlit, tra answer() e next_question() c'è un intero rerun:
-          1. utente clicca risposta  → answer() salva, rerun
-          2. Streamlit mostra feedback (answered=True, indice fermo)
-          3. utente clicca "Continua" → next_question(), rerun
-          4. Streamlit mostra la domanda successiva
-
-        Senza questa separazione, al punto 2 l'indice sarebbe già avanzato
-        e Streamlit mostrerebbe contemporaneamente feedback E domanda successiva.
-
         Args:
             chosen_index: indice (0-3) della risposta scelta dall'utente
 
@@ -370,8 +357,8 @@ class QuizEngine:
 
         # Calcolo punti:
         # corretta  → +difficulty  (es. difficoltà 3 → +3 pt)
-        # sbagliata → -difficulty  (es. difficoltà 3 → -3 pt)
-        points = question.difficulty if is_correct else -question.difficulty
+        # sbagliata → 0 punti
+        points = question.difficulty if is_correct else 0
 
         user_answer = UserAnswer(
             question=question,
