@@ -74,6 +74,24 @@ def get_engine() -> QuizEngine:
     return st.session_state.engine
 
 
+@st.dialog("Conferma abbandono quiz")
+def confirm_abandon_quiz_dialog():
+    st.write("Se abbandoni ora, i progressi del quiz in corso verranno persi.")
+    col_yes, col_no = st.columns(2)
+    with col_yes:
+        if st.button("❌ Abbandona Quiz", type="secondary", use_container_width=True):
+            engine = get_engine()
+            engine.reset()
+            st.session_state.quiz_results = None
+            st.session_state.last_answer = None
+            st.session_state.answered = False
+            st.session_state.phase = "home"
+            st.rerun()
+    with col_no:
+        if st.button("✅ Continua", type="primary", use_container_width=True):
+            st.rerun()
+
+
 # ---------------------------------------------------------------------------
 # PAGINE
 # ---------------------------------------------------------------------------
@@ -351,19 +369,26 @@ def page_quiz():
         )
         label = "📊 Vedi i risultati" if all_answered else "➡️ Prossima domanda"
 
-        if st.button(label, type="primary"):
-            if all_answered:
-                # Raccoglie i risultati PRIMA di resettare lo stato
-                st.session_state.quiz_results = engine.get_results()
-                st.session_state.phase = "result"
-            else:
-                # avanza l'indice nell'engine
-                engine.next_question()
+        _, col_next, col_abandon, _ = st.columns([2, 1, 1, 2])
 
-            # Reset stato risposta per la prossima domanda (o per la pagina result)
-            st.session_state.last_answer = None
-            st.session_state.answered = False
-            st.rerun()
+        with col_next:
+            if st.button(label, type="primary"):
+                if all_answered:
+                    # Raccoglie i risultati PRIMA di resettare lo stato
+                    st.session_state.quiz_results = engine.get_results()
+                    st.session_state.phase = "result"
+                else:
+                    # avanza l'indice nell'engine
+                    engine.next_question()
+
+                # Reset stato risposta per la prossima domanda (o per la pagina result)
+                st.session_state.last_answer = None
+                st.session_state.answered = False
+                st.rerun()
+
+        with col_abandon:
+            if st.button("⚠️ Abbandona", type="secondary"):
+                confirm_abandon_quiz_dialog()
 
 
 def page_result():
