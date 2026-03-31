@@ -616,7 +616,7 @@ def _save_result(name: str, results: dict):
 
 def _load_results() -> list[dict]:
     """
-    Legge i risultati dal nuovo storage e include lo storico di results.json.
+    Legge i risultati dal nuovo storage e poi include lo storico di results.json.
     """
     records: list[dict] = []
 
