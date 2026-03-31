@@ -448,9 +448,11 @@ def page_result():
             type="primary",
             disabled=not nome.strip() or st.session_state.result_saved,
         ):
-            _save_result(nome.strip(), results)
-            st.session_state.result_saved = True
-            st.success(f"Punteggio di **{nome}** salvato! 🎉")
+            # Salva il risultato SOLO se non è già stato salvato in questa sessione
+            if not st.session_state.result_saved:
+                _save_result(nome.strip(), results)
+                st.session_state.result_saved = True
+                st.rerun()
 
     if st.session_state.result_saved:
         st.caption("Questo risultato e' gia' stato salvato in questa sessione.")
