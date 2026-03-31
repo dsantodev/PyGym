@@ -1818,7 +1818,7 @@
                 }
             ],
             "explanation": "L'unpacking assegna a, b, c = 1, 2, 3. La somma è 1+2+3 = 6.",
-            "code_example": "punto = (4, 5)\nx, y = punto\nprint(f'x={x}, y={y}')  # x=4, y=5"
+            "code_example": "punto = (4, 5)\nx, y = punto\nprint(f'x={x}, y={y}')  # x=4, y=5\nprint(f'{x + y}')  # La somma è 9"
         },
         {
             "id": "set_001",
@@ -1849,7 +1849,7 @@
         {
             "id": "set_002",
             "category_id": "set",
-            "text": "Quale struttura dati Python è immutabile e hashable?",
+            "text": "Quale struttura dati di Python è immutabile e hashable?",
             "difficulty": 2,
             "answers": [
                 {
