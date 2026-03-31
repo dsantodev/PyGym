@@ -486,7 +486,7 @@ def page_leaderboard():
                      7: "🦎",
                      8: "🐢",
                      9: "🐜",
-                     10: "🥚", }.get(rank, "")
+                     10: "🐣", }.get(rank, "🥚")
             table_rows.append(
                 {
                     "Pos": rank,
