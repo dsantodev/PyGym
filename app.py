@@ -61,6 +61,7 @@ def init_session_state():
         "answered":       False,
         "quiz_results":   None,
         "result_saved":   False,
+        "save_celebration_pending": False,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -89,6 +90,7 @@ def confirm_abandon_quiz_dialog():
             st.session_state.last_answer = None
             st.session_state.answered = False
             st.session_state.result_saved = False
+            st.session_state.save_celebration_pending = False
             st.session_state.phase = "home"
             st.rerun()
     with col_no:
@@ -131,6 +133,7 @@ def page_home():
         if st.button("🚀 Inizia il Quiz", use_container_width=True, type="primary"):
             st.session_state.phase = "config"
             st.session_state.result_saved = False
+            st.session_state.save_celebration_pending = False
             st.rerun()
 
         st.markdown("<br>", unsafe_allow_html=True)
@@ -245,6 +248,7 @@ def page_config():
             st.session_state.category_ids = selected_ids
             st.session_state.num_questions = num_q
             st.session_state.result_saved = False
+            st.session_state.save_celebration_pending = False
 
             # Avvia il quiz nell'engine con la lista di categorie
             engine.start_quiz(selected_ids, num_q)
@@ -452,10 +456,14 @@ def page_result():
             if not st.session_state.result_saved:
                 _save_result(nome.strip(), results)
                 st.session_state.result_saved = True
+                st.session_state.save_celebration_pending = True
                 st.rerun()
 
     if st.session_state.result_saved:
-        st.caption("Questo risultato e' gia' stato salvato in questa sessione.")
+        if st.session_state.save_celebration_pending:
+            st.balloons()
+            st.session_state.save_celebration_pending = False
+        st.success("✅ Punteggio salvato con successo! 🎉")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col3, col4 = st.columns(2)
@@ -465,6 +473,7 @@ def page_result():
             engine.reset()
             st.session_state.quiz_results = None
             st.session_state.result_saved = False
+            st.session_state.save_celebration_pending = False
             st.session_state.phase = "config"
             st.rerun()
     with col4:
