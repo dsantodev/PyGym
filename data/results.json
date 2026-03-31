@@ -58,5 +58,45 @@
     "wrong": 3,
     "category": "dizionari",
     "date": "30/03/2026 18:15"
+  },
+  {
+    "name": "Marinuzzi A.",
+    "score": 43,
+    "max_score": 52,
+    "percentage": 86.4,
+    "correct": 19,
+    "wrong": 3,
+    "category": "oop",
+    "date": "31/03/2026 10:42"
+  },
+  {
+    "name": "Nunzia G.",
+    "score": 26,
+    "max_score": 28,
+    "percentage": 92.3,
+    "correct": 12,
+    "wrong": 1,
+    "category": "funzioni_avanzate",
+    "date": "31/03/2026 10:54"
+  },
+  {
+    "name": "Isabella",
+    "score": 9,
+    "max_score": 11,
+    "percentage": 85.7,
+    "correct": 6,
+    "wrong": 1,
+    "category": "gestione_errori",
+    "date": "31/03/2026 11:03"
+  },
+  {
+    "name": "Alessandra",
+    "score": 11,
+    "max_score": 11,
+    "percentage": 100.0,
+    "correct": 8,
+    "wrong": 0,
+    "category": "moduli_standard",
+    "date": "31/03/2026 11:06"
   }
 ]
