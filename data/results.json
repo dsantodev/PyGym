@@ -98,5 +98,25 @@
     "wrong": 0,
     "category": "moduli_standard",
     "date": "31/03/2026 11:06"
+  },
+  {
+    "name": "Pippo",
+    "score": 49,
+    "max_score": 56,
+    "percentage": 85.7,
+    "correct": 30,
+    "wrong": 5,
+    "category": "liste",
+    "date": "31/03/2026 11:20"
+  },
+  {
+    "name": "Domenico S.",
+    "score": 57,
+    "max_score": 57,
+    "percentage": 100.0,
+    "correct": 30,
+    "wrong": 0,
+    "category": "basi, stringhe, liste, dizionari, tuple, set, oop, funzioni_avanzate, gestione_errori, moduli_standard",
+    "date": "31/03/2026 11:29"
   }
 ]
