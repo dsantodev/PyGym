@@ -3,6 +3,7 @@ from pathlib import Path
 from engine import QuizEngine
 import json
 from datetime import datetime
+from uuid import uuid4
 # ---------------------------------------------------------------------------
 # CONFIGURAZIONE PAGINA
 # Deve essere la PRIMA chiamata Streamlit in assoluto
@@ -22,6 +23,7 @@ DATA_DIR = BASE_DIR / "data"
 COVER_IMAGE = ASSETS_DIR / "cover_image.png"
 QUESTIONS_FILE = DATA_DIR / "questions.json"
 RESULTS_FILE = DATA_DIR / "results.json"
+RESULTS_DIR = DATA_DIR / "results"
 
 # ---------------------------------------------------------------------------
 # CARICAMENTO CSS PER LA COVER IMG
@@ -58,6 +60,7 @@ def init_session_state():
         "last_answer":    None,
         "answered":       False,
         "quiz_results":   None,
+        "result_saved":   False,
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -85,6 +88,7 @@ def confirm_abandon_quiz_dialog():
             st.session_state.quiz_results = None
             st.session_state.last_answer = None
             st.session_state.answered = False
+            st.session_state.result_saved = False
             st.session_state.phase = "home"
             st.rerun()
     with col_no:
@@ -126,6 +130,7 @@ def page_home():
 
         if st.button("🚀 Inizia il Quiz", use_container_width=True, type="primary"):
             st.session_state.phase = "config"
+            st.session_state.result_saved = False
             st.rerun()
 
         st.markdown("<br>", unsafe_allow_html=True)
@@ -239,6 +244,7 @@ def page_config():
                      disabled=avvia_disabled):
             st.session_state.category_ids = selected_ids
             st.session_state.num_questions = num_q
+            st.session_state.result_saved = False
 
             # Avvia il quiz nell'engine con la lista di categorie
             engine.start_quiz(selected_ids, num_q)
@@ -437,9 +443,17 @@ def page_result():
 
     col1, col2 = st.columns([1, 4])
     with col1:
-        if st.button("💾 Salva", type="primary", disabled=not nome.strip()):
+        if st.button(
+            "💾 Salva",
+            type="primary",
+            disabled=not nome.strip() or st.session_state.result_saved,
+        ):
             _save_result(nome.strip(), results)
+            st.session_state.result_saved = True
             st.success(f"Punteggio di **{nome}** salvato! 🎉")
+
+    if st.session_state.result_saved:
+        st.caption("Questo risultato e' gia' stato salvato in questa sessione.")
 
     st.markdown("<br>", unsafe_allow_html=True)
     col3, col4 = st.columns(2)
@@ -448,6 +462,7 @@ def page_result():
             engine = get_engine()
             engine.reset()
             st.session_state.quiz_results = None
+            st.session_state.result_saved = False
             st.session_state.phase = "config"
             st.rerun()
     with col4:
@@ -557,11 +572,11 @@ def page_leaderboard():
 
 def _save_result(name: str, results: dict):
     """
-    Aggiunge un risultato al file results.json.
-    Se il file non esiste, lo crea.
+    Salva un risultato in un file JSON dedicato.
 
     Formato di ogni record:
     {
+        "id":         "uuid",
         "name":       "Mario",
         "score":      7,
         "max_score":  10,
@@ -573,11 +588,11 @@ def _save_result(name: str, results: dict):
     }
     """
 
-    # Leggi records esistenti (o lista vuota se il file non esiste)
-    records = _load_results()
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     # Crea il nuovo record
     new_record = {
+        "id":         uuid4().hex,
         "name":       name,
         "score":      results["score"],
         "max_score":  results["max_score"],
@@ -586,30 +601,46 @@ def _save_result(name: str, results: dict):
         "wrong":      results["wrong"],
         "category":   ", ".join(st.session_state.get("category_ids", [])) or "N/A",
         "date":       datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "saved_at":   datetime.now().isoformat(timespec="seconds"),
     }
 
-    records.append(new_record)
+    filename = f"{datetime.now().strftime('%Y%m%dT%H%M%S%f')}_{new_record['id']}.json"
+    final_path = RESULTS_DIR / filename
+    temp_path = final_path.with_suffix(".tmp")
 
-    # Salva su file (crea la directory se non esiste)
-    RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(records, f, indent=2, ensure_ascii=False)
+    with open(temp_path, "w", encoding="utf-8") as f:
+        json.dump(new_record, f, indent=2, ensure_ascii=False)
+
+    temp_path.replace(final_path)
 
 
 def _load_results() -> list[dict]:
     """
-    Legge results.json e restituisce la lista dei record.
-    Restituisce lista vuota se il file non esiste o è corrotto.
+    Legge i risultati dal nuovo storage e include lo storico di results.json.
     """
-    import json
+    records: list[dict] = []
 
-    if not RESULTS_FILE.exists():
-        return []
-    try:
-        with open(RESULTS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        return []
+    if RESULTS_DIR.exists():
+        for result_file in sorted(RESULTS_DIR.glob("*.json")):
+            try:
+                with open(result_file, "r", encoding="utf-8") as f:
+                    record = json.load(f)
+                if isinstance(record, dict):
+                    records.append(record)
+            except (json.JSONDecodeError, IOError):
+                continue
+
+    if RESULTS_FILE.exists():
+        try:
+            with open(RESULTS_FILE, "r", encoding="utf-8") as f:
+                legacy_records = json.load(f)
+            if isinstance(legacy_records, list):
+                records.extend(
+                    r for r in legacy_records if isinstance(r, dict))
+        except (json.JSONDecodeError, IOError):
+            pass
+
+    return records
 
 
 # ---------------------------------------------------------------------------
