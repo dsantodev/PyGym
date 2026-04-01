@@ -10,7 +10,7 @@ __pycache__/
 # --- CHIAVI DI ACCESSO E VARIABILI D'AMBIENTE ---
 env/
 .env
-.streamlit/
+.streamlit/secrets.toml
 
 # --- CONFIGURAZIONE DELL'EDITOR ---
 .vscode/
