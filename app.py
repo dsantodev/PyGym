@@ -1,9 +1,9 @@
 import streamlit as st
 from pathlib import Path
 from engine import QuizEngine
-import json
 from datetime import datetime
 from uuid import uuid4
+from supabase import create_client
 # ---------------------------------------------------------------------------
 # CONFIGURAZIONE PAGINA
 # Deve essere la PRIMA chiamata Streamlit in assoluto
@@ -22,8 +22,18 @@ ASSETS_DIR = BASE_DIR / "assets"
 DATA_DIR = BASE_DIR / "data"
 COVER_IMAGE = ASSETS_DIR / "cover_image.png"
 QUESTIONS_FILE = DATA_DIR / "questions.json"
-RESULTS_FILE = DATA_DIR / "results.json"
-RESULTS_DIR = DATA_DIR / "results"
+
+# ---------------------------------------------------------------------------
+# CLIENT SUPABASE CON LE CREDENZIALI CARICATE DA .streamlit/secrets.toml
+# ---------------------------------------------------------------------------
+
+
+@st.cache_resource
+def get_supabase():
+    return create_client(
+        st.secrets["SUPABASE_URL"],
+        st.secrets["SUPABASE_KEY"],
+    )
 
 # ---------------------------------------------------------------------------
 # CARICAMENTO CSS PER LA COVER IMG
@@ -94,24 +104,23 @@ def confirm_abandon_quiz_dialog():
             st.session_state.phase = "home"
             st.rerun()
     with col_no:
-        if st.button("✅ Continua", type="primary", use_container_width=True):
+        if st.button("✅ Continua", type="secondary", use_container_width=True):
             st.rerun()
 
-
-# ---------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # PAGINE
-# ---------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+
+
 def page_home():
     """
     Pagina iniziale: immagine + messaggio di benvenuto.
     """
-    # Immagine di copertina a tutta larghezza
     if COVER_IMAGE.exists():
         # per rimuovere padding e margini attorno all'immagine
         load_css("styles.css")
         st.image(str(COVER_IMAGE), use_container_width=True)
     else:
-        # Placeholder testuale se l'immagine non c'è ancora
         st.markdown(
             """
             <div style='text-align:center; padding: 60px 0'>
@@ -205,14 +214,13 @@ def page_config():
 
             # Riepilogo visivo di quante domande per categoria
             st.caption("📊 Distribuzione stimata:")
-            total_avail = engine.get_max_questions_for(selected_ids)
+            cat_info = {c["id"]: c for c in categories}
             for cat_id in selected_ids:
-                cat_name = next(c["name"]
-                                for c in categories if c["id"] == cat_id)
                 cat_size = engine.get_question_count(cat_id)
                 # Stima proporzionale (la stessa logica dell'engine)
-                estimated = max(1, round(num_q * cat_size / total_avail))
-                st.caption(f"  • {cat_name}: ~{estimated} domande")
+                estimated = max(1, round(num_q * cat_size / max_q))
+                st.caption(
+                    f"  • {cat_info[cat_id]['name']}: ~{estimated} domande")
 
         else:
             # Nessuna categoria selezionata: slider placeholder disabilitato
@@ -276,11 +284,12 @@ def page_config():
             "### Stai Configurando il Quiz... Le singole categorie contengono varie domande:")
         st.markdown("<br>", unsafe_allow_html=True)
         max_cols_per_row = 4
+        cat_info_map = {c["id"]: c for c in categories}
         for i in range(0, len(selected_ids), max_cols_per_row):
             row_ids = selected_ids[i:i + max_cols_per_row]
             cols = st.columns(len(row_ids), gap="xsmall")
             for col, cat_id in zip(cols, row_ids):
-                cat = next(c for c in categories if c["id"] == cat_id)
+                cat = cat_info_map[cat_id]
                 with col:
                     st.metric(
                         label=cat["description"],
@@ -374,9 +383,7 @@ def page_quiz():
 
         # Label dinamico del bottone dipende se il quiz è finito o no
         # se siamo alla fine, mostriamo "Vedi risultati", altrimenti "Prossima domanda"
-        all_answered = engine.is_finished() or (
-            st.session_state.answered and current == total
-        )
+        all_answered = engine.is_finished()
         label = "📊 Vedi i risultati" if all_answered else "➡️ Prossima domanda"
 
         _, col_next, col_abandon, _ = st.columns([2, 1, 1, 2])
@@ -548,7 +555,7 @@ def page_leaderboard():
                     "%": float(r["percentage"]),
                     "Corrette": r["correct"],
                     "Sbagliate": r["wrong"],
-                    "Categorie": r["category"],
+                    "Categorie": r["categories"],
                     "Data": r["date"],
                 }
             )
@@ -578,30 +585,13 @@ def page_leaderboard():
 
 
 # ---------------------------------------------------------------------------
-# FUNZIONI DI SUPPORTO PER LA CLASSIFICA
+# FUNZIONI DI SUPPORTO PER LA CLASSIFICA - CON SALVATAGGIO SU SUPABASE
 # ---------------------------------------------------------------------------
 
 def _save_result(name: str, results: dict):
     """
-    Salva un risultato in un file JSON dedicato.
-
-    Formato di ogni record:
-    {
-        "id":         "uuid",
-        "name":       "Mario",
-        "score":      7,
-        "max_score":  10,
-        "percentage": 80.0,
-        "correct":    4,
-        "wrong":      1,
-        "category":   "basi",
-        "date":       "2024-03-15 14:32"
-    }
+    Salva un risultato nella tabella Supabase 'results'.
     """
-
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Crea il nuovo record
     new_record = {
         "id":         uuid4().hex,
         "name":       name,
@@ -610,48 +600,22 @@ def _save_result(name: str, results: dict):
         "percentage": results["percentage"],
         "correct":    results["correct"],
         "wrong":      results["wrong"],
-        "category":   ", ".join(st.session_state.get("category_ids", [])) or "N/A",
+        "categories": ", ".join(
+            get_engine().categories.get(cid, {}).get("name", cid)
+            for cid in st.session_state.get("category_ids", [])
+        ) or "N/A",
         "date":       datetime.now().strftime("%d/%m/%Y %H:%M"),
         "saved_at":   datetime.now().isoformat(timespec="seconds"),
     }
-
-    filename = f"{datetime.now().strftime('%Y%m%dT%H%M%S%f')}_{new_record['id']}.json"
-    final_path = RESULTS_DIR / filename
-    temp_path = final_path.with_suffix(".tmp")
-
-    with open(temp_path, "w", encoding="utf-8") as f:
-        json.dump(new_record, f, indent=2, ensure_ascii=False)
-
-    temp_path.replace(final_path)
+    get_supabase().table("results").insert(new_record).execute()
 
 
 def _load_results() -> list[dict]:
     """
-    Legge i risultati dal nuovo storage e poi include lo storico di results.json.
+    Legge tutti i risultati dalla tabella Supabase 'results'.
     """
-    records: list[dict] = []
-
-    if RESULTS_DIR.exists():
-        for result_file in sorted(RESULTS_DIR.glob("*.json")):
-            try:
-                with open(result_file, "r", encoding="utf-8") as f:
-                    record = json.load(f)
-                if isinstance(record, dict):
-                    records.append(record)
-            except (json.JSONDecodeError, IOError):
-                continue
-
-    if RESULTS_FILE.exists():
-        try:
-            with open(RESULTS_FILE, "r", encoding="utf-8") as f:
-                legacy_records = json.load(f)
-            if isinstance(legacy_records, list):
-                records.extend(
-                    r for r in legacy_records if isinstance(r, dict))
-        except (json.JSONDecodeError, IOError):
-            pass
-
-    return records
+    response = get_supabase().table("results").select("*").execute()
+    return response.data or []
 
 
 # ---------------------------------------------------------------------------
@@ -683,7 +647,4 @@ def main():
 # ---------------------------------------------------------------------------
 # ENTRY POINT
 # ---------------------------------------------------------------------------
-if __name__ == "__main__" or True:
-    # Il 'or True' serve perché Streamlit non esegue il blocco __main__
-    # nel modo classico; con questa forma il main() viene sempre chiamato
-    main()
+main()
