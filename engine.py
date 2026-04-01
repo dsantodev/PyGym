@@ -2,7 +2,6 @@ import json
 import random
 from dataclasses import dataclass, field
 from typing import Optional
-from copy import deepcopy
 
 # ---------------------------------------------------------------------------
 # DATACLASS: rappresenta una singola risposta
@@ -90,7 +89,7 @@ class QuizEngine:
         self._load_data()
 
     # -----------------------------------------------------------------------
-    # METODI PRIVATI (uso interno, convenzione: nome inizia con _)
+    # METODI PRIVATI (uso interno)
     # -----------------------------------------------------------------------
 
     def _load_data(self):
@@ -131,7 +130,7 @@ class QuizEngine:
             self.questions_by_category[question.category_id].append(question)
 
     # -----------------------------------------------------------------------
-    # METODI PUBBLICI - INFORMAZIONI SUL CATALOGO
+    # METODI PUBBLICI - INFORMAZIONI SULLE CATEGORIE E DOMANDE
     # -----------------------------------------------------------------------
 
     def get_categories(self) -> list[dict]:
@@ -184,10 +183,6 @@ class QuizEngine:
             for cat_id in category_ids
         )
 
-    def get_total_questions(self) -> int:
-        """Restituisce il numero totale di domande in tutto il JSON."""
-        return sum(len(qs) for qs in self.questions_by_category.values())
-
     # -----------------------------------------------------------------------
     # METODI PUBBLICI - GESTIONE DEL QUIZ
     # -----------------------------------------------------------------------
@@ -203,18 +198,6 @@ class QuizEngine:
           basi ha 8 domande  → peso 8/(8+6) ≈ 57% → 4 domande
           oop  ha 6 domande  → peso 6/(8+6) ≈ 43% → 3 domande
           totale: 4+3 = 7 ✓
-
-        La distribuzione proporzionale garantisce che ogni categoria
-        sia rappresentata in modo equo rispetto alla sua dimensione.
-        Ogni categoria contribuisce con ALMENO 1 domanda.
-
-        Args:
-            category_ids:  lista di id categoria, es. ["basi", "oop"]
-            num_questions: numero totale di domande nel quiz
-
-        Raises:
-            ValueError: se una categoria non esiste, la lista è vuota,
-                        o num_questions è fuori dal range valido
         """
         # --- Validazioni ---
         if not category_ids:
@@ -240,15 +223,6 @@ class QuizEngine:
 
         # --- Distribuzione proporzionale ---
         # Calcola quante domande prendere da ogni categoria.
-        #
-        # Algoritmo "largest remainder":
-        #   1. Calcola la quota ideale (float) per ogni categoria
-        #   2. Assegna la parte intera a ciascuna (floor)
-        #   3. I posti rimanenti vanno alle categorie con il resto più alto
-        #
-        # Questo garantisce che la somma sia esattamente num_questions
-        # e che ogni categoria abbia almeno 1 domanda.
-
         sizes = {
             cat_id: len(self.questions_by_category[cat_id])
             for cat_id in category_ids
@@ -265,7 +239,6 @@ class QuizEngine:
         allocation = {cat_id: max(1, int(q)) for cat_id, q in ideal.items()}
 
         # Correzione: aggiusta il totale se non corrisponde a num_questions
-        # (causato dall'arrotondamento verso il basso)
         diff = num_questions - sum(allocation.values())
 
         if diff > 0:
@@ -282,7 +255,7 @@ class QuizEngine:
                     allocation[cat_to_bump] += 1
 
         elif diff < 0:
-            # Raro ma possibile: riduci le categorie con più domande
+            # Riduco le categorie con più domande
             for cat_id in sorted(category_ids, key=lambda c: allocation[c], reverse=True):
                 if diff == 0:
                     break
@@ -297,18 +270,23 @@ class QuizEngine:
             # random.sample non modifica la lista originale
             selected.extend(random.sample(available, n))
 
-        # Mescola le domande di tutte le categorie insieme
+        # Mescolo le domande di tutte le categorie insieme
         random.shuffle(selected)
 
-        # Mescola le risposte di ogni domanda.
-        # Usiamo deepcopy per non modificare le domande originali in
-        # self.questions_by_category — così ogni quiz riparte da zero.
-
+        # Mescolo le risposte di ogni domanda per ovviare alla prevedibilità.
         shuffled: list[Question] = []
         for q in selected:
-            q_copy = deepcopy(q)
-            random.shuffle(q_copy.answers)
-            shuffled.append(q_copy)
+            answers_copy = q.answers.copy()
+            random.shuffle(answers_copy)
+            shuffled.append(Question(
+                id=q.id,
+                category_id=q.category_id,
+                text=q.text,
+                difficulty=q.difficulty,
+                answers=answers_copy,
+                explanation=q.explanation,
+                code_example=q.code_example,
+            ))
 
         self._quiz_questions = shuffled
 
@@ -320,9 +298,6 @@ class QuizEngine:
     def current_question(self) -> Optional[Question]:
         """
         Restituisce la domanda corrente del quiz.
-
-        Returns:
-            Oggetto Question, oppure None se il quiz è finito o non avviato
         """
         if not self._quiz_active or self.is_finished():
             return None
@@ -331,18 +306,6 @@ class QuizEngine:
     def answer(self, chosen_index: int) -> UserAnswer:
         """
         Registra la risposta dell'utente alla domanda corrente.
-        NON avanza all'indice successivo: serve chiamare next_question()
-        esplicitamente quando si vuole procedere.
-
-        Args:
-            chosen_index: indice (0-3) della risposta scelta dall'utente
-
-        Returns:
-            Oggetto UserAnswer con is_correct e points calcolati
-
-        Raises:
-            RuntimeError: se non c'è un quiz attivo o è già finito
-            IndexError: se chosen_index è fuori range
         """
         if not self._quiz_active or self.is_finished():
             raise RuntimeError("Nessun quiz attivo o quiz già terminato.")
@@ -377,13 +340,7 @@ class QuizEngine:
         """
         Avanza alla domanda successiva.
         Da chiamare DOPO aver mostrato il feedback all'utente (answered=True)
-        e DOPO che l'utente ha cliccato "Continua" / "Prossima domanda".
-
-        Raises:
-            RuntimeError: se non c'è una risposta registrata per la domanda corrente
         """
-        # Sicurezza: verifica che la domanda corrente sia già stata risposta
-        # confrontando il numero di risposte salvate con l'indice corrente
         if len(self._user_answers) <= self._current_index:
             raise RuntimeError(
                 "Rispondi prima alla domanda corrente prima di avanzare."
@@ -392,22 +349,13 @@ class QuizEngine:
 
     def is_finished(self) -> bool:
         """
-        Restituisce True se tutte le domande del quiz sono state risposte
-        E l'utente ha già avanzato oltre l'ultima (next_question() chiamato).
-
-        Tecnicamente: finito quando _current_index >= numero totale domande.
+        Restituisce True se tutte le domande del quiz sono state risposte.
         """
         return self._current_index >= len(self._quiz_questions)
 
     def progress(self) -> tuple[int, int]:
         """
         Restituisce lo stato di avanzamento del quiz.
-
-        Returns:
-            Tupla (domanda_corrente, totale_domande)
-            es. (3, 8) significa "sei alla domanda 3 di 8"
-
-        Nota: usa _current_index + 1 per avere il numero human-friendly (parte da 1)
         """
         return (self._current_index + 1, len(self._quiz_questions))
 
