@@ -417,6 +417,1566 @@
             "code_example": "testo = \"\"\"Riga 1\nRiga 2\nRiga 3\"\"\"\nprint(testo)"
         },
         {
+            "id": "stringhe_005",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'ciao'.upper()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'CIAO'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'ciao'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Ciao'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il metodo upper() converte tutti i caratteri della stringa in maiuscolo.",
+            "code_example": "print('ciao'.upper())  # CIAO"
+        },
+        {
+            "id": "stringhe_006",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'CIAO'.lower()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'ciao'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'CIAO'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Ciao'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il metodo lower() converte tutti i caratteri della stringa in minuscolo.",
+            "code_example": "print('CIAO'.lower())  # ciao"
+        },
+        {
+            "id": "stringhe_007",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'python'.capitalize()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'Python'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'PYTHON'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'python'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'pYTHON'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "capitalize() rende maiuscola solo la prima lettera della stringa.",
+            "code_example": "print('python'.capitalize())  # Python"
+        },
+        {
+            "id": "stringhe_008",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'ciao mondo'.title()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'Ciao Mondo'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'CIAO MONDO'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ciao mondo'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Ciao mondo'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "title() rende maiuscola la prima lettera di ogni parola.",
+            "code_example": "print('ciao mondo'.title())  # Ciao Mondo"
+        },
+        {
+            "id": "stringhe_009",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'ciao'.replace('c', 'm')`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'miao'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'ciao'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'maio'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "replace() sostituisce tutte le occorrenze trovate.",
+            "code_example": "print('ciao'.replace('c', 'm'))  # miao"
+        },
+        {
+            "id": "stringhe_010",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'python'.find('t')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "2",
+                    "is_correct": true
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "3",
+                    "is_correct": false
+                },
+                {
+                    "text": "-1",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "find() restituisce l'indice della prima occorrenza trovata.",
+            "code_example": "print('python'.find('t'))  # 2"
+        },
+        {
+            "id": "stringhe_011",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'python'.find('z')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "-1",
+                    "is_correct": true
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Se il carattere non viene trovato, find() restituisce -1.",
+            "code_example": "print('python'.find('z'))  # -1"
+        },
+        {
+            "id": "stringhe_012",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'python'.startswith('py')`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "'py'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "startswith() verifica se la stringa inizia con il valore indicato.",
+            "code_example": "print('python'.startswith('py'))  # True"
+        },
+        {
+            "id": "stringhe_013",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'python'.endswith('on')`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "'on'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "endswith() verifica se la stringa termina con il valore indicato.",
+            "code_example": "print('python'.endswith('on'))  # True"
+        },
+        {
+            "id": "stringhe_014",
+            "category_id": "stringhe",
+            "text": "Cosa produce `' python '.strip()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'python'",
+                    "is_correct": true
+                },
+                {
+                    "text": "' python '",
+                    "is_correct": false
+                },
+                {
+                    "text": "'python '",
+                    "is_correct": false
+                },
+                {
+                    "text": "' python'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "strip() rimuove gli spazi iniziali e finali.",
+            "code_example": "print(' python '.strip())  # python"
+        },
+        {
+            "id": "stringhe_015",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'Python'[0:2]`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'Py'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'Pyt'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Pyth'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'y'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Lo slicing [start:stop] include l'indice di inizio ma esclude quello di fine.",
+            "code_example": "s = 'Python'\nprint(s[0:2]) # 'Py'"
+        },
+        {
+            "id": "stringhe_016",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'programmazione'[:3]`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'pro'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'rog'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'prog'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'progr'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Se l'indice di inizio è omesso, Python parte dall'inizio della stringa (indice 0).",
+            "code_example": "s = 'programmazione'\nprint(s[:3]) # 'pro'"
+        },
+        {
+            "id": "stringhe_017",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'Python'[2:]`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'thon'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'ython'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'th'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'on'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Se l'indice di fine è omesso, lo slice arriva fino alla fine della stringa.",
+            "code_example": "s = 'Python'\nprint(s[2:]) # 'thon'"
+        },
+        {
+            "id": "stringhe_018",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce l'espressione `'Python'[-1]`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'n'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'P'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "'o'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Gli indici negativi contano dalla fine della stringa: -1 è l'ultimo carattere.",
+            "code_example": "s = 'Python'\nprint(s[-1]) # 'n'"
+        },
+        {
+            "id": "stringhe_019",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'Python'[-3:]`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'hon'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'tho'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Pyth'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'on'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "[-3:] estrae gli ultimi 3 caratteri della stringa.",
+            "code_example": "s = 'Python'\nprint(s[-3:]) # 'hon'"
+        },
+        {
+            "id": "stringhe_020",
+            "category_id": "stringhe",
+            "text": "Cosa produce lo slicing `'abcdefg'[::2]`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'aceg'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'bdf'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'abc'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ace'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il terzo parametro dello slicing è il passo (step). 2 significa 'uno ogni due'.",
+            "code_example": "print('abcdefg'[::2]) # 'aceg'"
+        },
+        {
+            "id": "stringhe_021",
+            "category_id": "stringhe",
+            "text": "Come si può invertire una stringa `s` usando lo slicing?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "s[::-1]",
+                    "is_correct": true
+                },
+                {
+                    "text": "s[-1:0]",
+                    "is_correct": false
+                },
+                {
+                    "text": "s[reverse]",
+                    "is_correct": false
+                },
+                {
+                    "text": "s[0:-1:-1]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Un passo di -1 attraversa la stringa al contrario.",
+            "code_example": "s = 'ciao'\nprint(s[::-1]) # 'oaic'"
+        },
+        {
+            "id": "stringhe_022",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'informatica'[2:8:3]`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'fm'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'for'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'foa'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'nr'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Parte dall'indice 2 ('f'), arriva fino all'8 ('i' esclusa) con passo 3. Prende 'f' (indice 2) e 'm' (indice 5).",
+            "code_example": "s = 'informatica'\nprint(s[2:8:3]) # 2='f', 5='m'"
+        },
+        {
+            "id": "stringhe_023",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'ciao' + ' ' + 'mondo'`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'ciao mondo'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'ciaomondo'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ciao+mondo'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore + concatena due o più stringhe in una nuova.",
+            "code_example": "print('a' + 'b') # 'ab'"
+        },
+        {
+            "id": "stringhe_024",
+            "category_id": "stringhe",
+            "text": "Cosa succede se provi a eseguire `'valore: ' + 10`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Viene sollevato un TypeError",
+                    "is_correct": true
+                },
+                {
+                    "text": "'valore: 10'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'valore: '",
+                    "is_correct": false
+                },
+                {
+                    "text": "Viene sollevato un ValueError",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "In Python non puoi concatenare direttamente una stringa con un intero senza esplicita conversione.",
+            "code_example": "# Errore: TypeError: can only concatenate str (not 'int') to str"
+        },
+        {
+            "id": "stringhe_025",
+            "category_id": "stringhe",
+            "text": "Qual è il modo corretto per inserire una variabile `x` in una stringa usando le f-string?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "f'Il valore è {x}'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'Il valore è {x}'",
+                    "is_correct": false
+                },
+                {
+                    "text": "f'Il valore è x'",
+                    "is_correct": false
+                },
+                {
+                    "text": "str('Il valore è', x)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le f-string richiedono il prefisso 'f' prima delle virgolette e le parentesi graffe per racchiudere le variabili.",
+            "code_example": "x = 5\nprint(f'x è {x}')"
+        },
+        {
+            "id": "stringhe_026",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'123'.isdigit()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "123",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "isdigit() restituisce True se tutti i caratteri nella stringa sono cifre (0-9).",
+            "code_example": "print('123'.isdigit()) # True"
+        },
+        {
+            "id": "stringhe_027",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'Python'.isalpha()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "isalpha() restituisce True se la stringa contiene esclusivamente caratteri alfabetici.",
+            "code_example": "print('Python'.isalpha()) # True"
+        },
+        {
+            "id": "stringhe_028",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'Python3'.isalpha()`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "'Python'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Contenendo il carattere '3', che è numerico, isalpha() restituisce False.",
+            "code_example": "print('Python3'.isalpha()) # False"
+        },
+        {
+            "id": "stringhe_029",
+            "category_id": "stringhe",
+            "text": "Quale metodo useresti per dividere una stringa in una lista di parole basandoti sullo spazio?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "split()",
+                    "is_correct": true
+                },
+                {
+                    "text": "divide()",
+                    "is_correct": false
+                },
+                {
+                    "text": "break()",
+                    "is_correct": false
+                },
+                {
+                    "text": "partition()",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "split() divide la stringa in base a un separatore e restituisce una lista.",
+            "code_example": "print('a b c'.split()) # ['a', 'b', 'c']"
+        },
+        {
+            "id": "stringhe_030",
+            "category_id": "stringhe",
+            "text": "Cosa produce `'-'.join(['a', 'b', 'c'])`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'a-b-c'",
+                    "is_correct": true
+                },
+                {
+                    "text": "['a-b-c']",
+                    "is_correct": false
+                },
+                {
+                    "text": "'-a-b-c'",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "join() unisce gli elementi di un iterabile (come una lista) usando la stringa su cui è chiamato come separatore.",
+            "code_example": "print('-'.join(['1', '2'])) # '1-2'"
+        },
+        {
+            "id": "stringhe_031",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'banana'.count('a')`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "3",
+                    "is_correct": true
+                },
+                {
+                    "text": "2",
+                    "is_correct": false
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "4",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "count() conta quante volte una sottostringa appare all'interno della stringa principale.",
+            "code_example": "print('banana'.count('a')) # 3"
+        },
+        {
+            "id": "stringhe_032",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce lo slicing `'Python'[10:15]`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'' (stringa vuota)",
+                    "is_correct": true
+                },
+                {
+                    "text": "Errore (IndexError)",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "'n'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Lo slicing non solleva errori se gli indici sono fuori intervallo; restituisce semplicemente una stringa vuota.",
+            "code_example": "print('abc'[10:15]) # ''"
+        },
+        {
+            "id": "stringhe_033",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'{:.2f}'.format(3.14159)`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'3.14'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'3.141'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'3.15'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'3.1'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La specifica :.2f arrotonda il numero a 2 cifre decimali fisse.",
+            "code_example": "print('{:.2f}'.format(3.14159)) # '3.14'"
+        },
+        {
+            "id": "stringhe_034",
+            "category_id": "stringhe",
+            "text": "Cosa succede se usi `index()` per cercare una sottostringa che NON esiste?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Viene sollevato un ValueError",
+                    "is_correct": true
+                },
+                {
+                    "text": "Restituisce -1",
+                    "is_correct": false
+                },
+                {
+                    "text": "Restituisce None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Restituisce False",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "A differenza di find(), il metodo index() genera un errore se non trova il valore.",
+            "code_example": "# 'abc'.index('z') -> ValueError: substring not found"
+        },
+        {
+            "id": "stringhe_035",
+            "category_id": "stringhe",
+            "text": "Quale metodo rimuove solo gli spazi bianchi alla fine (destra) della stringa?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "rstrip()",
+                    "is_correct": true
+                },
+                {
+                    "text": "lstrip()",
+                    "is_correct": false
+                },
+                {
+                    "text": "strip()",
+                    "is_correct": false
+                },
+                {
+                    "text": "clean_end()",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "rstrip() sta per 'right strip'.",
+            "code_example": "print('  ciao  '.rstrip()) # '  ciao'"
+        },
+        {
+            "id": "stringhe_036",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'42'.zfill(5)`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'00042'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'42000'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'  042'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'42.00'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "zfill() riempie la stringa a sinistra con zeri fino a raggiungere la lunghezza indicata.",
+            "code_example": "print('10'.zfill(4)) # '0010'"
+        },
+        {
+            "id": "stringhe_037",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'Apple'.islower()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "islower() restituisce True solo se TUTTI i caratteri alfabetici nella stringa sono minuscoli. 'A' è maiuscola.",
+            "code_example": "print('Apple'.islower()) # False"
+        },
+        {
+            "id": "stringhe_038",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'Python_3'.isalnum()`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'underscore (_) non è né una lettera né un numero, quindi isalnum() restituisce False.",
+            "code_example": "print('Python_3'.isalnum()) # False"
+        },
+        {
+            "id": "stringhe_039",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'ok'.center(6, '#')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'##ok##'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'####ok'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ok####'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'#ok###'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "center() aggiunge il carattere di riempimento su entrambi i lati per centrare la stringa.",
+            "code_example": "print('hi'.center(6, '-')) # '--hi--'"
+        },
+        {
+            "id": "stringhe_040",
+            "category_id": "stringhe",
+            "text": "Quale di queste affermazioni sulle stringhe Python è vera?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Sono immutabili",
+                    "is_correct": true
+                },
+                {
+                    "text": "Sono mutabili",
+                    "is_correct": false
+                },
+                {
+                    "text": "Possono essere modificate via indice",
+                    "is_correct": false
+                },
+                {
+                    "text": "Non supportano lo slicing",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Una volta creata, una stringa non può essere modificata. Qualsiasi operazione crea una nuova stringa.",
+            "code_example": "s = 'python'\n# s[0] = 'P' # Genera TypeError"
+        },
+        {
+            "id": "stringhe_041",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'aB1'.swapcase()`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'Ab1'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'AB1'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ab1'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'AbC'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "swapcase() inverte le maiuscole in minuscole e viceversa, lasciando invariati i caratteri non alfabetici.",
+            "code_example": "print('Hi'.swapcase()) # 'hI'"
+        },
+        {
+            "id": "stringhe_042",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'\\n\\t '.isspace()`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "isspace() restituisce True se la stringa contiene solo caratteri 'vuoti' (spazio, tab, newline).",
+            "code_example": "print('\\n'.isspace()) # True"
+        },
+        {
+            "id": "stringhe_043",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'A:B:C'.partition(':')`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "('A', ':', 'B:C')",
+                    "is_correct": true
+                },
+                {
+                    "text": "('A', 'B', 'C')",
+                    "is_correct": false
+                },
+                {
+                    "text": "['A', 'B', 'C']",
+                    "is_correct": false
+                },
+                {
+                    "text": "('A', ':', 'B', ':', 'C')",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "partition() divide alla PRIMA occorrenza del separatore e restituisce una tupla di 3 elementi.",
+            "code_example": "print('A-B-C'.partition('-')) # ('A', '-', 'B-C')"
+        },
+        {
+            "id": "stringhe_044",
+            "category_id": "stringhe",
+            "text": "Come si controlla se la sottostringa 'cat' è presente in 'education'?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "'cat' in 'education'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'education'.contains('cat')",
+                    "is_correct": false
+                },
+                {
+                    "text": "has('education', 'cat')",
+                    "is_correct": false
+                },
+                {
+                    "text": "'education'.has('cat')",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore 'in' è il modo standard e più leggibile per verificare l'appartenenza in Python.",
+            "code_example": "print('a' in 'casa') # True"
+        },
+        {
+            "id": "stringhe_045",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'banana'.rfind('a')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "5",
+                    "is_correct": true
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "3",
+                    "is_correct": false
+                },
+                {
+                    "text": "-1",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "rfind() restituisce l'indice dell'ultima occorrenza (partendo da destra).",
+            "code_example": "print('banana'.rfind('a')) # 5"
+        },
+        {
+            "id": "stringhe_046",
+            "category_id": "stringhe",
+            "text": "Quale metodo useresti per allineare a sinistra una stringa riempiendo il resto con un carattere specifico?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "ljust()",
+                    "is_correct": true
+                },
+                {
+                    "text": "rjust()",
+                    "is_correct": false
+                },
+                {
+                    "text": "left()",
+                    "is_correct": false
+                },
+                {
+                    "text": "align_left()",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "ljust() giustifica a sinistra e riempie a destra fino alla lunghezza desiderata.",
+            "code_example": "print('x'.ljust(3, '-')) # 'x--'"
+        },
+        {
+            "id": "stringhe_047",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'abcde'[1:-1]`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'bcd'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'bcde'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'abcd'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'bc'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Estrae dall'indice 1 fino all'ultimo carattere escluso.",
+            "code_example": "print('abcde'[1:-1]) # 'bcd'"
+        },
+        {
+            "id": "stringhe_048",
+            "category_id": "stringhe",
+            "text": "Nelle f-string, quale formato forza la visualizzazione del segno + per i numeri positivi?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "f'{valore:+}'",
+                    "is_correct": true
+                },
+                {
+                    "text": "f'{valore:pos}'",
+                    "is_correct": false
+                },
+                {
+                    "text": "f'{valore:sign}'",
+                    "is_correct": false
+                },
+                {
+                    "text": "f'{valore:++}'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il descrittore di formato '+' indica di mostrare sempre il segno (sia + che -).",
+            "code_example": "print(f'{10:+}') # '+10'"
+        },
+        {
+            "id": "stringhe_049",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `len('   '.strip())`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "0",
+                    "is_correct": true
+                },
+                {
+                    "text": "3",
+                    "is_correct": false
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "strip() rimuove tutti gli spazi iniziali e finali. Una stringa di soli spazi diventa vuata ('').",
+            "code_example": "print(len(' '.strip())) # 0"
+        },
+        {
+            "id": "stringhe_050",
+            "category_id": "stringhe",
+            "text": "Cosa produce `list('abc')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "['a', 'b', 'c']",
+                    "is_correct": true
+                },
+                {
+                    "text": "['abc']",
+                    "is_correct": false
+                },
+                {
+                    "text": "('a', 'b', 'c')",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Convertire una stringa in lista separa ogni singolo carattere in un elemento della lista.",
+            "code_example": "print(list('py')) # ['p', 'y']"
+        },
+        {
+            "id": "stringhe_051",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'Python'.lower().isupper()`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Viene prima convertita in tutto minuscolo ('python'), quindi isupper() non può essere True.",
+            "code_example": "print('A'.lower().isupper()) # False"
+        },
+        {
+            "id": "stringhe_052",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'a-b-c-d'.split('-', 2)`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "['a', 'b', 'c-d']",
+                    "is_correct": true
+                },
+                {
+                    "text": "['a', 'b', 'c', 'd']",
+                    "is_correct": false
+                },
+                {
+                    "text": "['a', 'b-c-d']",
+                    "is_correct": false
+                },
+                {
+                    "text": "['a-b', 'c-d']",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il secondo argomento di split() (maxsplit) indica quante divisioni effettuare partendo da sinistra.",
+            "code_example": "print('1.2.3.4'.split('.', 1)) # ['1', '2.3.4']"
+        },
+        {
+            "id": "stringhe_053",
+            "category_id": "stringhe",
+            "text": "Cosa succede eseguendo `'ciao' * -1`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'' (stringa vuota)",
+                    "is_correct": true
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "'-ciao'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'oaic'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Moltiplicare una stringa per un intero negativo o zero restituisce sempre una stringa vuota.",
+            "code_example": "print('hi' * -5) # ''"
+        },
+        {
+            "id": "stringhe_054",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'Python' * True`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'Python'",
+                    "is_correct": true
+                },
+                {
+                    "text": "''",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "In contesti matematici, True vale 1. Quindi la stringa viene ripetuta una volta sola.",
+            "code_example": "print('a' * True) # 'a'"
+        },
+        {
+            "id": "stringhe_055",
+            "category_id": "stringhe",
+            "text": "Quale metodo verifica se una stringa contiene solo cifre 0-9?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "isdecimal()",
+                    "is_correct": true
+                },
+                {
+                    "text": "isnumeric()",
+                    "is_correct": false
+                },
+                {
+                    "text": "isnumber()",
+                    "is_correct": false
+                },
+                {
+                    "text": "isdigit_only()",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "isdecimal() è il metodo più restrittivo per i numeri decimali puri.",
+            "code_example": "print('10'.isdecimal()) # True"
+        },
+        {
+            "id": "stringhe_056",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'banana'.replace('a', 'o', 2)`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'bonono'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'bonana'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'banana'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'booooa'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il terzo parametro limita il numero di sostituzioni effettuate partendo dall'inizio.",
+            "code_example": "print('aaaa'.replace('a', 'b', 2)) # 'bbaa'"
+        },
+        {
+            "id": "stringhe_057",
+            "category_id": "stringhe",
+            "text": "A cosa serve il prefisso 'r' prima delle virgolette (es. `r'\\n'`)?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Crea una 'raw string' che ignora le sequenze di escape",
+                    "is_correct": true
+                },
+                {
+                    "text": "Inverte la stringa automaticamente",
+                    "is_correct": false
+                },
+                {
+                    "text": "Rende la stringa mutabile",
+                    "is_correct": false
+                },
+                {
+                    "text": "Rimuove gli spazi bianchi",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Nelle raw strings, il backslash (\\) viene trattato come un carattere letterale.",
+            "code_example": "print(r'\\n') # Stampa proprio \\ e n"
+        },
+        {
+            "id": "stringhe_058",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'mela'.find('e', 2)`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "-1",
+                    "is_correct": true
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La ricerca inizia dall'indice 2. Dato che 'e' è all'indice 1, non viene trovata e find() restituisce -1.",
+            "code_example": "print('mela'.find('e', 2)) # -1"
+        },
+        {
+            "id": "stringhe_059",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `''.isupper()`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "I metodi isupper() e islower() restituiscono False se la stringa non contiene caratteri alfabetici.",
+            "code_example": "print(''.isupper()) # False"
+        },
+        {
+            "id": "stringhe_060",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `'CIAO'.istitle()`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "False",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "istitle() è True solo se la stringa ha la prima lettera maiuscola e le altre minuscole (es. 'Ciao').",
+            "code_example": "print('CIAO'.istitle()) # False"
+        },
+        {
+            "id": "stringhe_061",
+            "category_id": "stringhe",
+            "text": "Qual è il risultato di `'{:0>3}'.format('7')`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'007'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'700'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'  7'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'070'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Formatta a lunghezza 3, allineando a destra (>) e riempiendo con '0'.",
+            "code_example": "print('{:0>3}'.format('1')) # '001'"
+        },
+        {
+            "id": "stringhe_062",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `min('python')`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "'h'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'p'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'y'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'a'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La funzione min() restituisce il carattere con il valore Unicode più basso nella stringa.",
+            "code_example": "print(min('abc')) # 'a'"
+        },
+        {
+            "id": "stringhe_063",
+            "category_id": "stringhe",
+            "text": "Cosa restituisce `'   python   '.strip(' p')`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "'ython'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'python'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'   python'",
+                    "is_correct": false
+                },
+                {
+                    "text": "'ytho'",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "strip() può accettare una stringa di caratteri da rimuovere (in questo caso spazio e 'p').",
+            "code_example": "print('[[ok]]'.strip('[]')) # 'ok'"
+        },
+        {
+            "id": "stringhe_064",
+            "category_id": "stringhe",
+            "text": "Qual è l'output di `print('A\\nB'.splitlines())`?",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "['A', 'B']",
+                    "is_correct": true
+                },
+                {
+                    "text": "['A\\n', 'B']",
+                    "is_correct": false
+                },
+                {
+                    "text": "('A', 'B')",
+                    "is_correct": false
+                },
+                {
+                    "text": "['AB']",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "splitlines() divide la stringa in corrispondenza dei caratteri di nuova riga.",
+            "code_example": "print('x\\ny'.splitlines()) # ['x', 'y']"
+        },
+        {
             "id": "liste_001",
             "category_id": "liste",
             "text": "Cosa stampa questo codice?\n```python\na = [1, 2, 3]\nb = a\na.append(4)\nprint(b)\n```",
