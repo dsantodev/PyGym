@@ -7,8 +7,8 @@
         },
         {
             "id": "stringhe",
-            "name": "Stringhe",
-            "description": "Metodi, formattazione, slicing e operazioni sulle stringhe"
+            "name": "Stringhe & Metodi di stringa",
+            "description": "Operazioni sulle stringhe, Metodi, formattazione e slicing"
         },
         {
             "id": "liste",
