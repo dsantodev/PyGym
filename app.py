@@ -369,9 +369,9 @@ def page_quiz():
                 a.text for a in display_question.answers if a.is_correct
             )
             st.error(
-                f"👉 Hai risposto: **{ua.chosen_text}**  \n"
+                f"👉 Hai risposto: `{ua.chosen_text}`  \n"
                 f"❌ Risposta sbagliata.  **{ua.points} pt**  \n"
-                f"💡 La risposta corretta era: **{correct_text}**"
+                f"💡 La risposta corretta era: `{correct_text}`"
             )
 
         with st.expander("📖 Spiegazione e esempio di codice"):
