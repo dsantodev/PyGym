@@ -3381,6 +3381,1306 @@
             "code_example": "punto = (4, 5)\nx, y = punto\nprint(f'x={x}, y={y}')  # x=4, y=5\nprint(f'{x + y}')  # La somma è 9"
         },
         {
+            "id": "tuple_007",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (10, 20, 30, 40, 50)\nprint(t[1:4])\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "(20, 30, 40)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(10, 20, 30)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(20, 30, 40, 50)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Lo slicing t[1:4] restituisce gli elementi dagli indici 1, 2 e 3 (l'indice 4 è escluso): 20, 30, 40.",
+            "code_example": "t = (0, 1, 2, 3, 4, 5)\nprint(t[2:5])   # (2, 3, 4)\nprint(t[:3])    # (0, 1, 2)\nprint(t[3:])    # (3, 4, 5)\nprint(t[::2])   # (0, 2, 4)"
+        },
+        {
+            "id": "tuple_008",
+            "category_id": "tuple",
+            "text": "Cosa succede eseguendo questo codice?\n```python\nt = (1, 2, 3)\nt[0] = 10\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "TypeError: le tuple sono immutabili",
+                    "is_correct": true
+                },
+                {
+                    "text": "t diventa (10, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "t diventa [10, 2, 3]",
+                    "is_correct": false
+                },
+                {
+                    "text": "ValueError",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple sono immutabili: non è possibile modificare, aggiungere o rimuovere elementi dopo la creazione. Ogni tentativo di modifica solleva TypeError.",
+            "code_example": "t = (1, 2, 3)\ntry:\n    t[0] = 10\nexcept TypeError as e:\n    print(e)  # 'tuple' object does not support item assignment"
+        },
+        {
+            "id": "tuple_009",
+            "category_id": "tuple",
+            "text": "Qual è il risultato di `len((1, (2, 3), 4))`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "3",
+                    "is_correct": true
+                },
+                {
+                    "text": "4",
+                    "is_correct": false
+                },
+                {
+                    "text": "2",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "len() conta solo gli elementi di primo livello. La tupla contiene 3 elementi: 1, (2,3) e 4. La tupla interna conta come un unico elemento.",
+            "code_example": "t = (1, (2, 3), 4)\nprint(len(t))         # 3\nprint(len(t[1]))      # 2 (lunghezza della tupla interna)"
+        },
+        {
+            "id": "tuple_010",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (3, 1, 4, 1, 5, 9)\nprint(t.count(1))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "2",
+                    "is_correct": true
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il metodo count() restituisce il numero di occorrenze del valore specificato. Il valore 1 appare due volte nella tupla.",
+            "code_example": "t = ('a', 'b', 'a', 'c', 'a')\nprint(t.count('a'))  # 3\nprint(t.count('b'))  # 1\nprint(t.count('z'))  # 0"
+        },
+        {
+            "id": "tuple_011",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (10, 20, 30, 20, 10)\nprint(t.index(20))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "1",
+                    "is_correct": true
+                },
+                {
+                    "text": "3",
+                    "is_correct": false
+                },
+                {
+                    "text": "2",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 3]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il metodo index() restituisce l'indice della prima occorrenza del valore. Il 20 appare per la prima volta all'indice 1.",
+            "code_example": "t = (10, 20, 30, 20, 10)\nprint(t.index(20))    # 1 (prima occorrenza)\nprint(t.index(20, 2)) # 3 (cerca da indice 2 in poi)"
+        },
+        {
+            "id": "tuple_012",
+            "category_id": "tuple",
+            "text": "Come si concatenano due tuple?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "Usando l'operatore +",
+                    "is_correct": true
+                },
+                {
+                    "text": "Usando il metodo append()",
+                    "is_correct": false
+                },
+                {
+                    "text": "Usando il metodo extend()",
+                    "is_correct": false
+                },
+                {
+                    "text": "Non è possibile concatenare tuple",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple supportano la concatenazione con l'operatore +, che crea una nuova tupla. Non hanno metodi append() o extend() perché sono immutabili.",
+            "code_example": "t1 = (1, 2, 3)\nt2 = (4, 5, 6)\nt3 = t1 + t2\nprint(t3)  # (1, 2, 3, 4, 5, 6)\nprint(t1)  # (1, 2, 3) - invariata"
+        },
+        {
+            "id": "tuple_013",
+            "category_id": "tuple",
+            "text": "Le tuple possono essere usate come chiavi di un dizionario?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Sì, perché sono hashable",
+                    "is_correct": true
+                },
+                {
+                    "text": "No, solo le stringhe e gli interi possono essere chiavi",
+                    "is_correct": false
+                },
+                {
+                    "text": "No, perché sono sequenze",
+                    "is_correct": false
+                },
+                {
+                    "text": "Sì, ma solo se contengono un solo elemento",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple sono hashable (a patto che contengano solo elementi hashable), quindi possono essere usate come chiavi di dizionario. Le liste invece non possono perché sono mutabili.",
+            "code_example": "d = {}\nd[(1, 2)] = 'punto A'\nd[(3, 4)] = 'punto B'\nprint(d[(1, 2)])  # punto A\n# d[[1,2]] = 'x'  # TypeError: unhashable type: 'list'"
+        },
+        {
+            "id": "tuple_014",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\na, *b, c = (1, 2, 3, 4, 5)\nprint(b)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[2, 3, 4]",
+                    "is_correct": true
+                },
+                {
+                    "text": "(2, 3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 2, 3, 4]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Con l'unpacking esteso, *b raccoglie gli elementi centrali in una lista (non tupla). a=1, b=[2,3,4], c=5.",
+            "code_example": "primo, *centro, ultimo = (10, 20, 30, 40, 50)\nprint(primo)   # 10\nprint(centro)  # [20, 30, 40]\nprint(ultimo)  # 50"
+        },
+        {
+            "id": "tuple_015",
+            "category_id": "tuple",
+            "text": "Come si converte una lista in tupla?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "tuple([1, 2, 3])",
+                    "is_correct": true
+                },
+                {
+                    "text": "(list)",
+                    "is_correct": false
+                },
+                {
+                    "text": "list.to_tuple()",
+                    "is_correct": false
+                },
+                {
+                    "text": "{1, 2, 3}",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La funzione built-in tuple() converte qualsiasi iterabile (lista, stringa, set, ecc.) in una tupla.",
+            "code_example": "lista = [1, 2, 3]\nt = tuple(lista)\nprint(t)         # (1, 2, 3)\nprint(type(t))   # <class 'tuple'>\nt2 = tuple('abc')\nprint(t2)        # ('a', 'b', 'c')"
+        },
+        {
+            "id": "tuple_016",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (5, 3, 8, 1, 9)\nprint(sorted(t))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[1, 3, 5, 8, 9]",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 3, 5, 8, 9)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore: le tuple non possono essere ordinate",
+                    "is_correct": false
+                },
+                {
+                    "text": "(5, 3, 8, 1, 9)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "sorted() funziona su qualsiasi iterabile ma restituisce sempre una lista, non una tupla. Per ottenere una tupla ordinata bisogna usare tuple(sorted(t)).",
+            "code_example": "t = (5, 3, 8, 1)\nordinata_lista = sorted(t)\nprint(ordinata_lista)       # [1, 3, 5, 8]\northinata_tupla = tuple(sorted(t))\nprint(ordinata_tupla)       # (1, 3, 5, 8)"
+        },
+        {
+            "id": "tuple_017",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\ndef min_max(numeri):\n    return min(numeri), max(numeri)\n\nrisultato = min_max([4, 1, 7, 2])\nprint(type(risultato))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "<class 'tuple'>",
+                    "is_correct": true
+                },
+                {
+                    "text": "<class 'list'>",
+                    "is_correct": false
+                },
+                {
+                    "text": "<class 'int'>",
+                    "is_correct": false
+                },
+                {
+                    "text": "<class 'set'>",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Quando una funzione restituisce più valori separati da virgola, Python li impacchetta automaticamente in una tupla.",
+            "code_example": "def dividi(a, b):\n    return a // b, a % b\n\nquoziente, resto = dividi(17, 5)\nprint(quoziente)  # 3\nprint(resto)      # 2\nprint(type(dividi(17, 5)))  # <class 'tuple'>"
+        },
+        {
+            "id": "tuple_018",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, [2, 3], 4)\nt[1].append(99)\nprint(t)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "(1, [2, 3, 99], 4)",
+                    "is_correct": true
+                },
+                {
+                    "text": "TypeError",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, [2, 3], 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, [2, 3, 99], 4, 99)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La tupla è immutabile, ma la lista al suo interno è mutabile. t[1] è un riferimento alla lista [2,3], e append modifica quella lista in-place. La tupla contiene lo stesso riferimento, ora alla lista aggiornata.",
+            "code_example": "t = (1, [2, 3], 4)\nprint(id(t[1]))    # id della lista\nt[1].append(99)\nprint(id(t[1]))    # stesso id!\nprint(t)           # (1, [2, 3, 99], 4)"
+        },
+        {
+            "id": "tuple_019",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nx, y = 10, 20\nx, y = y, x\nprint(x, y)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "20 10",
+                    "is_correct": true
+                },
+                {
+                    "text": "10 20",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "10 10",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python crea implicitamente una tupla (y, x) = (20, 10) a destra, poi fa l'unpacking assegnando y a x e x a y. Questo è il classico swap in una riga.",
+            "code_example": "a, b, c = 1, 2, 3\na, b, c = c, a, b\nprint(a, b, c)  # 3 1 2"
+        },
+        {
+            "id": "tuple_020",
+            "category_id": "tuple",
+            "text": "Quale metodo non esiste nelle tuple?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "append()",
+                    "is_correct": true
+                },
+                {
+                    "text": "count()",
+                    "is_correct": false
+                },
+                {
+                    "text": "index()",
+                    "is_correct": false
+                },
+                {
+                    "text": "Tutti e tre esistono",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple hanno solo due metodi: count() e index(). Non hanno append(), extend(), insert(), remove() o pop() perché sono immutabili.",
+            "code_example": "t = (1, 2, 3, 2)\nprint(t.count(2))   # 2\nprint(t.index(3))   # 2\n# t.append(4)  # AttributeError\n# t.remove(1)  # AttributeError"
+        },
+        {
+            "id": "tuple_021",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nfrom collections import namedtuple\nPunto = namedtuple('Punto', ['x', 'y'])\np = Punto(3, 7)\nprint(p.x + p.y)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "10",
+                    "is_correct": true
+                },
+                {
+                    "text": "37",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "(3, 7)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "namedtuple crea una sottoclasse di tuple con campi accessibili per nome. p.x è 3 e p.y è 7, quindi la somma è 10.",
+            "code_example": "from collections import namedtuple\nPersona = namedtuple('Persona', ['nome', 'eta'])\np = Persona('Alice', 30)\nprint(p.nome)   # Alice\nprint(p[0])     # Alice (anche per indice)\nprint(p.eta)    # 30"
+        },
+        {
+            "id": "tuple_022",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(2 in t)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore in funziona sulle tuple e restituisce True se l'elemento è presente, False altrimenti.",
+            "code_example": "t = ('a', 'b', 'c')\nprint('a' in t)   # True\nprint('z' in t)   # False\nprint('z' not in t)  # True"
+        },
+        {
+            "id": "tuple_023",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt1 = (1, 2, 3)\nt2 = (1, 2, 3)\nprint(t1 == t2)\nprint(t1 is t2)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "True\nFalse",
+                    "is_correct": true
+                },
+                {
+                    "text": "True\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "== confronta i valori (uguali), mentre is confronta l'identità (oggetti diversi in memoria). Sono due oggetti distinti con lo stesso contenuto.",
+            "code_example": "t1 = (1, 2, 3)\nt2 = (1, 2, 3)\nprint(t1 == t2)   # True  (stesso contenuto)\nprint(t1 is t2)   # False (oggetti diversi)\nprint(id(t1) == id(t2))  # False"
+        },
+        {
+            "id": "tuple_024",
+            "category_id": "tuple",
+            "text": "Come si itera su una tupla con indice e valore?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Usando enumerate()",
+                    "is_correct": true
+                },
+                {
+                    "text": "Usando range(len(t)) con t[i]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Usando items()",
+                    "is_correct": false
+                },
+                {
+                    "text": "Le tuple non supportano enumerate()",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "enumerate() è il modo Pythonic per iterare con indice su qualsiasi iterabile, incluse le tuple. Restituisce coppie (indice, valore).",
+            "code_example": "t = ('a', 'b', 'c')\nfor i, val in enumerate(t):\n    print(f'{i}: {val}')\n# 0: a\n# 1: b\n# 2: c"
+        },
+        {
+            "id": "tuple_025",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = ()\nprint(type(t), len(t))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "<class 'tuple'> 0",
+                    "is_correct": true
+                },
+                {
+                    "text": "<class 'NoneType'> 0",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "<class 'tuple'> 1",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "() crea una tupla vuota valida. Ha tipo tuple e lunghezza 0. È diverso da None.",
+            "code_example": "t_vuota = ()\nprint(bool(t_vuota))  # False (falsy)\nprint(len(t_vuota))   # 0\nif not t_vuota:\n    print('Tupla vuota!')"
+        },
+        {
+            "id": "tuple_026",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (3, 1, 4, 1, 5)\nprint(max(t), min(t))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "5 1",
+                    "is_correct": true
+                },
+                {
+                    "text": "1 5",
+                    "is_correct": false
+                },
+                {
+                    "text": "5 3",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le funzioni built-in max() e min() funzionano sulle tuple esattamente come sulle liste.",
+            "code_example": "t = (3, 1, 4, 1, 5, 9, 2, 6)\nprint(max(t))  # 9\nprint(min(t))  # 1\nprint(sum(t))  # 31"
+        },
+        {
+            "id": "tuple_027",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t + (4, 5))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "(1, 2, 3, 4, 5)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(5, 7, 8)",
+                    "is_correct": false
+                },
+                {
+                    "text": "TypeError",
+                    "is_correct": false
+                },
+                {
+                    "text": "((1, 2, 3), (4, 5))",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore + sulle tuple crea una nuova tupla concatenando gli elementi di entrambe.",
+            "code_example": "t1 = (1, 2)\nt2 = (3, 4)\nprint(t1 + t2)     # (1, 2, 3, 4)\nprint(t1 + t2 + (5,))  # (1, 2, 3, 4, 5)"
+        },
+        {
+            "id": "tuple_028",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t[::-1])\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(3, 2, 1)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "[3, 2, 1]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Lo slicing [::-1] inverte la sequenza. Restituisce una nuova tupla con gli elementi in ordine inverso.",
+            "code_example": "t = (1, 2, 3, 4, 5)\nprint(t[::-1])     # (5, 4, 3, 2, 1)\nprint(t[::2])      # (1, 3, 5)\nprint(t[1::2])     # (2, 4)"
+        },
+        {
+            "id": "tuple_029",
+            "category_id": "tuple",
+            "text": "Quale affermazione sulle tuple annidate è corretta?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "Una tupla può contenere altre tuple come elementi",
+                    "is_correct": true
+                },
+                {
+                    "text": "Le tuple non possono contenere altri tipi composti",
+                    "is_correct": false
+                },
+                {
+                    "text": "Le tuple annidate non sono hashable",
+                    "is_correct": false
+                },
+                {
+                    "text": "Si accede agli elementi solo con indici positivi",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple possono essere annidate senza limiti. Una tupla rimane hashable finché tutti i suoi elementi (ricorsivamente) sono hashable.",
+            "code_example": "matrice = ((1, 2), (3, 4), (5, 6))\nprint(matrice[0])     # (1, 2)\nprint(matrice[1][0])  # 3\nfor riga in matrice:\n    print(riga)"
+        },
+        {
+            "id": "tuple_030",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nlista = list(t)\nlista.append(4)\nprint(t)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 2, 3, 4]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "list(t) crea una nuova lista indipendente. Modificare lista non influenza la tupla originale t.",
+            "code_example": "t = (1, 2, 3)\nlista = list(t)   # copia indipendente\nlista.append(4)\nprint(t)    # (1, 2, 3) - invariata\nprint(lista)  # [1, 2, 3, 4]"
+        },
+        {
+            "id": "tuple_031",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\ncoordinate = [(1, 'A'), (3, 'C'), (2, 'B')]\ncoordinate.sort()\nprint(coordinate)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "[(1, 'A'), (2, 'B'), (3, 'C')]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[(1, 'A'), (3, 'C'), (2, 'B')]",
+                    "is_correct": false
+                },
+                {
+                    "text": "[('A', 1), ('B', 2), ('C', 3)]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple vengono confrontate elemento per elemento. Prima si confronta il primo elemento (1, 2, 3), poi il secondo in caso di parità. Quindi l'ordinamento è basato sul primo numero.",
+            "code_example": "t_list = [(2, 'b'), (1, 'z'), (1, 'a')]\nt_list.sort()\nprint(t_list)  # [(1, 'a'), (1, 'z'), (2, 'b')]\n# Prima confronta primo elemento, poi secondo"
+        },
+        {
+            "id": "tuple_032",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3, 4, 5)\nprint(t[::2])\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(1, 3, 5)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(2, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 2)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 3)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il passo 2 in [::2] significa: prendi ogni secondo elemento partendo dall'indice 0. Quindi: indici 0, 2, 4 → valori 1, 3, 5.",
+            "code_example": "t = (0, 1, 2, 3, 4, 5, 6, 7)\nprint(t[::2])    # (0, 2, 4, 6)\nprint(t[1::2])   # (1, 3, 5, 7)\nprint(t[::-2])   # (7, 5, 3, 1)"
+        },
+        {
+            "id": "tuple_033",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(sum(t), t.count(2), t.index(3))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "6 1 2",
+                    "is_correct": true
+                },
+                {
+                    "text": "6 2 3",
+                    "is_correct": false
+                },
+                {
+                    "text": "3 1 2",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "sum((1,2,3))=6; count(2) conta le occorrenze di 2, che è 1; index(3) restituisce la posizione di 3, che è all'indice 2.",
+            "code_example": "t = (5, 5, 3, 5)\nprint(sum(t))      # 18\nprint(t.count(5))  # 3\nprint(t.index(3))  # 2"
+        },
+        {
+            "id": "tuple_034",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t * 0)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "()",
+                    "is_correct": true
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                },
+                {
+                    "text": "(0, 0, 0)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Moltiplicare una tupla per 0 produce una tupla vuota, poiché la ripetizione avviene 0 volte.",
+            "code_example": "t = (1, 2, 3)\nprint(t * 0)   # ()\nprint(t * 1)   # (1, 2, 3)\nprint(t * 2)   # (1, 2, 3, 1, 2, 3)"
+        },
+        {
+            "id": "tuple_035",
+            "category_id": "tuple",
+            "text": "Quale di queste espressioni crea una tupla con gli elementi 1, 2, 3 senza parentesi?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "t = 1, 2, 3",
+                    "is_correct": true
+                },
+                {
+                    "text": "t = [1, 2, 3]",
+                    "is_correct": false
+                },
+                {
+                    "text": "t = {1, 2, 3}",
+                    "is_correct": false
+                },
+                {
+                    "text": "Non è possibile creare una tupla senza parentesi",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il tuple packing permette di creare una tupla usando solo le virgole, senza le parentesi. Python interpreta i valori separati da virgola come una tupla.",
+            "code_example": "t = 1, 2, 3\nprint(t)       # (1, 2, 3)\nprint(type(t)) # <class 'tuple'>\na, b = 10, 20  # anche questo è tuple packing/unpacking"
+        },
+        {
+            "id": "tuple_036",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt1 = (1, 2)\nt2 = (3, 4)\nfor a, b in [t1, t2]:\n    print(a + b)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "3\n7",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2)\n(3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "1 2\n3 4",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il ciclo fa l'unpacking di ciascuna tupla in a e b. Per t1: a=1, b=2, stampa 3. Per t2: a=3, b=4, stampa 7.",
+            "code_example": "coppie = [(1, 10), (2, 20), (3, 30)]\nfor x, y in coppie:\n    print(f'{x} * {y} = {x * y}')\n# 1 * 10 = 10\n# 2 * 20 = 40\n# 3 * 30 = 90"
+        },
+        {
+            "id": "tuple_037",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nfrom collections import namedtuple\nPoint = namedtuple('Point', 'x y')\np = Point(1, 2)\nprint(p._asdict())\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "{'x': 1, 'y': 2}",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2)",
+                    "is_correct": false
+                },
+                {
+                    "text": "{'Point': (1, 2)}",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "_asdict() è un metodo di namedtuple che converte l'istanza in un dizionario ordinato con i nomi dei campi come chiavi.",
+            "code_example": "from collections import namedtuple\nPersona = namedtuple('Persona', ['nome', 'eta', 'citta'])\np = Persona('Mario', 30, 'Roma')\nd = p._asdict()\nprint(d)  # {'nome': 'Mario', 'eta': 30, 'citta': 'Roma'}"
+        },
+        {
+            "id": "tuple_038",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3, 4, 5)\n*inizio, ultimo = t\nprint(inizio)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[1, 2, 3, 4]",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "[2, 3, 4, 5]",
+                    "is_correct": false
+                },
+                {
+                    "text": "1",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "*inizio raccoglie tutti gli elementi tranne l'ultimo in una lista. ultimo prende il valore 5.",
+            "code_example": "t = (1, 2, 3, 4, 5)\n*testa, coda = t\nprint(testa)  # [1, 2, 3, 4]\nprint(coda)   # 5\nprimo, *resto = t\nprint(primo)  # 1\nprint(resto)  # [2, 3, 4, 5]"
+        },
+        {
+            "id": "tuple_039",
+            "category_id": "tuple",
+            "text": "Quale è il modo corretto per creare una tupla con un solo elemento stringa?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "('ciao',)",
+                    "is_correct": true
+                },
+                {
+                    "text": "('ciao')",
+                    "is_correct": false
+                },
+                {
+                    "text": "tuple('ciao')",
+                    "is_correct": false
+                },
+                {
+                    "text": "['ciao']",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "('ciao') è semplicemente una stringa tra parentesi. ('ciao',) con la virgola è una tupla con un elemento. tuple('ciao') crea una tupla con i singoli caratteri: ('c','i','a','o').",
+            "code_example": "t1 = ('ciao',)\nprint(type(t1), len(t1))   # <class 'tuple'> 1\nt2 = ('ciao')\nprint(type(t2))            # <class 'str'>\nt3 = tuple('ciao')\nprint(t3)                  # ('c', 'i', 'a', 'o')"
+        },
+        {
+            "id": "tuple_040",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nfor i in t:\n    t = t + (i * 2,)\n    if len(t) > 5:\n        break\nprint(t)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "(1, 2, 3, 2, 4, 6)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 2, 3, 2, 4)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il for itera sulla tupla originale (1,2,3). i=1: t=(1,2,3,2), len=4 non >5. i=2: t=(1,2,3,2,4), len=5 non >5. i=3: t=(1,2,3,2,4,6), len=6>5, break. Riassegnare t non influenza il ciclo, che itera sull'oggetto originale.",
+            "code_example": "t = (1, 2, 3)\nfor i in t:\n    t = t + (i * 2,)\n    if len(t) > 5:\n        break\nprint(t)  # (1, 2, 3, 2, 4, 6)"
+        },
+        {
+            "id": "tuple_041",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (5, 3, 8, 1)\nprint(sorted(t, reverse=True))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[8, 5, 3, 1]",
+                    "is_correct": true
+                },
+                {
+                    "text": "(8, 5, 3, 1)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 3, 5, 8)",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 3, 5, 8]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "sorted() con reverse=True ordina in ordine decrescente e restituisce una lista (non una tupla).",
+            "code_example": "t = (5, 3, 8, 1)\nprint(sorted(t))             # [1, 3, 5, 8]\nprint(sorted(t, reverse=True))  # [8, 5, 3, 1]\nprint(tuple(sorted(t)))      # (1, 3, 5, 8)"
+        },
+        {
+            "id": "tuple_042",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(hash(t))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "Un numero intero (il valore hash della tupla)",
+                    "is_correct": true
+                },
+                {
+                    "text": "TypeError: unhashable type",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "id(t)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple di valori immutabili sono hashable. hash() restituisce un intero che identifica univocamente il valore. Questo permette di usarle come chiavi di dizionario.",
+            "code_example": "t1 = (1, 2, 3)\nprint(hash(t1))     # es: 2528502973977326415\nt2 = (1, 2, 3)\nprint(hash(t1) == hash(t2))  # True\n# hash([1,2,3])  # TypeError!"
+        },
+        {
+            "id": "tuple_043",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint((t,))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "((1, 2, 3),)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "((1, 2, 3))",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "(t,) crea una tupla con un solo elemento, che è la tupla t. Quindi si ottiene una tupla contenente una tupla.",
+            "code_example": "t = (1, 2, 3)\nt_nidificata = (t,)\nprint(len(t_nidificata))    # 1\nprint(t_nidificata[0])      # (1, 2, 3)\nprint(t_nidificata[0][1])   # 2"
+        },
+        {
+            "id": "tuple_044",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3, 4, 5)\nprint(t[-3:])\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(3, 4, 5)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "(4, 5)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "[-3:] parte dall'indice -3 (cioè il terzo elemento dalla fine, che è 3) fino alla fine della tupla.",
+            "code_example": "t = (1, 2, 3, 4, 5)\nprint(t[-1])    # 5 (ultimo)\nprint(t[-2:])   # (4, 5)\nprint(t[-3:])   # (3, 4, 5)\nprint(t[:-2])   # (1, 2, 3)"
+        },
+        {
+            "id": "tuple_045",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\ncolori = ('rosso', 'verde', 'blu')\nprint(', '.join(colori))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "rosso, verde, blu",
+                    "is_correct": true
+                },
+                {
+                    "text": "('rosso', 'verde', 'blu')",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "rosso verde blu",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "join() funziona su qualsiasi iterabile di stringhe, incluse le tuple. Concatena gli elementi con il separatore specificato.",
+            "code_example": "t = ('a', 'b', 'c')\nprint('-'.join(t))   # a-b-c\nprint(' '.join(t))   # a b c\nprint(''.join(t))    # abc"
+        },
+        {
+            "id": "tuple_046",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt1 = (1, 2)\nt2 = (3, 4)\nprint(list(zip(t1, t2)))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[(1, 3), (2, 4)]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[(1, 2), (3, 4)]",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 2, 3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "((1, 3), (2, 4))",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "zip() abbina elementi alla stessa posizione delle sequenze. Crea coppie: (t1[0],t2[0]) e (t1[1],t2[1]). Il risultato è una lista di tuple.",
+            "code_example": "nomi = ('Alice', 'Bob', 'Carlo')\neta = (25, 30, 22)\nfor nome, e in zip(nomi, eta):\n    print(f'{nome} ha {e} anni')"
+        },
+        {
+            "id": "tuple_047",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint((1,) < (2,))\nprint((1, 2) < (1, 3))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "True\nTrue",
+                    "is_correct": true
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple vengono confrontate lessicograficamente: elemento per elemento. (1,)<(2,) perché 1<2. (1,2)<(1,3) perché il primo elemento è uguale, poi 2<3.",
+            "code_example": "print((1,) < (2,))     # True\nprint((1, 2) < (1, 3)) # True\nprint((2,) > (1, 9))   # True (confronta solo 2>1)\nprint((1,) <= (1,))    # True"
+        },
+        {
+            "id": "tuple_048",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nfrom collections import namedtuple\nPoint = namedtuple('Point', ['x', 'y'])\np = Point(3, 4)\np2 = p._replace(x=10)\nprint(p, p2)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "Point(x=3, y=4) Point(x=10, y=4)",
+                    "is_correct": true
+                },
+                {
+                    "text": "Point(x=10, y=4) Point(x=10, y=4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore: le namedtuple sono immutabili",
+                    "is_correct": false
+                },
+                {
+                    "text": "(3, 4) (10, 4)",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "_replace() crea una nuova istanza con i campi specificati modificati. L'originale p rimane invariato poiché le namedtuple sono immutabili.",
+            "code_example": "from collections import namedtuple\nPersona = namedtuple('Persona', ['nome', 'eta'])\np1 = Persona('Mario', 30)\np2 = p1._replace(eta=31)\nprint(p1)  # Persona(nome='Mario', eta=30)\nprint(p2)  # Persona(nome='Mario', eta=31)"
+        },
+        {
+            "id": "tuple_049",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = ((1, 2), (3, 4), (5, 6))\nprint([x + y for x, y in t])\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "[3, 7, 11]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[(1, 2), (3, 4), (5, 6)]",
+                    "is_correct": false
+                },
+                {
+                    "text": "[12, 34, 56]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La list comprehension itera sulle tuple interne facendo unpacking in x, y. Poi calcola x+y: 1+2=3, 3+4=7, 5+6=11.",
+            "code_example": "coppie = ((1, 10), (2, 20), (3, 30))\nrisultati = [a * b for a, b in coppie]\nprint(risultati)  # [10, 40, 90]"
+        },
+        {
+            "id": "tuple_050",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\ng = (x ** 2 for x in t)\nprint(type(g))\nprint(tuple(g))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "<class 'generator'>\n(1, 4, 9)",
+                    "is_correct": true
+                },
+                {
+                    "text": "<class 'tuple'>\n(1, 4, 9)",
+                    "is_correct": false
+                },
+                {
+                    "text": "<class 'list'>\n[1, 4, 9]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Non esiste la 'tuple comprehension': le parentesi tonde con un'espressione generatrice creano un generator object, non una tupla. Per ottenere una tupla bisogna avvolgerlo in tuple().",
+            "code_example": "t = (1, 2, 3, 4)\n# Generator expression\ng = (x ** 2 for x in t)\nprint(type(g))         # <class 'generator'>\nprint(tuple(g))        # (1, 4, 9, 16)\n# List comprehension per confronto\nl = [x ** 2 for x in t]\nprint(type(l))         # <class 'list'>"
+        },
+        {
+            "id": "tuple_051",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t.index(5))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "ValueError",
+                    "is_correct": true
+                },
+                {
+                    "text": "-1",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "A differenza di find() per le stringhe, index() solleva ValueError se il valore non è presente nella tupla.",
+            "code_example": "t = (1, 2, 3)\ntry:\n    print(t.index(5))\nexcept ValueError as e:\n    print(f'Errore: {e}')  # Errore: tuple.index(x): x not in tuple\n# Modo sicuro:\nprint(5 in t)  # False"
+        },
+        {
+            "id": "tuple_052",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nimport sys\nlista = [1, 2, 3, 4, 5]\ntupla = (1, 2, 3, 4, 5)\nprint(sys.getsizeof(lista) > sys.getsizeof(tupla))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "Dipende dalla versione di Python",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le tuple occupano meno memoria delle liste equivalenti. Le liste hanno overhead aggiuntivo per supportare operazioni mutabili (overallocation per append efficienti).",
+            "code_example": "import sys\nn = 1000\nlista = list(range(n))\ntupla = tuple(range(n))\nprint(f'Lista: {sys.getsizeof(lista)} byte')\nprint(f'Tupla: {sys.getsizeof(tupla)} byte')\n# La tupla occupa meno memoria"
+        },
+        {
+            "id": "tuple_053",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nt += (4, 5)\nprint(t)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(1, 2, 3, 4, 5)",
+                    "is_correct": true
+                },
+                {
+                    "text": "TypeError: le tuple sono immutabili",
+                    "is_correct": false
+                },
+                {
+                    "text": "(1, 2, 3, (4, 5))",
+                    "is_correct": false
+                },
+                {
+                    "text": "((1, 2, 3), (4, 5))",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "+= su tuple non modifica la tupla originale: crea una nuova tupla e riassegna la variabile t. La tupla originale (1,2,3) non viene modificata, t ora punta a un nuovo oggetto.",
+            "code_example": "t = (1, 2, 3)\nprint(id(t))   # es: 140234567\nt += (4, 5)\nprint(id(t))   # diverso! nuova tupla\nprint(t)       # (1, 2, 3, 4, 5)"
+        },
+        {
+            "id": "tuple_054",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (True, False, True, True)\nprint(sum(t))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "3",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "4",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "In Python, bool è una sottoclasse di int: True vale 1 e False vale 0. sum() somma i valori: 1+0+1+1 = 3.",
+            "code_example": "t = (True, False, True, True, False)\nprint(sum(t))       # 3 (numero di True)\nprint(t.count(True))  # 3"
+        },
+        {
+            "id": "tuple_055",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nd = dict(enumerate(t))\nprint(d)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "{0: 1, 1: 2, 2: 3}",
+                    "is_correct": true
+                },
+                {
+                    "text": "{1: 0, 2: 1, 3: 2}",
+                    "is_correct": false
+                },
+                {
+                    "text": "[(0, 1), (1, 2), (2, 3)]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "enumerate(t) produce coppie (indice, valore): (0,1), (1,2), (2,3). dict() converte queste coppie in un dizionario con gli indici come chiavi.",
+            "code_example": "t = ('a', 'b', 'c')\nd = dict(enumerate(t))\nprint(d)  # {0: 'a', 1: 'b', 2: 'c'}\nd2 = dict(enumerate(t, start=1))\nprint(d2) # {1: 'a', 2: 'b', 3: 'c'}"
+        },
+        {
+            "id": "tuple_056",
+            "category_id": "tuple",
+            "text": "Cosa stampa questo codice?\n```python\nt = (1, 2, 3)\nprint(t[10])\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "IndexError",
+                    "is_correct": true
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                },
+                {
+                    "text": "3",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Accedere a un indice fuori dal range della tupla solleva IndexError, esattamente come per le liste.",
+            "code_example": "t = (1, 2, 3)\ntry:\n    print(t[10])\nexcept IndexError as e:\n    print(f'Errore: {e}')  # tuple index out of range\n# Indici validi: 0, 1, 2 oppure -3, -2, -1"
+        },
+        {
             "id": "set_001",
             "category_id": "set",
             "text": "Cosa restituisce `{1, 2, 3} & {2, 3, 4}`?",
