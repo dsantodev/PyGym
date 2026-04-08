@@ -313,6 +313,1306 @@
             "code_example": "if (n := len([1,2,3])) > 2:\n    print(f'Lista lunga {n}')  # Lista lunga 3"
         },
         {
+            "id": "basi_011",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint('a', 'b', 'c', sep='-')\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "a-b-c",
+                    "is_correct": true
+                },
+                {
+                    "text": "a b c",
+                    "is_correct": false
+                },
+                {
+                    "text": "abc",
+                    "is_correct": false
+                },
+                {
+                    "text": "-a-b-c-",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il parametro `sep` di print() specifica il separatore tra gli argomenti. Il valore di default è uno spazio.",
+            "code_example": "print('a', 'b', 'c')           # a b c\nprint('a', 'b', 'c', sep='-')  # a-b-c\nprint('a', 'b', 'c', sep='')   # abc\nprint('x', 'y', sep=' | ')     # x | y"
+        },
+        {
+            "id": "basi_012",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint('ciao', end='!')\nprint('mondo')\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "ciao!mondo",
+                    "is_correct": true
+                },
+                {
+                    "text": "ciao!\nmondo",
+                    "is_correct": false
+                },
+                {
+                    "text": "ciao mondo",
+                    "is_correct": false
+                },
+                {
+                    "text": "ciao!\\nmondo",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Il parametro `end` di print() specifica cosa stampare alla fine. Di default è '\\n'. Con end='!' il cursore resta sulla stessa riga, quindi il secondo print() continua lì.",
+            "code_example": "print('uno', end=', ')\nprint('due', end=', ')\nprint('tre')\n# uno, due, tre"
+        },
+        {
+            "id": "basi_013",
+            "category_id": "basi",
+            "text": "Qual è il risultato di `int('42')` e `str(42)` rispettivamente?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "42 e '42'",
+                    "is_correct": true
+                },
+                {
+                    "text": "'42' e 42",
+                    "is_correct": false
+                },
+                {
+                    "text": "Entrambi danno errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "42 e 42",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "int() converte una stringa in intero, str() converte un intero in stringa. Sono le funzioni base di type casting in Python.",
+            "code_example": "print(int('42'))       # 42\nprint(str(42))         # '42'\nprint(float('3.14'))   # 3.14\nprint(int(3.99))       # 3 (tronca, non arrotonda)"
+        },
+        {
+            "id": "basi_014",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\na = b = c = 0\nb = 5\nprint(a, b, c)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "0 5 0",
+                    "is_correct": true
+                },
+                {
+                    "text": "5 5 5",
+                    "is_correct": false
+                },
+                {
+                    "text": "0 0 0",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "a = b = c = 0 assegna 0 a tutte e tre. I numeri interi sono immutabili: b = 5 fa puntare b a un nuovo oggetto, senza influenzare a e c.",
+            "code_example": "a = b = c = 0\nprint(id(a) == id(b))  # True (stesso oggetto)\nb = 5\nprint(id(a) == id(b))  # False (b punta a 5)\nprint(a, b, c)         # 0 5 0"
+        },
+        {
+            "id": "basi_015",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 10\nx += 3\nx *= 2\nprint(x)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "26",
+                    "is_correct": true
+                },
+                {
+                    "text": "23",
+                    "is_correct": false
+                },
+                {
+                    "text": "20",
+                    "is_correct": false
+                },
+                {
+                    "text": "16",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "x += 3 → x = 13. Poi x *= 2 → x = 26. Gli operatori di assegnazione aumentata eseguono l'operazione e riassegnano.",
+            "code_example": "x = 10\nx += 3   # x = 13\nx *= 2   # x = 26\nx -= 6   # x = 20\nx //= 3  # x = 6\nprint(x) # 6"
+        },
+        {
+            "id": "basi_016",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(10 % 3)\nprint(-10 % 3)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "1\n2",
+                    "is_correct": true
+                },
+                {
+                    "text": "1\n-1",
+                    "is_correct": false
+                },
+                {
+                    "text": "1\n1",
+                    "is_correct": false
+                },
+                {
+                    "text": "-1\n2",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "In Python, l'operatore % segue il segno del divisore, non del dividendo. -10 % 3 = 2 perché -10 = (-4)*3 + 2.",
+            "code_example": "print(10 % 3)    # 1\nprint(-10 % 3)   # 2 (non -1!)\nprint(10 % -3)   # -2\nprint(-10 % -3)  # -1"
+        },
+        {
+            "id": "basi_017",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nn = None\nprint(n is None)\nprint(n == None)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "True\nTrue",
+                    "is_correct": true
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Entrambi funzionano, ma `is None` è lo stile raccomandato (PEP 8). None è un singleton: esiste un solo oggetto None in Python.",
+            "code_example": "x = None\nprint(x is None)    # True (stile corretto)\nprint(x == None)    # True (funziona ma sconsigliato)\nprint(bool(None))   # False (None è falsy)"
+        },
+        {
+            "id": "basi_018",
+            "category_id": "basi",
+            "text": "Quale di questi valori è considerato 'truthy' in Python?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "[0]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[]",
+                    "is_correct": false
+                },
+                {
+                    "text": "0.0",
+                    "is_correct": false
+                },
+                {
+                    "text": "\"\"",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "[0] è una lista con un elemento (lo zero), quindi non è vuota → truthy. Le liste vuote, 0.0 e la stringa vuota sono falsy.",
+            "code_example": "print(bool([0]))   # True  (lista con un elemento)\nprint(bool([]))    # False (lista vuota)\nprint(bool(0.0))   # False\nprint(bool('0'))   # True  (stringa non vuota)"
+        },
+        {
+            "id": "basi_019",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(True + True + False)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "2",
+                    "is_correct": true
+                },
+                {
+                    "text": "True",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "TrueTrueFalse",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "bool è una sottoclasse di int: True vale 1 e False vale 0. Quindi True + True + False = 1 + 1 + 0 = 2.",
+            "code_example": "print(True + True)    # 2\nprint(True * 5)       # 5\nprint(False + 10)     # 10\nprint(int(True))      # 1\nprint(int(False))     # 0"
+        },
+        {
+            "id": "basi_020",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(1 < 2 < 3)\nprint(1 < 2 > 0)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "True\nTrue",
+                    "is_correct": true
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python supporta il confronto concatenato (chained comparison). 1<2<3 significa (1<2) and (2<3). 1<2>0 significa (1<2) and (2>0), entrambi True.",
+            "code_example": "x = 5\nprint(1 < x < 10)    # True\nprint(0 < x < 3)     # False\nprint(1 < 2 < 3 < 4) # True"
+        },
+        {
+            "id": "basi_021",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(not not True)\nprint(not 0)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "True\nTrue",
+                    "is_correct": true
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nFalse",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "not not True: not True = False, not False = True. not 0: 0 è falsy, quindi not 0 = True.",
+            "code_example": "print(not True)      # False\nprint(not False)     # True\nprint(not 0)         # True\nprint(not 1)         # False\nprint(not not True)  # True"
+        },
+        {
+            "id": "basi_022",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(0 or 'default')\nprint(5 or 'default')\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "default\n5",
+                    "is_correct": true
+                },
+                {
+                    "text": "False\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "default\ndefault",
+                    "is_correct": false
+                },
+                {
+                    "text": "0\n5",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore `or` restituisce il primo valore truthy, o l'ultimo se nessuno è truthy. 0 è falsy → restituisce 'default'. 5 è truthy → restituisce 5.",
+            "code_example": "print(0 or 'default')    # default\nprint(5 or 'default')    # 5\nprint(None or [] or 42)  # 42\nprint('' or 0 or False)  # False (ultimo)"
+        },
+        {
+            "id": "basi_023",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(5 and 10)\nprint(0 and 10)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "10\n0",
+                    "is_correct": true
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "5\n0",
+                    "is_correct": false
+                },
+                {
+                    "text": "True\nTrue",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "`and` restituisce il primo valore falsy, o l'ultimo se tutti sono truthy. 5 è truthy, quindi si valuta 10 (truthy) → restituisce 10. 0 è falsy → restituisce 0 subito.",
+            "code_example": "print(1 and 2 and 3)  # 3 (tutti truthy, restituisce l'ultimo)\nprint(1 and 0 and 3)  # 0 (primo falsy)\nprint('' and 5)       # '' (primo falsy)"
+        },
+        {
+            "id": "basi_024",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 5\nrisultato = 'pari' if x % 2 == 0 else 'dispari'\nprint(risultato)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "dispari",
+                    "is_correct": true
+                },
+                {
+                    "text": "pari",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "5",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'espressione ternaria `A if condizione else B` restituisce A se la condizione è True, B altrimenti. 5 % 2 = 1 ≠ 0, quindi si restituisce 'dispari'.",
+            "code_example": "x = 10\nlabel = 'positivo' if x > 0 else 'non positivo'\nprint(label)  # positivo\n\n# Versione compatta di:\n# if x > 0: label = 'positivo'\n# else: label = 'non positivo'"
+        },
+        {
+            "id": "basi_025",
+            "category_id": "basi",
+            "text": "Qual è il risultato di `abs(-7.5)`?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "7.5",
+                    "is_correct": true
+                },
+                {
+                    "text": "-7.5",
+                    "is_correct": false
+                },
+                {
+                    "text": "7",
+                    "is_correct": false
+                },
+                {
+                    "text": "8",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "abs() restituisce il valore assoluto. Funziona su int, float e complex. Non converte il tipo: abs(-7.5) restituisce 7.5 (float).",
+            "code_example": "print(abs(-7))       # 7\nprint(abs(-7.5))     # 7.5\nprint(abs(3+4j))     # 5.0 (modulo del complesso)"
+        },
+        {
+            "id": "basi_026",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(round(2.5))\nprint(round(3.5))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "2\n4",
+                    "is_correct": true
+                },
+                {
+                    "text": "3\n4",
+                    "is_correct": false
+                },
+                {
+                    "text": "2\n3",
+                    "is_correct": false
+                },
+                {
+                    "text": "3\n3",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python usa il 'banker's rounding' (arrotondamento al pari): in caso di .5 arrotonda all'intero pari più vicino. 2.5 → 2 (pari), 3.5 → 4 (pari).",
+            "code_example": "print(round(0.5))  # 0\nprint(round(1.5))  # 2\nprint(round(2.5))  # 2\nprint(round(3.5))  # 4\nprint(round(2.675, 2))  # 2.67 (floating point!)"
+        },
+        {
+            "id": "basi_027",
+            "category_id": "basi",
+            "text": "Cosa restituisce `divmod(17, 5)`?",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "(3, 2)",
+                    "is_correct": true
+                },
+                {
+                    "text": "(3, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "3.4",
+                    "is_correct": false
+                },
+                {
+                    "text": "[3, 2]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "divmod(a, b) restituisce una tupla (quoziente, resto): 17 // 5 = 3, 17 % 5 = 2.",
+            "code_example": "q, r = divmod(17, 5)\nprint(q)  # 3\nprint(r)  # 2\nprint(divmod(100, 7))  # (14, 2)"
+        },
+        {
+            "id": "basi_028",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 5\ndel x\nprint(x)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "NameError",
+                    "is_correct": true
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                },
+                {
+                    "text": "5",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "del rimuove il binding della variabile. Dopo del x, la variabile x non esiste più nello scope, quindi accedervi solleva NameError.",
+            "code_example": "x = 10\nprint(x)  # 10\ndel x\ntry:\n    print(x)\nexcept NameError as e:\n    print(e)  # name 'x' is not defined"
+        },
+        {
+            "id": "basi_029",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 10\ndef modifica():\n    global x\n    x = 99\nmodifica()\nprint(x)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "99",
+                    "is_correct": true
+                },
+                {
+                    "text": "10",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La keyword `global` permette a una funzione di modificare una variabile globale. Senza `global`, l'assegnazione creerebbe una variabile locale.",
+            "code_example": "contatore = 0\ndef incrementa():\n    global contatore\n    contatore += 1\nincrementa()\nincrementa()\nprint(contatore)  # 2"
+        },
+        {
+            "id": "basi_030",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(bin(10))\nprint(hex(255))\nprint(oct(8))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "0b1010\n0xff\n0o10",
+                    "is_correct": true
+                },
+                {
+                    "text": "1010\nff\n10",
+                    "is_correct": false
+                },
+                {
+                    "text": "0b1010\n0xFF\n0o10",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "bin(), hex() e oct() convertono un intero in stringa binaria, esadecimale e ottale rispettivamente, con prefisso 0b, 0x, 0o. hex() usa lettere minuscole.",
+            "code_example": "print(bin(10))   # 0b1010\nprint(hex(255))  # 0xff\nprint(oct(8))    # 0o10\nprint(int('0b1010', 2))  # 10\nprint(int('ff', 16))     # 255"
+        },
+        {
+            "id": "basi_031",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(ord('A'))\nprint(chr(97))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "65\na",
+                    "is_correct": true
+                },
+                {
+                    "text": "97\nA",
+                    "is_correct": false
+                },
+                {
+                    "text": "65\nA",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "ord() restituisce il codice Unicode di un carattere. chr() fa il contrario. 'A' ha codice 65, il carattere con codice 97 è 'a'.",
+            "code_example": "print(ord('A'))  # 65\nprint(ord('a'))  # 97\nprint(ord('0'))  # 48\nprint(chr(65))   # A\nprint(chr(97))   # a"
+        },
+        {
+            "id": "basi_032",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(1_000_000 + 1_500)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "1001500",
+                    "is_correct": true
+                },
+                {
+                    "text": "Errore di sintassi",
+                    "is_correct": false
+                },
+                {
+                    "text": "1_001_500",
+                    "is_correct": false
+                },
+                {
+                    "text": "1000000",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python 3.6+ permette di usare underscore nei letterali numerici come separatore visivo. 1_000_000 è uguale a 1000000. Migliorano la leggibilità.",
+            "code_example": "milione = 1_000_000\npi = 3.141_592_653\nbyte = 0xFF_FF\nprint(milione)  # 1000000\nprint(pi)       # 3.141592653"
+        },
+        {
+            "id": "basi_033",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(type(None))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "<class 'NoneType'>",
+                    "is_correct": true
+                },
+                {
+                    "text": "<class 'None'>",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "<class 'null'>",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "None è l'unica istanza del tipo NoneType. È il valore 'assente' in Python, equivalente a null in altri linguaggi.",
+            "code_example": "x = None\nprint(type(x))           # <class 'NoneType'>\nprint(isinstance(x, type(None)))  # True\nprint(x is None)         # True"
+        },
+        {
+            "id": "basi_034",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 10\ny = x\nx = 20\nprint(y)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "10",
+                    "is_correct": true
+                },
+                {
+                    "text": "20",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "y = x fa puntare y all'oggetto 10. x = 20 fa puntare x a un nuovo oggetto 20. y rimane invariato perché i numeri interi sono immutabili.",
+            "code_example": "x = 10\ny = x\nprint(id(x) == id(y))  # True\nx = 20\nprint(id(x) == id(y))  # False\nprint(y)               # 10"
+        },
+        {
+            "id": "basi_035",
+            "category_id": "basi",
+            "text": "Quale è la corretta sintassi per un commento su più righe in Python?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "Usare # all'inizio di ogni riga",
+                    "is_correct": true
+                },
+                {
+                    "text": "/* commento */",
+                    "is_correct": false
+                },
+                {
+                    "text": "<!-- commento -->",
+                    "is_correct": false
+                },
+                {
+                    "text": "// commento",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python non ha una sintassi nativa per commenti multiriga. Si usa # per ogni riga. Le triple virgolette ('''...''') sono stringhe letterali, spesso usate come docstring ma non sono veri commenti.",
+            "code_example": "# Questo è\n# un commento\n# su più righe\n\n'''Questa è una stringa\n   multiriga, non un commento\n   ma spesso usata come docstring'''\n\ndef funzione():\n    '''Questa è una docstring.'''\n    pass"
+        },
+        {
+            "id": "basi_036",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 5\nif x > 3:\n    pass\nprint('fine')\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "fine",
+                    "is_correct": true
+                },
+                {
+                    "text": "Niente",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore di sintassi",
+                    "is_correct": false
+                },
+                {
+                    "text": "pass\nfine",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "`pass` è uno statement no-op: non fa nulla. Serve come placeholder dove Python richiede sintatticamente un blocco di codice.",
+            "code_example": "# pass come placeholder\nfor i in range(5):\n    pass  # da implementare\n\nclass Vuota:\n    pass  # classe senza metodi\n\ndef todo():\n    pass  # da implementare"
+        },
+        {
+            "id": "basi_037",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(2 & 3)\nprint(2 | 3)\nprint(2 ^ 3)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "2\n3\n1",
+                    "is_correct": true
+                },
+                {
+                    "text": "1\n3\n2",
+                    "is_correct": false
+                },
+                {
+                    "text": "6\n5\n1",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Operatori bitwise: & AND (10 & 11 = 10 = 2), | OR (10 | 11 = 11 = 3), ^ XOR (10 ^ 11 = 01 = 1). In binario: 2=010, 3=011.",
+            "code_example": "# 2 = 0b10, 3 = 0b11\nprint(2 & 3)   # 0b10 = 2 (AND)\nprint(2 | 3)   # 0b11 = 3 (OR)\nprint(2 ^ 3)   # 0b01 = 1 (XOR)\nprint(~2)      # -3 (NOT)\nprint(2 << 1)  # 4 (shift left)"
+        },
+        {
+            "id": "basi_038",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef saluta(nome='Mondo'):\n    return f'Ciao, {nome}!'\nprint(saluta())\nprint(saluta('Python'))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "Ciao, Mondo!\nCiao, Python!",
+                    "is_correct": true
+                },
+                {
+                    "text": "Ciao, !\nCiao, Python!",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "Ciao, nome!\nCiao, Python!",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "I parametri con valore di default sono opzionali. Se non passati, viene usato il default. Le f-string interpolano le variabili con {}.",
+            "code_example": "def potenza(base, exp=2):\n    return base ** exp\nprint(potenza(3))     # 9  (exp=2 di default)\nprint(potenza(3, 3))  # 27"
+        },
+        {
+            "id": "basi_039",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nf = lambda x, y: x * y\nprint(f(3, 4))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "12",
+                    "is_correct": true
+                },
+                {
+                    "text": "7",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "34",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le lambda sono funzioni anonime monoespressione. lambda x, y: x * y crea una funzione che moltiplica due argomenti.",
+            "code_example": "doppio = lambda x: x * 2\nprint(doppio(5))     # 10\n\naddizione = lambda a, b: a + b\nprint(addizione(3, 4))  # 7\n\n# Usato spesso con sorted, map, filter\nnumeri = [3, 1, 4, 1, 5]\nprint(sorted(numeri, key=lambda x: -x))  # [5, 4, 3, 1, 1]"
+        },
+        {
+            "id": "basi_040",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef f(*args):\n    return sum(args)\nprint(f(1, 2, 3, 4))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "10",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3, 4)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 2, 3, 4]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "*args raccoglie tutti gli argomenti posizionali in una tupla. sum() somma tutti gli elementi: 1+2+3+4=10.",
+            "code_example": "def mostra(*args):\n    print(type(args))  # <class 'tuple'>\n    for a in args:\n        print(a)\n\nmostra(1, 'due', 3.0)"
+        },
+        {
+            "id": "basi_041",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef f(**kwargs):\n    return kwargs\nprint(f(nome='Alice', eta=30))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "{'nome': 'Alice', 'eta': 30}",
+                    "is_correct": true
+                },
+                {
+                    "text": "('nome', 'Alice', 'eta', 30)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "[('nome', 'Alice'), ('eta', 30)]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "**kwargs raccoglie tutti gli argomenti keyword in un dizionario. Le chiavi sono i nomi dei parametri, i valori sono i valori passati.",
+            "code_example": "def info(**kwargs):\n    for chiave, valore in kwargs.items():\n        print(f'{chiave}: {valore}')\n\ninfo(nome='Bob', citta='Roma', eta=25)"
+        },
+        {
+            "id": "basi_042",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef outer():\n    x = 10\n    def inner():\n        print(x)\n    inner()\nouter()\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "10",
+                    "is_correct": true
+                },
+                {
+                    "text": "Errore: x non definita",
+                    "is_correct": false
+                },
+                {
+                    "text": "None",
+                    "is_correct": false
+                },
+                {
+                    "text": "0",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python usa la regola LEGB (Local, Enclosing, Global, Built-in). inner() cerca x prima nel suo scope locale, poi nell'enclosing scope (outer), dove trova x=10.",
+            "code_example": "def outer():\n    x = 'outer'\n    def inner():\n        # x non è definita qui, cerca in outer\n        print(x)  # outer\n    inner()\nouter()"
+        },
+        {
+            "id": "basi_043",
+            "category_id": "basi",
+            "text": "Qual è la differenza tra una lista e una tupla riguardo alla mutabilità?",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "Le liste sono mutabili, le tuple sono immutabili",
+                    "is_correct": true
+                },
+                {
+                    "text": "Le tuple sono mutabili, le liste sono immutabili",
+                    "is_correct": false
+                },
+                {
+                    "text": "Entrambe sono mutabili",
+                    "is_correct": false
+                },
+                {
+                    "text": "Entrambe sono immutabili",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le liste [] supportano modifica, aggiunta e rimozione di elementi. Le tuple () sono immutabili: una volta create, non possono essere modificate.",
+            "code_example": "lista = [1, 2, 3]\nlista[0] = 10      # OK\nlista.append(4)    # OK\n\ntupla = (1, 2, 3)\n# tupla[0] = 10   # TypeError!\n# tupla.append(4) # AttributeError!"
+        },
+        {
+            "id": "basi_044",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nimport copy\na = [1, [2, 3]]\nb = copy.copy(a)\nb[1].append(99)\nprint(a)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "[1, [2, 3, 99]]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[1, [2, 3]]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, [2, 3, 99], 99]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "copy.copy() crea una copia superficiale (shallow): copia il contenitore esterno ma condivide gli oggetti interni. b[1] è lo stesso oggetto lista di a[1], quindi modificarlo influenza anche a.",
+            "code_example": "import copy\na = [1, [2, 3]]\nb = copy.copy(a)      # shallow\nc = copy.deepcopy(a)  # deep\nb[1].append(99)\nc[1].append(88)\nprint(a)  # [1, [2, 3, 99]]  (b e a condividono la lista interna)\n# c è indipendente"
+        },
+        {
+            "id": "basi_045",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(list(map(lambda x: x**2, [1, 2, 3, 4])))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[1, 4, 9, 16]",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 4, 9, 16)",
+                    "is_correct": false
+                },
+                {
+                    "text": "1 4 9 16",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "map() applica la funzione a ogni elemento dell'iterabile e restituisce un map object. list() lo converte in lista. Il quadrato di ogni elemento: 1,4,9,16.",
+            "code_example": "numeri = [1, 2, 3, 4, 5]\ndoppi = list(map(lambda x: x * 2, numeri))\nprint(doppi)  # [2, 4, 6, 8, 10]\n# Equivalente con list comprehension:\nprint([x * 2 for x in numeri])"
+        },
+        {
+            "id": "basi_046",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(list(filter(lambda x: x > 3, [1, 2, 3, 4, 5])))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[4, 5]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[1, 2, 3]",
+                    "is_correct": false
+                },
+                {
+                    "text": "[3, 4, 5]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "filter() filtra gli elementi per cui la funzione restituisce True. Solo 4 e 5 sono > 3.",
+            "code_example": "numeri = range(10)\npari = list(filter(lambda x: x % 2 == 0, numeri))\nprint(pari)  # [0, 2, 4, 6, 8]\n# Equivalente:\nprint([x for x in numeri if x % 2 == 0])"
+        },
+        {
+            "id": "basi_047",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint([x for x in range(5) if x % 2 == 0])\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "[0, 2, 4]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[1, 3]",
+                    "is_correct": false
+                },
+                {
+                    "text": "[0, 1, 2, 3, 4]",
+                    "is_correct": false
+                },
+                {
+                    "text": "[2, 4]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La list comprehension con condizione include solo gli elementi dove x % 2 == 0 (numeri pari). range(5) produce 0,1,2,3,4. Pari: 0, 2, 4.",
+            "code_example": "quadrati_pari = [x**2 for x in range(10) if x % 2 == 0]\nprint(quadrati_pari)  # [0, 4, 16, 36, 64]"
+        },
+        {
+            "id": "basi_048",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nif __name__ == '__main__':\n    print('eseguito direttamente')\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "eseguito direttamente",
+                    "is_correct": true
+                },
+                {
+                    "text": "Niente",
+                    "is_correct": false
+                },
+                {
+                    "text": "__main__",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Quando un file viene eseguito direttamente, __name__ vale '__main__'. Quando viene importato, __name__ vale il nome del modulo. Questo pattern permette di distinguere i due casi.",
+            "code_example": "# file: mio_modulo.py\ndef utilita():\n    return 42\n\nif __name__ == '__main__':\n    # Eseguito solo se lanciato direttamente\n    print(utilita())\n# Se importato: from mio_modulo import utilita\n# il blocco if NON viene eseguito"
+        },
+        {
+            "id": "basi_049",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ntry:\n    x = int('abc')\nexcept ValueError:\n    print('Valore non valido')\nexcept TypeError:\n    print('Tipo non valido')\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "Valore non valido",
+                    "is_correct": true
+                },
+                {
+                    "text": "Tipo non valido",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "Niente",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "int('abc') solleva ValueError perché 'abc' non può essere convertito in intero. TypeError si verificherebbe passando un tipo completamente errato (es. int([1,2,3])).",
+            "code_example": "try:\n    n = int('42')     # OK\n    n = int('3.14')   # ValueError\nexcept ValueError as e:\n    print(f'Errore: {e}')\nfinally:\n    print('Eseguito sempre')"
+        },
+        {
+            "id": "basi_050",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 10\ndef f():\n    x = 20\n    return x\nprint(f())\nprint(x)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "20\n10",
+                    "is_correct": true
+                },
+                {
+                    "text": "20\n20",
+                    "is_correct": false
+                },
+                {
+                    "text": "10\n10",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "La x dentro f() è una variabile locale, distinta dalla x globale. Senza `global`, assegnare a x dentro una funzione crea una nuova variabile locale.",
+            "code_example": "n = 5\ndef doppio():\n    n = n * 2  # UnboundLocalError! Python la vede come locale\n    return n\n\ndef doppio_ok():\n    global n\n    n = n * 2\n    return n"
+        },
+        {
+            "id": "basi_051",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(range(5))\nprint(list(range(5)))\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "range(0, 5)\n[0, 1, 2, 3, 4]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[0, 1, 2, 3, 4]\n[0, 1, 2, 3, 4]",
+                    "is_correct": false
+                },
+                {
+                    "text": "0 1 2 3 4\n[0, 1, 2, 3, 4]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "range() restituisce un oggetto range (lazy), non una lista. Per vedere i valori bisogna convertirlo con list(). Questo è efficiente in memoria per range molto grandi.",
+            "code_example": "r = range(0, 10, 2)\nprint(r)         # range(0, 10, 2)\nprint(list(r))   # [0, 2, 4, 6, 8]\nprint(len(r))    # 5\nprint(7 in r)    # False"
+        },
+        {
+            "id": "basi_052",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nfloat('inf') > 10**100\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "True",
+                    "is_correct": true
+                },
+                {
+                    "text": "False",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "inf",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Python supporta infinito come valore float: float('inf'). È maggiore di qualsiasi numero finito, inclusi numeri interi arbitrariamente grandi.",
+            "code_example": "import math\nprint(math.inf > 10**1000)    # True\nprint(math.inf + 1 == math.inf)  # True\nprint(math.isnan(float('nan')))  # True\nprint(float('-inf') < -10**1000) # True"
+        },
+        {
+            "id": "basi_053",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(10 / 2)\nprint(10 // 2)\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "5.0\n5",
+                    "is_correct": true
+                },
+                {
+                    "text": "5\n5",
+                    "is_correct": false
+                },
+                {
+                    "text": "5.0\n5.0",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "In Python 3, / restituisce sempre un float (anche se il risultato è intero). // è la divisione intera e restituisce int se entrambi gli operandi sono int.",
+            "code_example": "print(7 / 2)    # 3.5\nprint(7 // 2)   # 3\nprint(7.0 // 2) # 3.0  (almeno un float → risultato float)\nprint(type(6/2))  # <class 'float'>"
+        },
+        {
+            "id": "basi_054",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx = 'Python'\nprint(x[0], x[-1], x[2:4])\n```",
+            "difficulty": 1,
+            "answers": [
+                {
+                    "text": "P n th",
+                    "is_correct": true
+                },
+                {
+                    "text": "P n tho",
+                    "is_correct": false
+                },
+                {
+                    "text": "y n th",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "'Python'[0]='P', [-1]='n' (ultimo), [2:4]='th' (indici 2 e 3). Le stringhe in Python supportano indicizzazione e slicing come le liste.",
+            "code_example": "s = 'Python'\nprint(s[0])    # P\nprint(s[-1])   # n\nprint(s[2:4])  # th\nprint(s[::-1]) # nohtyP"
+        },
+        {
+            "id": "basi_055",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\na = [1, 2, 3]\nb = a\nb.append(4)\nprint(a)\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "[1, 2, 3, 4]",
+                    "is_correct": true
+                },
+                {
+                    "text": "[1, 2, 3]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "[1, 2, 3, [4]]",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "b = a non crea una copia: b e a puntano alla stessa lista. Modificare b modifica anche a. Per una copia usare b = a.copy() o b = a[:].",
+            "code_example": "a = [1, 2, 3]\nb = a       # stesso oggetto\nc = a.copy()  # copia indipendente\nb.append(4)\nc.append(9)\nprint(a)  # [1, 2, 3, 4]\nprint(c)  # [1, 2, 3, 9]"
+        },
+        {
+            "id": "basi_056",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nprint(all([True, True, False]))\nprint(any([False, False, True]))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "False\nTrue",
+                    "is_correct": true
+                },
+                {
+                    "text": "True\nTrue",
+                    "is_correct": false
+                },
+                {
+                    "text": "False\nFalse",
+                    "is_correct": false
+                },
+                {
+                    "text": "True\nFalse",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "all() restituisce True solo se tutti gli elementi sono truthy (qui c'è False → False). any() restituisce True se almeno un elemento è truthy (qui c'è True → True).",
+            "code_example": "print(all([1, 2, 3]))    # True\nprint(all([1, 0, 3]))    # False\nprint(any([0, 0, 0]))    # False\nprint(any([0, 0, 1]))    # True\nprint(all([]))           # True (vacuamente vero)\nprint(any([]))           # False"
+        },
+        {
+            "id": "basi_057",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef f(x, y, z):\n    return x + y + z\nargs = (1, 2, 3)\nprint(f(*args))\n```",
+            "difficulty": 2,
+            "answers": [
+                {
+                    "text": "6",
+                    "is_correct": true
+                },
+                {
+                    "text": "(1, 2, 3)",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "123",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "L'operatore * nella chiamata di funzione fa l'unpacking della tupla/lista in argomenti posizionali. f(*args) equivale a f(1, 2, 3).",
+            "code_example": "def somma(a, b, c):\n    return a + b + c\n\nnumeri = [10, 20, 30]\nprint(somma(*numeri))  # 60\n\nd = {'a': 1, 'b': 2, 'c': 3}\nprint(somma(**d))      # 6"
+        },
+        {
+            "id": "basi_058",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\ndef conta():\n    for i in range(3):\n        yield i\ng = conta()\nprint(next(g))\nprint(next(g))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "0\n1",
+                    "is_correct": true
+                },
+                {
+                    "text": "0\n0",
+                    "is_correct": false
+                },
+                {
+                    "text": "[0, 1, 2]\n[0, 1, 2]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Una funzione con `yield` è un generatore: restituisce un iteratore che produce valori uno alla volta. next() avanza al valore successivo. Lo stato viene preservato tra chiamate.",
+            "code_example": "def pari(n):\n    for i in range(n):\n        if i % 2 == 0:\n            yield i\n\nfor x in pari(10):\n    print(x)  # 0 2 4 6 8"
+        },
+        {
+            "id": "basi_059",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nx: int = 'ciao'\nprint(type(x))\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "<class 'str'>",
+                    "is_correct": true
+                },
+                {
+                    "text": "<class 'int'>",
+                    "is_correct": false
+                },
+                {
+                    "text": "TypeError",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore di annotazione",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "Le annotazioni di tipo in Python sono solo suggerimenti (hint), non vengono applicate a runtime. x: int = 'ciao' assegna la stringa 'ciao' a x senza nessun controllo di tipo.",
+            "code_example": "x: int = 'ciao'\nprint(type(x))     # <class 'str'>\nprint(x)           # ciao\n\n# Le annotazioni sono in __annotations__\ndef f(n: int) -> str:\n    return str(n)\nprint(f.__annotations__)  # {'n': <class 'int'>, 'return': <class 'str'>}"
+        },
+        {
+            "id": "basi_060",
+            "category_id": "basi",
+            "text": "Cosa stampa questo codice?\n```python\nfrom functools import reduce\nrisultato = reduce(lambda acc, x: acc + x, [1, 2, 3, 4, 5])\nprint(risultato)\n```",
+            "difficulty": 3,
+            "answers": [
+                {
+                    "text": "15",
+                    "is_correct": true
+                },
+                {
+                    "text": "[1, 3, 6, 10, 15]",
+                    "is_correct": false
+                },
+                {
+                    "text": "Errore",
+                    "is_correct": false
+                },
+                {
+                    "text": "5",
+                    "is_correct": false
+                }
+            ],
+            "explanation": "reduce() applica la funzione cumulativamente: ((((1+2)+3)+4)+5) = 15. Prende due argomenti: l'accumulatore e l'elemento corrente.",
+            "code_example": "from functools import reduce\n\n# Prodotto\nprodotto = reduce(lambda a, b: a * b, [1, 2, 3, 4])\nprint(prodotto)  # 24\n\n# Massimo\nmax_val = reduce(lambda a, b: a if a > b else b, [3,1,4,1,5])\nprint(max_val)   # 5"
+        },
+        {
             "id": "stringhe_001",
             "category_id": "stringhe",
             "text": "Cosa produce `'Python' * 2`?",
