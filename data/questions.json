@@ -1749,7 +1749,7 @@
             "difficulty": 3,
             "answers": [
                 {
-                    "text": "'bonono'",
+                    "text": "'bonona'",
                     "is_correct": true
                 },
                 {
@@ -1765,8 +1765,8 @@
                     "is_correct": false
                 }
             ],
-            "explanation": "Il terzo parametro limita il numero di sostituzioni effettuate partendo dall'inizio.",
-            "code_example": "print('aaaa'.replace('a', 'b', 2)) # 'bbaa'"
+            "explanation": "Il terzo argomento di .replace() è il count, cioè il numero massimo di sostituzioni da effettuare. Con count=2, solo le prime due 'a' vengono rimpiazzate con 'o', la terza rimane invariata.",
+            "code_example": "'banana'.replace('a', 'o', 2)  # → 'bonona'\n#  b-a-n-a-n-a\n#      ↑   ↑       solo queste due vengono sostituite"
         },
         {
             "id": "stringhe_057",
