@@ -44,7 +44,7 @@ Prima di ogni sessione è possibile scegliere:
 
 Le domande vengono distribuite proporzionalmente tra le categorie selezionate e mescolate casualmente.
 
-https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341
+![Schermata di configurazione](https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341)
 
 ### Sistema di punteggio
 
@@ -60,15 +60,15 @@ Il punteggio dipende dalla difficoltà della domanda:
 
 Seleziona una risposta e ricevi subito il feedback: se hai sbagliato viene mostrata la risposta corretta. In entrambi i casi puoi aprire la spiegazione con l'esempio di codice.
 
-https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb
+![Quiz in azione 1](https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb)
 
-https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe
+![Quiz in azione 2](https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe)
 
 ### Risultati e classifica
 
 Al termine del quiz viene mostrata una pagina riassuntiva con punteggio, percentuale e dettaglio domanda per domanda. Puoi salvare il risultato con un nickname e consultare la classifica globale.
 
-https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995
+![Pagina risultati](https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995)
 
 ---
 
