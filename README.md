@@ -1,93 +1,99 @@
+# 🏋️ PyGym – Allenati ogni giorno con Python
 
+**PyGym** è una web-app per allenarti con Python in modo interattivo.
+Non è solo un quiz a risposta multipla: ogni domanda diventa un momento di studio grazie a spiegazioni ed esempi di codice eseguibili.
 
-# 🏋️ PyGym
-
-> **Allenati ogni giorno con Python**
-
-PyGym non è un semplice quiz a risposta multipla: è uno strumento pensato per lo **studio e il ripasso attivo** di Python. Dopo ogni risposta — giusta o sbagliata — viene mostrata la risposta corretta, una spiegazione testuale e un **esempio di codice funzionante**, così ogni sessione diventa un'occasione per imparare davvero.
-
----
-
-## Funzionalità principali
-
-### Modalità studio/ripasso
-
-A differenza di un quiz classico, PyGym mostra sempre il feedback completo dopo ogni risposta:
-
-- ✅ Se hai risposto **correttamente**: conferma e punti guadagnati
-- ❌ Se hai risposto **sbagliando**: evidenzia la tua risposta, indica quella corretta
-- 📖 In entrambi i casi si apre un expander con **spiegazione + esempio di codice Python**
-
-Questo approccio permette di usare PyGym sia come test che come strumento di ripasso guidato.
-
-### Categorie disponibili
-
-Le domande sono organizzate in 10 categorie indipendenti:
-
-| Categoria             | Argomenti                                   |
-| --------------------- | ------------------------------------------- |
-| Basi del linguaggio   | Tipi di dati, operatori, variabili          |
-| Stringhe & Metodi     | Metodi, formattazione, slicing              |
-| Liste                 | Metodi, comprehension, slicing              |
-| Dizionari             | Accesso, iterazione, metodi                 |
-| Tuple                 | Immutabilità, unpacking                     |
-| Set e FrozenSet       | Operazioni insiemistiche, metodi            |
-| OOP                   | Classi, ereditarietà, metodi speciali       |
-| Funzioni avanzate     | Lambda, decoratori, generatori, closures    |
-| Gestione degli errori | Try/except, eccezioni personalizzate, raise |
-| Moduli standard       | os, sys, json, pathlib, datetime, logging   |
-
-### Configurazione del quiz
-
-Prima di ogni sessione è possibile scegliere:
-
-- **Una o più categorie** da includere nel quiz
-- **Numero di domande** tramite uno slider dinamico (min: 1 per categoria, max: tutte le domande disponibili)
-
-Le domande vengono distribuite proporzionalmente tra le categorie selezionate e mescolate casualmente.
-
-### Sistema di punteggio
-
-Il punteggio dipende dalla difficoltà della domanda:
-
-| Difficoltà   | Risposta corretta | Risposta sbagliata |
-| ------------ | ----------------- | ------------------ |
-| 🟢 Facile    | +1 pt             | 0 pt               |
-| 🟡 Medio     | +2 pt             | 0 pt               |
-| 🔴 Difficile | +3 pt             | 0 pt               |
-
-### Quiz in azione
-
-Seleziona una risposta e ricevi subito il feedback: se hai sbagliato viene mostrata la risposta corretta. In entrambi i casi puoi aprire la spiegazione con l'esempio di codice.
-
-### Risultati e classifica
-
-Al termine del quiz viene mostrata una pagina riassuntiva con punteggio, percentuale e dettaglio domanda per domanda. Puoi salvare il risultato con un nickname e consultare la classifica globale.
-
---- 
-
-## Video della Schermata iniziale e configurazione del PyQuiz:
-
-![Schermata_di_Configurazione](https://github.com/user-attachments/assets/2d6b3c11-8364-45c0-9506-c4c518dfe05b)
-
---- 
-
-## Video del PyQuiz in azione:
-
-![quiz_in_azione_2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
-
-![quiz_in_azione_1](https://github.com/user-attachments/assets/d545c480-91a1-4b7f-9650-e1c7773ff3aa)
+L’obiettivo non è solo rispondere… ma **capire**.
 
 ---
 
-## Video della pagina dei Risultati e Classifica:
+## 🚀 Cosa rende PyGym diverso?
 
-![pagina_risultati](https://github.com/user-attachments/assets/2ba5aa6f-8e15-4345-a32f-1015d3e1399a)
+* Feedback immediato dopo ogni risposta
+* Spiegazione dettagliata + esempio di codice
+* Punteggio basato sulla difficoltà
+* Quiz personalizzabili per argomento
+* Classifica finale con nickname
+
+In pratica, puoi usarlo sia come test che come strumento di ripasso quotidiano.
 
 ---
 
-## Provalo subito
+## 🧠 Modalità studio
 
-L'app è online e pronta all'uso, non serve installare nulla:
+Per ogni domanda:
 
-**[quizpygym.streamlit.app](https://quizpygym.streamlit.app/)**
+* ✔️ Se rispondi correttamente: ottieni punti e vedi la spiegazione
+* ❌ Se sbagli: vedi la risposta corretta e una spiegazione dettagliata
+* 📖 Ogni spiegazione include un esempio Python funzionante
+
+L’obiettivo è imparare dai propri errori, non solo fare punti.
+
+---
+
+## 📚 Argomenti disponibili
+
+Le domande sono suddivise in categorie indipendenti:
+
+| Categoria           | Argomenti                                 |
+| ------------------- | ----------------------------------------- |
+| Basi del linguaggio | Variabili, operatori, tipi                |
+| Stringhe            | Metodi, slicing, formattazione            |
+| Liste               | Operazioni, comprehension                 |
+| Dizionari           | Chiavi, valori, metodi                    |
+| Tuple               | Immutabilità, unpacking                  |
+| Set e FrozenSet     | Operazioni insiemistiche                  |
+| OOP                 | Classi, ereditarietà, magic methods      |
+| Funzioni avanzate   | Lambda, decoratori, generatori            |
+| Gestione errori     | try/except, eccezioni personalizzate      |
+| Moduli standard     | os, sys, json, pathlib, datetime, logging |
+
+---
+
+## ⚙️ Configurazione del quiz
+
+Prima di iniziare puoi scegliere:
+
+* Quali categorie includere
+* Numero di domande tramite uno slider dinamico
+
+Le domande vengono poi distribuite automaticamente e mescolate.
+
+---
+
+## 🏆 Punteggio
+
+Il punteggio varia in base alla difficoltà:
+
+| Difficoltà  | Punti |
+| ------------ | ----- |
+| 🟢 Facile    | +1    |
+| 🟡 Medio     | +2    |
+| 🔴 Difficile | +3    |
+
+Nessuna penalità in caso di errore: l’obiettivo è imparare.
+
+---
+
+## 🎮 Demo dell’app
+
+### 🧭 Schermata iniziale
+
+![Schermata di configurazione](https://github.com/user-attachments/assets/2d6b3c11-8364-45c0-9506-c4c518dfe05b)
+
+### 🧠 Quiz in azione
+
+![Quiz in azione 2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
+
+![Quiz in azione 1](https://github.com/user-attachments/assets/d545c480-91a1-4b7f-9650-e1c7773ff3aa)
+
+### 🏆 Risultati e classifica
+
+![Pagina risultati](https://github.com/user-attachments/assets/2ba5aa6f-8e15-4345-a32f-1015d3e1399a)
+
+---
+
+## 🌐 Provalo subito
+
+👉 **https://quizpygym.streamlit.app/**
+Nessuna installazione richiesta.
