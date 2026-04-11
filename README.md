@@ -1,7 +1,3 @@
-![Schermata_di_Configurazione](https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341)
-![quiz_in_azione_2](https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe)
-![quiz_in_azione_1](https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb)
-![pagina_risultati](https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995)
 # 🏋️ PyGym
 
 > **Allenati ogni giorno con Python**
@@ -32,9 +28,9 @@ Le domande sono organizzate in 10 categorie indipendenti:
 | Stringhe & Metodi     | Metodi, formattazione, slicing              |
 | Liste                 | Metodi, comprehension, slicing              |
 | Dizionari             | Accesso, iterazione, metodi                 |
-| Tuple                 | Immutabilità, unpacking                    |
+| Tuple                 | Immutabilità, unpacking                     |
 | Set e FrozenSet       | Operazioni insiemistiche, metodi            |
-| OOP                   | Classi, ereditarietà, metodi speciali      |
+| OOP                   | Classi, ereditarietà, metodi speciali       |
 | Funzioni avanzate     | Lambda, decoratori, generatori, closures    |
 | Gestione degli errori | Try/except, eccezioni personalizzate, raise |
 | Moduli standard       | os, sys, json, pathlib, datetime, logging   |
@@ -48,33 +44,31 @@ Prima di ogni sessione è possibile scegliere:
 
 Le domande vengono distribuite proporzionalmente tra le categorie selezionate e mescolate casualmente.
 
+https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341
+
 ### Sistema di punteggio
 
 Il punteggio dipende dalla difficoltà della domanda:
 
-| Difficoltà  | Risposta corretta | Risposta sbagliata |
+| Difficoltà   | Risposta corretta | Risposta sbagliata |
 | ------------ | ----------------- | ------------------ |
 | 🟢 Facile    | +1 pt             | 0 pt               |
 | 🟡 Medio     | +2 pt             | 0 pt               |
 | 🔴 Difficile | +3 pt             | 0 pt               |
 
-### Risultati e riepilogo
+### Quiz in azione
 
-Al termine del quiz viene mostrata una pagina riassuntiva con:
+Seleziona una risposta e ricevi subito il feedback: se hai sbagliato viene mostrata la risposta corretta. In entrambi i casi puoi aprire la spiegazione con l'esempio di codice.
 
-- Numero di risposte corrette e sbagliate
-- Punteggio ottenuto sul punteggio massimo possibile
-- Percentuale di successo
-- Dettaglio domanda per domanda (con spiegazione e codice per ogni risposta)
+https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb
 
-### Classifica globale
+https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe
 
-I punteggi possono essere salvati con un nickname. La classifica mostra:
+### Risultati e classifica
 
-- Posizione con medaglie (🥇🥈🥉)
-- Punteggio, percentuale, risposte corrette/sbagliate
-- Categorie affrontate e data del quiz
-- KPI aggregati: giocatori totali, quiz completati, media punteggio
+Al termine del quiz viene mostrata una pagina riassuntiva con punteggio, percentuale e dettaglio domanda per domanda. Puoi salvare il risultato con un nickname e consultare la classifica globale.
+
+https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995
 
 ---
 
