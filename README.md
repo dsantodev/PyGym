@@ -83,9 +83,9 @@ Nessuna penalità in caso di errore: l’obiettivo è imparare.
 
 ### 🧠 Quiz in azione
 
-![Quiz in azione 2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
-
 ![Quiz in azione 1](https://github.com/user-attachments/assets/d545c480-91a1-4b7f-9650-e1c7773ff3aa)
+
+![Quiz in azione 2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
 
 ### 🏆 Risultati e classifica
 
