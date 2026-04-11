@@ -1,3 +1,7 @@
+![Schermata_di_Configurazione](https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341)
+![quiz_in_azione_2](https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe)
+![quiz_in_azione_1](https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb)
+![pagina_risultati](https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995)
 # 🏋️ PyGym
 
 > **Allenati ogni giorno con Python**
