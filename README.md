@@ -1,3 +1,5 @@
+
+
 # 🏋️ PyGym
 
 > **Allenati ogni giorno con Python**
@@ -44,8 +46,6 @@ Prima di ogni sessione è possibile scegliere:
 
 Le domande vengono distribuite proporzionalmente tra le categorie selezionate e mescolate casualmente.
 
-![Schermata di configurazione](https://github.com/user-attachments/assets/83c8af7d-931e-4efd-99da-612397ad9341)
-
 ### Sistema di punteggio
 
 Il punteggio dipende dalla difficoltà della domanda:
@@ -60,15 +60,29 @@ Il punteggio dipende dalla difficoltà della domanda:
 
 Seleziona una risposta e ricevi subito il feedback: se hai sbagliato viene mostrata la risposta corretta. In entrambi i casi puoi aprire la spiegazione con l'esempio di codice.
 
-![Quiz in azione 1](https://github.com/user-attachments/assets/10c73a13-3e84-4553-864f-c1ef503044fb)
-
-![Quiz in azione 2](https://github.com/user-attachments/assets/8333dbb7-72dd-478e-ac8d-fbeabff9eefe)
-
 ### Risultati e classifica
 
 Al termine del quiz viene mostrata una pagina riassuntiva con punteggio, percentuale e dettaglio domanda per domanda. Puoi salvare il risultato con un nickname e consultare la classifica globale.
 
-![Pagina risultati](https://github.com/user-attachments/assets/356a36a9-d53d-49d6-bbb3-880c755ea995)
+--- 
+
+## Video della Schermata iniziale e configurazione del PyQuiz:
+
+![Schermata_di_Configurazione](https://github.com/user-attachments/assets/2d6b3c11-8364-45c0-9506-c4c518dfe05b)
+
+--- 
+
+## Video del PyQuiz in azione:
+
+![quiz_in_azione_2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
+
+![quiz_in_azione_1](https://github.com/user-attachments/assets/d545c480-91a1-4b7f-9650-e1c7773ff3aa)
+
+---
+
+## Video della pagina dei Risultati e Classifica:
+
+![pagina_risultati](https://github.com/user-attachments/assets/2ba5aa6f-8e15-4345-a32f-1015d3e1399a)
 
 ---
 
