@@ -84,4 +84,5 @@ Nessuna penalità in caso di errore: l’obiettivo è imparare.
 
 ## 🌐 Provalo subito
 
-Nessuna installazione richiesta... 👉 **https://quizpygym.streamlit.app/**
+Nessuna installazione richiesta → 👉 **https://quizpygym.streamlit.app/**
+> 💡 *Suggerimento: usa **Ctrl+Click** (o **Cmd+Click** su Mac) per aprire in una nuova scheda.*
