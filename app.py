@@ -157,19 +157,25 @@ def page_config():
     """
     Pagina configurazione: l'utente sceglie difficoltà, categorie
     e il numero di domande totali da includere nel quiz.
-
-    Logica del numero di domande:
-      - minimo = numero di categorie selezionate (almeno 1 per categoria)
-      - massimo = somma delle domande disponibili nelle categorie scelte
-                  (filtrate per difficoltà se selezionata)
-      - se non è selezionata nessuna categoria, il campo è disabilitato
     """
     engine = get_engine()
 
     with st.sidebar:
         st.title("🏋️ PyGym")
+
         st.divider()
-        st.markdown("### Configura il quiz")
+
+        # --- Info punteggio ---
+        st.info(
+            "💡 **Sistema di punteggio**  \n\n"
+            "• Domanda facile = 1 punto  \n"
+            "• Domanda media = 2 punti  \n"
+            "• Domanda difficile = 3 punti  \n\n"
+            "✅ Se rispondi correttamente, guadagni i punti della domanda  \n"
+            "❌ Se sbagli, nessuna penalità, l’obiettivo è imparare.\n"
+        )
+        st.divider()
+        st.header("Configura il tuo quiz")
 
         # --- Selezione difficoltà ---
         difficulty_map = {
@@ -236,18 +242,6 @@ def page_config():
                 disabled=True,
                 help="Seleziona almeno una categoria per abilitare questo campo",
             )
-
-        st.divider()
-
-        # --- Info punteggio ---
-        st.info(
-            "💡 **Sistema di punteggio**  \n\n"
-            "• Domanda facile = 1 punto  \n"
-            "• Domanda media = 2 punti  \n"
-            "• Domanda difficile = 3 punti  \n\n"
-            "✅ Se rispondi correttamente, guadagni i punti della domanda  \n"
-            "❌ Se sbagli, nessuna penalità, l’obiettivo è imparare.\n"
-        )
 
         st.divider()
 
