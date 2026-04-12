@@ -133,10 +133,12 @@ class QuizEngine:
     # METODI PUBBLICI - INFORMAZIONI SULLE CATEGORIE E DOMANDE
     # -----------------------------------------------------------------------
 
-    def get_categories(self) -> list[dict]:
+    def get_categories(self, difficulty: int | None = None) -> list[dict]:
         """
         Restituisce la lista delle categorie come lista di dizionari.
         Aggiunge anche il conteggio delle domande disponibili per ciascuna.
+        Se difficulty è specificato, conta solo le domande di quella difficoltà
+        ed esclude le categorie con 0 domande disponibili.
 
         Returns:
             Lista di dict con chiavi: id, name, description, question_count
@@ -146,53 +148,52 @@ class QuizEngine:
         """
         result = []
         for cat_id, cat_info in self.categories.items():
-            result.append({
-                # copia tutte le chiavi originali (id, name, description)
-                **cat_info,
-                "question_count": len(self.questions_by_category[cat_id])
-            })
+            questions = self.questions_by_category[cat_id]
+            if difficulty is not None:
+                questions = [q for q in questions if q.difficulty == difficulty]
+            count = len(questions)
+            if count > 0:
+                result.append({
+                    # copia tutte le chiavi originali (id, name, description)
+                    **cat_info,
+                    "question_count": count
+                })
         return result
 
-    def get_question_count(self, category_id: str) -> int:
-        """
-        Restituisce il numero di domande disponibili per una categoria.
-
-        Args:
-            category_id: es. "basi"
-
-        Returns:
-            Numero intero di domande, 0 se la categoria non esiste
-        """
-        return len(self.questions_by_category.get(category_id, []))
-
-    def get_max_questions_for(self, category_ids: list[str]) -> int:
+    def get_max_questions_for(self, category_ids: list[str], difficulty: int | None = None) -> int:
         """
         Restituisce il numero massimo di domande selezionabili
         data una lista di categorie (somma delle domande disponibili).
+        Se difficulty è specificato, conta solo le domande di quella difficoltà.
 
         Esempio: ["basi", "oop"] → 8 + 6 = 14
 
         Args:
             category_ids: lista di id categoria, es. ["basi", "oop"]
+            difficulty: se specificato (1, 2 o 3), filtra per difficoltà
 
         Returns:
             Somma delle domande disponibili in tutte le categorie richieste
         """
-        return sum(
-            len(self.questions_by_category.get(cat_id, []))
-            for cat_id in category_ids
-        )
+        total = 0
+        for cat_id in category_ids:
+            questions = self.questions_by_category.get(cat_id, [])
+            if difficulty is not None:
+                questions = [q for q in questions if q.difficulty == difficulty]
+            total += len(questions)
+        return total
 
     # -----------------------------------------------------------------------
     # METODI PUBBLICI - GESTIONE DEL QUIZ
     # -----------------------------------------------------------------------
 
-    def start_quiz(self, category_ids: list[str], num_questions: int):
+    def start_quiz(self, category_ids: list[str], num_questions: int, difficulty: int | None = None):
         """
         Avvia un nuovo quiz multi-categoria.
 
         Seleziona num_questions domande pescando proporzionalmente
         da ogni categoria nella lista category_ids, poi mescola tutto.
+        Se difficulty è specificato (1, 2 o 3), usa solo le domande di quella difficoltà.
 
         Esempio con category_ids=["basi","oop"] e num_questions=7:
           basi ha 8 domande  → peso 8/(8+6) ≈ 57% → 4 domande
@@ -214,8 +215,16 @@ class QuizEngine:
             if cat_id not in self.questions_by_category:
                 raise ValueError(f"Categoria '{cat_id}' non trovata.")
 
+        # Pool di domande per categoria (filtrato per difficoltà se specificata)
+        pool: dict[str, list[Question]] = {}
+        for cat_id in category_ids:
+            questions = self.questions_by_category[cat_id]
+            if difficulty is not None:
+                questions = [q for q in questions if q.difficulty == difficulty]
+            pool[cat_id] = questions
+
         min_q = len(category_ids)           # almeno 1 per categoria
-        max_q = self.get_max_questions_for(category_ids)
+        max_q = sum(len(pool[cat_id]) for cat_id in category_ids)
 
         if num_questions < min_q:
             raise ValueError(
@@ -230,10 +239,7 @@ class QuizEngine:
 
         # --- Distribuzione proporzionale ---
         # Calcola quante domande prendere da ogni categoria.
-        sizes = {
-            cat_id: len(self.questions_by_category[cat_id])
-            for cat_id in category_ids
-        }
+        sizes = {cat_id: len(pool[cat_id]) for cat_id in category_ids}
         total_available = sum(sizes.values())
 
         # Quote ideali (float)
@@ -273,7 +279,7 @@ class QuizEngine:
         # --- Selezione casuale per ogni categoria ---
         selected: list[Question] = []
         for cat_id, n in allocation.items():
-            available = self.questions_by_category[cat_id]
+            available = pool[cat_id]
             # random.sample non modifica la lista originale
             selected.extend(random.sample(available, n))
 

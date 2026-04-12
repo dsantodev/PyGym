@@ -155,23 +155,38 @@ def page_home():
 
 def page_config():
     """
-    Pagina configurazione: l'utente sceglie una o più categorie
+    Pagina configurazione: l'utente sceglie difficoltà, categorie
     e il numero di domande totali da includere nel quiz.
 
-    Logica dello slider:
+    Logica del numero di domande:
       - minimo = numero di categorie selezionate (almeno 1 per categoria)
-      - massimo = somma delle domande disponibili nelle categorie selezionate
-      - se non è selezionata nessuna categoria, lo slider è disabilitato
+      - massimo = somma delle domande disponibili nelle categorie scelte
+                  (filtrate per difficoltà se selezionata)
+      - se non è selezionata nessuna categoria, il campo è disabilitato
     """
     engine = get_engine()
-    categories = engine.get_categories()
 
     with st.sidebar:
         st.title("🏋️ PyGym")
         st.divider()
         st.markdown("### Configura il quiz")
 
-        # --- Multiselect categorie ---
+        # --- Selezione difficoltà ---
+        difficulty_map = {
+            "Tutte le difficoltà": None,
+            "Facile (1 pt)": 1,
+            "Media (2 pt)": 2,
+            "Difficile (3 pt)": 3,
+        }
+        diff_label = st.radio(
+            "🎯 Difficoltà",
+            options=list(difficulty_map.keys()),
+            index=0,
+        )
+        selected_difficulty = difficulty_map[diff_label]
+
+        # --- Multiselect categorie (filtrate per difficoltà) ---
+        categories = engine.get_categories(difficulty=selected_difficulty)
         cat_labels = [
             f"{c['name']} - ({c['question_count']})" for c in categories]
         label_to_id = {
@@ -182,56 +197,44 @@ def page_config():
         selected_labels = st.multiselect(
             "📚 Categorie",
             options=cat_labels,
-            default=[],           # nessuna pre-selezionata: l'utente sceglie
+            default=[],
             placeholder="Scegli una o più categorie...",
+            key=f"cats_{selected_difficulty}",
         )
 
         # Ricava la lista di category_id dalle etichette selezionate
         selected_ids = [label_to_id[lbl] for lbl in selected_labels]
 
-        # --- Slider dinamico ---
-        # Il range dipende dalle categorie scelte:
-        #   min = 1 per ogni categoria selezionata (es. 3 categorie → min=3)
-        #   max = totale domande disponibili nelle categorie scelte
+        # --- Numero di domande con +/− ---
         if selected_ids:
             min_q = len(selected_ids)
-            max_q = engine.get_max_questions_for(selected_ids)
-
-            # Calcola un default sensato: 5 domande o il max disponibile
-            # ma comunque non meno del minimo richiesto
+            max_q = engine.get_max_questions_for(
+                selected_ids, difficulty=selected_difficulty)
             default_q = max(min_q, min(5, max_q))
 
-            num_q = st.slider(
+            num_q = int(st.number_input(
                 "🔢 Numero di domande",
                 min_value=min_q,
                 max_value=max_q,
                 value=default_q,
+                step=1,
                 help=(
-                    f"Minimo {min_q} (1 per categoria) · "
-                    f"Massimo {max_q} (tutte le domande disponibili)"
+                    f"Minimo(1 per categoria) · "
+                    f"Massimo(tutte le domande disponibili)"
                 ),
-            )
-
-            # Riepilogo visivo di quante domande per categoria
-            st.caption("📊 Distribuzione stimata:")
-            cat_info = {c["id"]: c for c in categories}
-            for cat_id in selected_ids:
-                cat_size = engine.get_question_count(cat_id)
-                # Stima proporzionale (la stessa logica dell'engine)
-                estimated = max(1, round(num_q * cat_size / max_q))
-                st.caption(
-                    f"  • {cat_info[cat_id]['name']}: ~{estimated} domande")
-
+            ))
+            st.info(
+                f"Minimo {min_q} domande (1 per categoria) · Massimo {max_q} domande")
         else:
-            # Nessuna categoria selezionata: slider placeholder disabilitato
             num_q = 0
-            st.slider(
+            st.number_input(
                 "🔢 Numero di domande",
                 min_value=0,
                 max_value=1,
                 value=0,
+                step=1,
                 disabled=True,
-                help="Seleziona almeno una categoria per abilitare lo slider",
+                help="Seleziona almeno una categoria per abilitare questo campo",
             )
 
         st.divider()
@@ -243,7 +246,7 @@ def page_config():
             "• Domanda media = 2 punti  \n"
             "• Domanda difficile = 3 punti  \n\n"
             "✅ Se rispondi correttamente, guadagni i punti della domanda  \n"
-            "❌ Se sbagli, non guadagni punti"
+            "❌ Se sbagli, nessuna penalità, l’obiettivo è imparare.\n"
         )
 
         st.divider()
@@ -260,7 +263,8 @@ def page_config():
             st.session_state.save_celebration_pending = False
 
             # Avvia il quiz nell'engine con la lista di categorie
-            engine.start_quiz(selected_ids, num_q)
+            engine.start_quiz(selected_ids, num_q,
+                              difficulty=selected_difficulty)
 
             # Reset stato risposta per la pagina quiz
             st.session_state.last_answer = None
