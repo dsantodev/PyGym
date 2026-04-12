@@ -77,19 +77,8 @@ Nessuna penalità in caso di errore: l’obiettivo è imparare.
 
 ## 🎮 Demo dell’app
 
-### 🧭 Schermata iniziale
+![Demo_PyGym](https://github.com/user-attachments/assets/cc7834e3-e63c-43e8-bc2c-482cc952eee7)
 
-![Schermata di configurazione](https://github.com/user-attachments/assets/2d6b3c11-8364-45c0-9506-c4c518dfe05b)
-
-### 🧠 Quiz in azione
-
-![Quiz in azione 1](https://github.com/user-attachments/assets/d545c480-91a1-4b7f-9650-e1c7773ff3aa)
-
-![Quiz in azione 2](https://github.com/user-attachments/assets/53a29476-f5d3-4b41-9790-a3f68fac9dd3)
-
-### 🏆 Risultati e classifica
-
-![Pagina risultati](https://github.com/user-attachments/assets/2ba5aa6f-8e15-4345-a32f-1015d3e1399a)
 
 ---
 
