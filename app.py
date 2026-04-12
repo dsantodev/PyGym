@@ -255,6 +255,7 @@ def page_config():
                      disabled=avvia_disabled):
             st.session_state.category_ids = selected_ids
             st.session_state.num_questions = num_q
+            st.session_state.quiz_results = None
             st.session_state.result_saved = False
             st.session_state.save_celebration_pending = False
 

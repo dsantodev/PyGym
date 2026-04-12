@@ -199,6 +199,13 @@ class QuizEngine:
           oop  ha 6 domande  → peso 6/(8+6) ≈ 43% → 3 domande
           totale: 4+3 = 7 ✓
         """
+        # Reset immediato: garantisce che le vecchie risposte non persistano
+        # anche in caso di eccezione durante la computazione successiva
+        self._quiz_questions = []
+        self._current_index = 0
+        self._user_answers = []
+        self._quiz_active = False
+
         # --- Validazioni ---
         if not category_ids:
             raise ValueError("Seleziona almeno una categoria.")
@@ -294,6 +301,7 @@ class QuizEngine:
         self._current_index = 0
         self._user_answers = []
         self._quiz_active = True
+
 
     def current_question(self) -> Optional[Question]:
         """
@@ -398,7 +406,7 @@ class QuizEngine:
             "score": score,
             "max_score": max_score,
             "percentage": round(percentage, 1),
-            "answers": self._user_answers,
+            "answers": list(self._user_answers),
         }
 
     def reset(self):
