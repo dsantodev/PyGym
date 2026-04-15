@@ -222,7 +222,6 @@ def page_config():
             num_q = int(st.number_input(
                 "🔢 Numero di domande",
                 min_value=min_q,
-                max_value=max_q,
                 value=default_q,
                 step=1,
                 help=(
@@ -230,8 +229,11 @@ def page_config():
                     f"Massimo(tutte le domande disponibili)"
                 ),
             ))
-            st.info(
-                f"Minimo {min_q} domande (1 per categoria) · Massimo {max_q} domande")
+            if num_q > max_q:
+                st.error(f"Il valore deve essere ≤ {max_q} (domande disponibili)")
+            else:
+                st.info(
+                    f"Minimo {min_q} domande (1 per categoria) · Massimo {max_q} domande")
         else:
             num_q = 0
             st.number_input(
