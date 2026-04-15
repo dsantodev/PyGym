@@ -212,6 +212,7 @@ def page_config():
         selected_ids = [label_to_id[lbl] for lbl in selected_labels]
 
         # --- Numero di domande con +/− ---
+        max_q = 0
         if selected_ids:
             min_q = len(selected_ids)
             max_q = engine.get_max_questions_for(
@@ -246,7 +247,7 @@ def page_config():
         st.divider()
 
         # --- Bottone avvia ---
-        avvia_disabled = len(selected_ids) == 0
+        avvia_disabled = len(selected_ids) == 0 or (bool(selected_ids) and num_q > max_q)
         if st.button("▶ Avvia Quiz", use_container_width=True,
                      type="primary",
                      disabled=avvia_disabled):
