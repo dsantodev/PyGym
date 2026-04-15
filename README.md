@@ -1,3 +1,11 @@
+## 🎮 Demo dell’app
+
+![Demo_PyGym](https://github.com/user-attachments/assets/cc7834e3-e63c-43e8-bc2c-482cc952eee7)
+
+
+---
+
+
 # 🏋️ PyGym – Allenati ogni giorno con Python
 
 **PyGym** è una web-app per allenarti con Python in modo interattivo.
@@ -75,14 +83,15 @@ Nessuna penalità in caso di errore: l’obiettivo è imparare.
 
 ---
 
-## 🎮 Demo dell’app
-
-![Demo_PyGym](https://github.com/user-attachments/assets/cc7834e3-e63c-43e8-bc2c-482cc952eee7)
-
-
----
 
 ## 🌐 Provalo subito
 
 Nessuna installazione richiesta → 👉 **https://quizpygym.streamlit.app/**
 > 💡 *Suggerimento: usa **Ctrl+Click** (o **Cmd+Click** su Mac) per aprire in una nuova scheda.*
+
+---
+
+
+## 📄 Licenza
+
+Distribuito sotto licenza **MIT** — vedi il file [`LICENSE`](./LICENSE).
