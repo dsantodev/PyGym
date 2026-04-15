@@ -212,28 +212,21 @@ def page_config():
         selected_ids = [label_to_id[lbl] for lbl in selected_labels]
 
         # --- Numero di domande con +/− ---
-        max_q = 0
         if selected_ids:
             min_q = len(selected_ids)
             max_q = engine.get_max_questions_for(
                 selected_ids, difficulty=selected_difficulty)
             default_q = max(min_q, min(5, max_q))
 
-            num_q = int(st.number_input(
+            num_q = st.slider(
                 "🔢 Numero di domande",
                 min_value=min_q,
+                max_value=max_q,
                 value=default_q,
                 step=1,
-                help=(
-                    f"Minimo(1 per categoria) · "
-                    f"Massimo(tutte le domande disponibili)"
-                ),
-            ))
-            if num_q > max_q:
-                st.error(f"Il valore deve essere ≤ {max_q} (domande disponibili)")
-            else:
-                st.info(
-                    f"Minimo {min_q} domande (1 per categoria) · Massimo {max_q} domande")
+            )
+            st.info(
+                f"Minimo {min_q} domande (1 per categoria) · Massimo {max_q} domande")
         else:
             num_q = 0
             st.number_input(
@@ -249,7 +242,7 @@ def page_config():
         st.divider()
 
         # --- Bottone avvia ---
-        avvia_disabled = len(selected_ids) == 0 or (bool(selected_ids) and num_q > max_q)
+        avvia_disabled = len(selected_ids) == 0
         if st.button("▶ Avvia Quiz", use_container_width=True,
                      type="primary",
                      disabled=avvia_disabled):
