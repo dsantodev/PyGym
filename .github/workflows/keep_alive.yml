@@ -33,9 +33,7 @@ jobs:
 
       - name: Installa Chromium (solo se non in cache)
         if: steps.cache-chromium.outputs.cache-hit != 'true'
-        run: |
-          playwright install chromium
-          playwright install-deps chromium
+        run: playwright install-deps chromium
 
       - name: Esegui script keep alive
         run: python keep_alive.py
