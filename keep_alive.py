@@ -16,6 +16,7 @@ def run():
         try:
             page.wait_for_selector(button_selector, timeout=15_000)
             page.click(button_selector)
+            page.wait_for_load_state("networkidle", timeout=60_000)
             print("App era in sleep → risvegliata con successo!")
         except Exception as e:
             if "Timeout" in type(e).__name__:
