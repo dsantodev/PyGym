@@ -31,9 +31,14 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-chromium-${{ runner.os }}
 
+      # Modifica qui: Installa le dipendenze di sistema (sempre necessario) 
+      # e il browser (solo se manca la cache)
+      - name: Installa dipendenze di sistema
+        run: npx playwright install-deps chromium
+
       - name: Installa Chromium (solo se non in cache)
         if: steps.cache-chromium.outputs.cache-hit != 'true'
-        run: playwright install-deps chromium
+        run: playwright install chromium
 
       - name: Esegui script keep alive
         run: python keep_alive.py
