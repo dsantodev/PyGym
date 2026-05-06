@@ -19,26 +19,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
 
-      - name: Installa Playwright
-        run: pip install playwright
+      - name: Installa librerie Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright requests
 
-      - name: Cache Chromium
-        id: cache-chromium
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-chromium-${{ runner.os }}
-
-      # Modifica qui: Installa le dipendenze di sistema (sempre necessario) 
-      # e il browser (solo se manca la cache)
-      - name: Installa dipendenze di sistema
-        run: npx playwright install-deps chromium
-
-      - name: Installa Chromium (solo se non in cache)
-        if: steps.cache-chromium.outputs.cache-hit != 'true'
-        run: playwright install chromium
+      # Rimuoviamo temporaneamente la cache per essere sicuri che scarichi tutto
+      # Una volta che funziona, potrai riaggiungerla cambiando la 'key'
+      - name: Installa Playwright Browser e Dipendenze
+        run: |
+          python -m playwright install chromium --with-deps
 
       - name: Esegui script keep alive
         run: python keep_alive.py
