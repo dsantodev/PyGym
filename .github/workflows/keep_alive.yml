@@ -19,17 +19,27 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip' # Cache automatica per le librerie installate con pip
 
       - name: Installa librerie Python
         run: |
           python -m pip install --upgrade pip
           pip install playwright requests
 
-      # Rimuoviamo temporaneamente la cache per essere sicuri che scarichi tutto
-      # Una volta che funziona, potrai riaggiungerla cambiando la 'key'
-      - name: Installa Playwright Browser e Dipendenze
-        run: |
-          python -m playwright install chromium --with-deps
+      # --- AGGIUNTA CACHE QUI ---
+      - name: Cache Playwright Browsers
+        id: cache-playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v2-${{ runner.os }} 
+
+      - name: Installa dipendenze di sistema
+        run: python -m playwright install-deps chromium
+
+      - name: Installa Playwright Browser (solo se non in cache)
+        if: steps.cache-playwright.outputs.cache-hit != 'true'
+        run: python -m playwright install chromium
 
       - name: Esegui script keep alive
         run: python keep_alive.py
